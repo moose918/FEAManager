@@ -168,7 +168,7 @@ namespace FEAManager
             // 
             this.btnShowPassword.Image = ((System.Drawing.Image)(resources.GetObject("btnShowPassword.Image")));
             this.btnShowPassword.Location = new System.Drawing.Point(325, 88);
-            this.btnShowPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnShowPassword.Margin = new System.Windows.Forms.Padding(2);
             this.btnShowPassword.Name = "btnShowPassword";
             this.btnShowPassword.Size = new System.Drawing.Size(16, 18);
             this.btnShowPassword.TabIndex = 27;
@@ -281,6 +281,7 @@ namespace FEAManager
             this.btnReturn.TabIndex = 20;
             this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // RegisterStudentForm
             // 

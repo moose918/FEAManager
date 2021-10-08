@@ -15,6 +15,53 @@ namespace FEAManager
     {
         private OleDbConnection con = new OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = FEAManager_DB.accdb");
 
+        public List<Dictionary<string, string>> selectQuery(string strTable, int attributesLength, string strConditional, Dictionary<string, string> dictAttributes)
+        {
+            int affectedRows;
+            string sqlSelect;
+            OleDbCommand command;
+            OleDbDataReader reader;
+            Type dataType;
+
+            List <Dictionary<string, string>> resultSet = new List<Dictionary<string, string>>();
+            Dictionary<string, string> tempDictionary;
+            sqlSelect = "SELECT * FROM " + strTable + " " + strConditional;
+
+            command = formCommand(sqlSelect, dictAttributes);
+
+            con.Open();
+            MessageBox.Show(command.CommandText);
+            reader = command.ExecuteReader();
+            
+            // read result
+            while (reader.Read())
+            {
+
+                tempDictionary = new Dictionary<string, string>();
+
+                for (int columnDex = 0; columnDex < attributesLength; ++columnDex)
+                {
+                    dataType = reader.GetFieldType(columnDex);
+
+                    if (dataType == typeof(String))
+                    {
+                        tempDictionary.Add(reader.GetName(columnDex), reader.GetString(columnDex));
+                    }
+                    else if (dataType == typeof(DateTime))
+                    {
+                        tempDictionary.Add(reader.GetName(columnDex), reader.GetDateTime(columnDex).ToString());
+                    }
+                    else if (dataType == typeof(Int32))
+                    {
+                        tempDictionary.Add(reader.GetName(columnDex), reader.GetInt32(columnDex).ToString());
+                    }
+                }
+
+                resultSet.Add(tempDictionary);
+            }
+
+            return resultSet;
+        }
         /**
          * Inserts a record into the prescribed database
          */
@@ -31,7 +78,6 @@ namespace FEAManager
             MessageBox.Show("INSERT COMPLETE! Affected rows: " + affectedRows);
         }
 
-       
 
         public void updateQuery(string strTable, string strParams, string strConditional, Dictionary<string, string> dictAttributes)
         {

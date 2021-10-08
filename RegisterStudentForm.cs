@@ -23,7 +23,22 @@ namespace FEAManager
 
             // check if student exists in DB
 
+           
 
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            Close();
+        }
+
+        public static void loadForm(Form previousForm)
+        {
+            RegisterStudentForm frmLogin = new RegisterStudentForm();
+            previousForm.Visible = false;
+            frmLogin.ShowDialog(previousForm);
+            previousForm.Visible = true;
         }
     }
 }
