@@ -91,7 +91,7 @@ namespace FEAManager
             MessageBox.Show("UPDATE COMPLETE! Affected rows: " + affectedRows);
         }
 
-        public void deleteQuery(string strTable, string strParams, string strConditional, Dictionary<string, string> dictAttributes)
+        public void deleteQuery(string strTable, string strConditional, Dictionary<string, string> dictAttributes)
         {
             int affectedRows;
             string sqlUpdate;

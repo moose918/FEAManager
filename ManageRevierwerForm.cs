@@ -34,29 +34,9 @@ namespace FEAManager
 
         private void ManageRevierwerForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'tblReviewer.Reviewer' table. You can move, or remove it, as needed.
-            string connString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = FEAManager_DB.accdb";
-            DataTable dataTableRes = new DataTable();
-
-            using (OleDbConnection conn = new OleDbConnection(connString))
-            {
-                OleDbCommand cmd = new OleDbCommand("SELECT * FROM Reviewer", conn);
-
-                conn.Open();
-
-                OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
-
-                adapter.Fill(dataTableRes);
-            dataGridView1.DataSource = dataTableRes;
-            dataGridView1.Refresh();
-
-                conn.Close();
-            }
-
-
-            
+            refreshDataGrid();
         }
-        
+
         private void btnCreate_click(object sender, EventArgs e)
         {
             //
@@ -70,17 +50,66 @@ namespace FEAManager
 
             strTable = "Reviewer";
             strParams = "FNAME = @fName, LNAME = @lName, [QUAL_LEVEL] = @qLevel";
-            strConditional = "WHERE REVIEWER_NUM = @reviewerNum;";
+            strConditional = "WHERE REVIEWER_NUM = @reviewerNum";
             dictAttributes = new Dictionary<string, string>
             {
-                ["@reviewerNum"] = txtFName.Text,
                 ["@fName"] = txtFName.Text,
                 ["@lName"] = txtLName.Text,
-                ["@qLevel"] = txtQualificationLevel.Text
+                ["@qLevel"] = txtQualificationLevel.Text,
+                ["@reviewerNum"] = txtReviewerNumber.Text
             };
 
             dbReviewer.updateQuery(strTable, strParams, strConditional, dictAttributes);
 
+            refreshDataGrid();
+        }
+
+        private void refreshDataGrid()
+        {
+            // TODO: This line of code loads data into the 'tblReviewer.Reviewer' table. You can move, or remove it, as needed.
+            string connString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = FEAManager_DB.accdb";
+            BindingSource bindingSource;
+            DataTable reviwerTable = new DataTable();
+
+            using (OleDbConnection conn = new OleDbConnection(connString))
+            {
+                OleDbCommand cmd = new OleDbCommand("SELECT * FROM Reviewer", conn);
+
+                conn.Open();
+
+                OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
+                reviwerTable.Clear();
+                adapter.Fill(reviwerTable);
+                bindingSource = new BindingSource(reviwerTable, null);
+                dataGridView1.DataSource = bindingSource;
+                bindingNavigator1.BindingSource = bindingSource;
+                dataGridView1.Refresh();
+
+//                conn.Close();
+            }
+        }
+
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            // confirm with user...
+
+            string strTable, strConditional, strReviewerNum;
+            Dictionary<string, string> dictAttributes;
+            DB dbReviewer = new DB();
+
+            strReviewerNum = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            MessageBox.Show(strReviewerNum);
+            strTable = "Reviewer";
+            strConditional = "WHERE REVIEWER_NUM = @reviewerNum";
+            dictAttributes = new Dictionary<string, string>
+            {
+                ["@reviewerNum"] = strReviewerNum
+            };
+
+            dbReviewer.deleteQuery(strTable, strConditional, dictAttributes);
+
+            refreshDataGrid();
         }
     }
 }
