@@ -54,7 +54,8 @@ namespace FEAManager
                 strPasswd = mtxtPassword.Text;
                 strTelephone = mtxtTelephone.Text;
                 strStudyProgram = cmbStudyProgram.Text;
-                strDOB = dtpDOB.Value.ToString("dd/mm/yyyy");
+                strDOB = dtpDOB.Value.ToString("dd/MM/yyyy");
+
                 strTitle = CommonMethods.checkedString(grpTitle);
 
                 // check if student exists in DB
@@ -109,7 +110,7 @@ namespace FEAManager
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            LoginForm.loadForm(this);
+            this.Close();
         }
 
         public static void loadForm(Form previousForm)

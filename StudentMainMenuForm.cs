@@ -40,8 +40,9 @@ namespace FEAManager
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (tbcStudentMenu.SelectedTab == tbcStudentMenu.TabPages[tbcStudentMenu.Text])
+            if (tbcStudentMenu.SelectedIndex == 0)
             {
+                MessageBox.Show("Work");
                 //Validate information
                 bool validInformation = ValidateInformation();
 
@@ -75,6 +76,7 @@ namespace FEAManager
             }
             else
             {
+                MessageBox.Show("Not updating");
                 
             }
         }
@@ -162,7 +164,7 @@ namespace FEAManager
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            LoginForm.loadForm(this);
+            this.Close();
         }
 
         private void btnShowPassword_Click(object sender, EventArgs e)
