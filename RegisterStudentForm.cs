@@ -17,47 +17,99 @@ namespace FEAManager
             InitializeComponent();
         }
 
+        private bool ValidateInformation()
+        {
+            bool valid = true;
+            valid = CommonMethods.validateTextBox(txtFName, "first name") && valid;
+            valid = CommonMethods.validateTextBox(txtLName, "last name") && valid;
+            valid = CommonMethods.validateDOB(dtpDOB) && valid;
+            valid = CommonMethods.validateTextBox(mtxtTelephone, "telephone number") && valid;
+            valid = CommonMethods.validateTextBox(txtUsername, "username") && valid;
+            valid = CommonMethods.validateTextBox(txtUsername, "username", 13) && valid;
+            valid = CommonMethods.validateTextBox(mtxtPassword, "password") && valid;
+            valid = CommonMethods.validateTextBox(mtxtEmail, "email address") && valid;
+            valid = CommonMethods.validateTextBox(cmbStudyProgram, "study program") && valid;
+            valid = CommonMethods.validateRadioButtonsInGroup(grpTitle, "title") && valid;
+
+            return valid;
+        }
+
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            // Validate info
+            // Validate information
+            bool validInformation = ValidateInformation();
 
-            // check if student exists in DB
-
-            int intSuccessful;
-            string strTable, strRows, strStudentNum, strFName, strLName, strEmail, strPasswd, strDOB;
-            Dictionary<string, string> dictAttributes;
-            DB dbStudent = new DB();
-
-            strStudentNum = txtUsername.Text;
-            strFName = txtFName.Text;
-            strLName = txtLName.Text;
-            strEmail = mtxtEmail.Text;
-            MessageBox.Show(strEmail);
-            strPasswd = mtxtPassword.Text;
-            
-            dtpDOB.Format = DateTimePickerFormat.Custom;
-            dtpDOB.CustomFormat = "dd/mm/yyyy";
-            strDOB = dtpDOB.Text;
-
-            strTable = "Student([STU_NUM], [FNAME], [LNAME], [EMAIL], [PASSWORD], [DOB])";
-            strRows = "(@studentNum, @fName, @lName, @email, @passwd, @dob)";
-            dictAttributes = new Dictionary<string, string>
+            if (validInformation)
             {
-                ["@studentNum"] = strStudentNum,
-                ["@fName"] = strFName,
-                ["@lName"] = strLName,
-                ["@email"] = strEmail,
-                ["@passwd"] = strPasswd,
-                ["@dob"] = strDOB,
-            };
+                int intSuccessful;
+                string strTable, strRows, strConditional, strStudentNum, strFName, strLName, strEmail, strPasswd, strDOB, strTelephone, strStudyProgram, strTitle;
+                Dictionary<string, string> dictAttributes;
+                List<Dictionary<string, string>> resultSet;
+                DB dbStudent = new DB();
 
-            dbStudent.insertQuery(strTable, strRows, dictAttributes);
+                strStudentNum = txtUsername.Text;
+                strFName = txtFName.Text;
+                strLName = txtLName.Text;
+                strEmail = mtxtEmail.Text;
+                strPasswd = mtxtPassword.Text;
+                strTelephone = mtxtTelephone.Text;
+                strStudyProgram = cmbStudyProgram.Text;
+                strDOB = dtpDOB.Value.ToString("dd/mm/yyyy");
+                strTitle = CommonMethods.checkedString(grpTitle);
+
+                // check if student exists in DB
+                bool exists = false;
+
+                strTable = "Student";
+                strConditional = "WHERE [STU_NUM] = @stuNum";
+                dictAttributes = new Dictionary<string, string>
+                {
+                    ["@stuNum"] = strStudentNum
+                };
+
+                resultSet = dbStudent.selectQuery(strTable, 8, strConditional, dictAttributes);
+
+                if (resultSet.Count > 0)
+                {
+                    exists = true;
+                    MessageBox.Show(strStudentNum + " already exists. They can not register again");
+                    CommonMethods.clearForm(this);
+                }
+                else
+                {
+                    exists = false;
+                }
+
+                if (!exists)
+                {
+                    // load respective form if correct info is given
+
+                    strTable = "Student([STU_NUM], [FNAME], [LNAME], [EMAIL], [PASSWORD], [DOB], [TELEPHONE], [STUDY_PROGRAM], [TITLE])";
+                    strRows = "(@studentNum, @fName, @lName, @email, @passwd, @dob, @telephone, @studyProgram, @title)";
+                    dictAttributes = new Dictionary<string, string>
+                    {
+                        ["@studentNum"] = strStudentNum,
+                        ["@fName"] = strFName,
+                        ["@lName"] = strLName,
+                        ["@email"] = strEmail,
+                        ["@passwd"] = strPasswd,
+                        ["@dob"] = strDOB,
+                        ["@telephone"] = strTelephone,
+                        ["@studyProgram"] = strStudyProgram,
+                        ["@title"] = strTitle
+                    };
+
+                    dbStudent.insertQuery(strTable, strRows, dictAttributes);
+
+                    MessageBox.Show(strStudentNum + " has been created");
+                    StudentMainMenuForm.loadForm(this, strStudentNum);
+                }
+            }
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
-            Close();
+            LoginForm.loadForm(this);
         }
 
         public static void loadForm(Form previousForm)
@@ -66,6 +118,16 @@ namespace FEAManager
             previousForm.Visible = false;
             frmLogin.ShowDialog(previousForm);
             previousForm.Visible = true;
+        }
+
+        private void btnViewPassword_Click(object sender, EventArgs e)
+        {
+            CommonMethods.passwordControl(mtxtPassword);
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            CommonMethods.clearForm(this);
         }
     }
 }

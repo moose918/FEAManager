@@ -32,6 +32,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>FEAManager.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>star_things_3xK_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -65,6 +71,7 @@
     <Compile Include="ManageRevierwerForm.Designer.cs">
       <DependentUpon>ManageRevierwerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CommonMethods.cs" />
     <Compile Include="StudentMainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +131,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="star_things_3xK_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

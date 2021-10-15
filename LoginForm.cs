@@ -17,90 +17,108 @@ namespace FEAManager
             InitializeComponent();
         }
 
+        private bool ValidateInformation(TextBox txtUsername, MaskedTextBox mtxtPassword, GroupBox groupBox)
+        {
+            bool valid = true;
+            valid = CommonMethods.validateTextBox(txtUsername, "username") && valid;
+
+            //Determing correct length
+            int length = -1;
+            foreach (RadioButton radio in groupBox.Controls)
+            {length = (radio.Text.Equals("&Admin") && radio.Checked) ? 15 : (radio.Text.Equals("&Student") && radio.Checked) ? 13 : length;}
+            valid = CommonMethods.validateTextBox(txtUsername, "username", length) && valid;
+            valid = CommonMethods.validateTextBox(mtxtPassword, "password") && valid;
+            valid = CommonMethods.validateRadioButtonsInGroup(groupBox, "user type") && valid;
+            return valid;
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string table, conditional;
-            Dictionary<string, string> dictAttributes, resultRow;
-            List<Dictionary<string, string>> resultSet;
-            DB dbLogin = new DB();
-
-            string username = txtUsername.Text;
-            string passwd = mtxtPassword.Text;
-
             // Validate input
+
+            bool validInformation = ValidateInformation(txtUsername, mtxtPassword, grpUserType);
 
             // if valid, check DB of respective user type
 
-            // load respective form if correct info is given
-
-            // adminLogin
-
-
-            if (rdbAdmin.Checked)
+            if (validInformation)
             {
-                table = "Admin";
-                conditional = "WHERE [ADMIN_NUM] = @adminNum AND [PASSWORD] = @passwd";
-                dictAttributes = new Dictionary<string, string>
+                string table, conditional;
+                Dictionary<string, string> dictAttributes, resultRow;
+                List<Dictionary<string, string>> resultSet;
+                DB dbLogin = new DB();
+
+                string username = txtUsername.Text;
+                string passwd = mtxtPassword.Text;
+
+
+                if (radAdmin.Checked)
                 {
-                    ["@adminNum"] = username,
-                    ["@passwd"] = passwd
-                };
-
-                resultSet = dbLogin.selectQuery(table, 5, conditional, dictAttributes);
-
-                string output = "";
-
-                if (resultSet.Count > 0)
-                {
-                    resultRow = resultSet[0];
-                    foreach (var kv in resultRow)
+                    table = "Admin";
+                    conditional = "WHERE [ADMIN_NUM] = @adminNum AND [PASSWORD] = @passwd";
+                    dictAttributes = new Dictionary<string, string>
                     {
-                        output += kv.Key + " : " + kv.Value + "\n";
-                    }
-                    MessageBox.Show(output);
+                        ["@adminNum"] = username,
+                        ["@passwd"] = passwd
+                    };
 
-                    AdminMainMenuForm.loadForm(this);
-                }
-                else
-                {
-                    MessageBox.Show(" DOES NOT EXIST");
-                }
+                    resultSet = dbLogin.selectQuery(table, 5, conditional, dictAttributes);
 
-                
-            }
+                    string output = "";
 
-            // studentLogin
-            if (rdbStudent.Checked)
-            {
-                table = "Student";
-                conditional = "WHERE [STU_NUM] = @studentNum AND [PASSWORD] = @passwd";
-                dictAttributes = new Dictionary<string, string>
-                {
-                    ["@studentNum"] = username,
-                    ["@passwd"] = passwd
-                };
+                    // load respective form if correct info is given
 
-                resultSet = dbLogin.selectQuery(table, 6, conditional, dictAttributes);
-
-                string output = "";
-
-                if (resultSet.Count > 0)
-                {
-                    resultRow = resultSet[0];
-                    foreach (var kv in resultRow)
+                    if (resultSet.Count > 0)
                     {
-                        output += kv.Key + " : " + kv.Value + "\n";
+                        resultRow = resultSet[0];
+                        foreach (var kv in resultRow)
+                        {
+                            output += kv.Key + " : " + kv.Value + "\n";
+                        }
+                        MessageBox.Show(output);
+
+                        AdminMainMenuForm.loadForm(this);
                     }
-                    MessageBox.Show(output);
+                    else
+                    {
+                        MessageBox.Show(" DOES NOT EXIST");
+                    }
 
-                    StudentMainMenuForm.loadForm(this);
+
                 }
-                else
+
+                // studentLogin
+                if (radStudent.Checked)
                 {
-                    MessageBox.Show(" DOES NOT EXIST");
-                }
+                    table = "Student";
+                    conditional = "WHERE [STU_NUM] = @studentNum AND [PASSWORD] = @passwd";
+                    dictAttributes = new Dictionary<string, string>
+                    {
+                        ["@studentNum"] = username,
+                        ["@passwd"] = passwd
+                    };
 
-                
+                    resultSet = dbLogin.selectQuery(table, 6, conditional, dictAttributes);
+
+                    string output = "";
+
+                    // load respective form if correct info is given
+
+                    if (resultSet.Count > 0)
+                    {
+                        resultRow = resultSet[0];
+                        foreach (var kv in resultRow)
+                        {
+                            output += kv.Key + " : " + kv.Value + "\n";
+                        }
+                        MessageBox.Show(output);
+
+                        StudentMainMenuForm.loadForm(this, username);
+                    }
+                    else
+                    {
+                        MessageBox.Show(" DOES NOT EXIST");
+                    }
+                }
             }
         }
 
@@ -115,9 +133,30 @@ namespace FEAManager
         public static void loadForm (Form previousForm)
         {
             LoginForm frmLogin = new LoginForm();
+            frmLogin.clearForm();
             previousForm.Visible = false;
             frmLogin.ShowDialog(previousForm);
             previousForm.Visible = true;
+           
+        }
+
+        private void clearForm()
+        {
+            radAdmin.Checked = false;
+            radStudent.Checked = false;
+            txtUsername.Text = "";
+            mtxtPassword.Text = "";
+            mtxtPassword.PasswordChar = '*';
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnShowPassword_Click(object sender, EventArgs e)
+        {
+            CommonMethods.passwordControl(mtxtPassword);
         }
     }
 }

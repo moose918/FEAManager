@@ -34,8 +34,7 @@ namespace FEAManager
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
-            Close();
+            LoginForm.loadForm(this);
         }
 
         private void btnManageApplications_Click(object sender, EventArgs e)

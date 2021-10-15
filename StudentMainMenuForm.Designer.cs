@@ -32,7 +32,7 @@ namespace FEAManager
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentMainMenuForm));
             this.tbcStudentMenu = new System.Windows.Forms.TabControl();
             this.tbpStudentDetails = new System.Windows.Forms.TabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlCurrentApplication = new System.Windows.Forms.Panel();
             this.gpbRiskCategory = new System.Windows.Forms.GroupBox();
             this.redHighRisk = new System.Windows.Forms.RadioButton();
             this.radMediumRisk = new System.Windows.Forms.RadioButton();
@@ -59,10 +59,9 @@ namespace FEAManager
             this.mtxtPassword = new System.Windows.Forms.MaskedTextBox();
             this.cmbStudyProgram = new System.Windows.Forms.ComboBox();
             this.mtxtEmail = new System.Windows.Forms.MaskedTextBox();
-            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtStudentNumber = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.grpTitle = new System.Windows.Forms.GroupBox();
             this.radMr = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radMs = new System.Windows.Forms.RadioButton();
@@ -263,12 +262,12 @@ namespace FEAManager
             this.btnBack = new System.Windows.Forms.Button();
             this.tbcStudentMenu.SuspendLayout();
             this.tbpStudentDetails.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlCurrentApplication.SuspendLayout();
             this.gpbRiskCategory.SuspendLayout();
             this.gpbStatus.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.groupBox7.SuspendLayout();
+            this.grpTitle.SuspendLayout();
             this.tbpCreateApplication.SuspendLayout();
             this.pnlRiskCategoryTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -325,43 +324,49 @@ namespace FEAManager
             // 
             this.tbcStudentMenu.Controls.Add(this.tbpStudentDetails);
             this.tbcStudentMenu.Controls.Add(this.tbpCreateApplication);
-            this.tbcStudentMenu.Location = new System.Drawing.Point(11, 20);
+            this.tbcStudentMenu.Location = new System.Drawing.Point(15, 23);
+            this.tbcStudentMenu.Margin = new System.Windows.Forms.Padding(4);
             this.tbcStudentMenu.Name = "tbcStudentMenu";
             this.tbcStudentMenu.SelectedIndex = 0;
-            this.tbcStudentMenu.Size = new System.Drawing.Size(788, 325);
+            this.tbcStudentMenu.Size = new System.Drawing.Size(1051, 400);
             this.tbcStudentMenu.TabIndex = 0;
             // 
             // tbpStudentDetails
             // 
-            this.tbpStudentDetails.Controls.Add(this.panel2);
+            this.tbpStudentDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.tbpStudentDetails.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tbpStudentDetails.BackgroundImage")));
+            this.tbpStudentDetails.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tbpStudentDetails.Controls.Add(this.pnlCurrentApplication);
             this.tbpStudentDetails.Controls.Add(this.panel4);
             this.tbpStudentDetails.Controls.Add(this.panel1);
-            this.tbpStudentDetails.Location = new System.Drawing.Point(4, 22);
+            this.tbpStudentDetails.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tbpStudentDetails.Location = new System.Drawing.Point(4, 24);
+            this.tbpStudentDetails.Margin = new System.Windows.Forms.Padding(4);
             this.tbpStudentDetails.Name = "tbpStudentDetails";
-            this.tbpStudentDetails.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpStudentDetails.Size = new System.Drawing.Size(780, 299);
+            this.tbpStudentDetails.Padding = new System.Windows.Forms.Padding(4);
+            this.tbpStudentDetails.Size = new System.Drawing.Size(1043, 347);
             this.tbpStudentDetails.TabIndex = 1;
             this.tbpStudentDetails.Text = "Student Details";
-            this.tbpStudentDetails.UseVisualStyleBackColor = true;
             // 
-            // panel2
+            // pnlCurrentApplication
             // 
-            this.panel2.AutoScroll = true;
-            this.panel2.AutoScrollMargin = new System.Drawing.Size(0, 15);
-            this.panel2.Controls.Add(this.gpbRiskCategory);
-            this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.txtResearchMethod);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.txtApplicationType);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.txtApplicationNumber);
-            this.panel2.Controls.Add(this.gpbStatus);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Location = new System.Drawing.Point(534, 41);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(210, 220);
-            this.panel2.TabIndex = 1;
+            this.pnlCurrentApplication.AutoScroll = true;
+            this.pnlCurrentApplication.AutoScrollMargin = new System.Drawing.Size(0, 15);
+            this.pnlCurrentApplication.BackColor = System.Drawing.Color.White;
+            this.pnlCurrentApplication.Controls.Add(this.gpbRiskCategory);
+            this.pnlCurrentApplication.Controls.Add(this.label12);
+            this.pnlCurrentApplication.Controls.Add(this.txtResearchMethod);
+            this.pnlCurrentApplication.Controls.Add(this.label11);
+            this.pnlCurrentApplication.Controls.Add(this.txtApplicationType);
+            this.pnlCurrentApplication.Controls.Add(this.label10);
+            this.pnlCurrentApplication.Controls.Add(this.txtApplicationNumber);
+            this.pnlCurrentApplication.Controls.Add(this.gpbStatus);
+            this.pnlCurrentApplication.Controls.Add(this.label9);
+            this.pnlCurrentApplication.Location = new System.Drawing.Point(712, 47);
+            this.pnlCurrentApplication.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlCurrentApplication.Name = "pnlCurrentApplication";
+            this.pnlCurrentApplication.Size = new System.Drawing.Size(280, 254);
+            this.pnlCurrentApplication.TabIndex = 1;
             // 
             // gpbRiskCategory
             // 
@@ -370,23 +375,23 @@ namespace FEAManager
             this.gpbRiskCategory.Controls.Add(this.radLowRisk);
             this.gpbRiskCategory.Controls.Add(this.radNoRisk);
             this.gpbRiskCategory.Controls.Add(this.radMinimalRisk);
-            this.gpbRiskCategory.Location = new System.Drawing.Point(11, 284);
-            this.gpbRiskCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.gpbRiskCategory.Location = new System.Drawing.Point(15, 328);
+            this.gpbRiskCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gpbRiskCategory.Name = "gpbRiskCategory";
-            this.gpbRiskCategory.Padding = new System.Windows.Forms.Padding(2);
-            this.gpbRiskCategory.Size = new System.Drawing.Size(172, 142);
-            this.gpbRiskCategory.TabIndex = 2;
+            this.gpbRiskCategory.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpbRiskCategory.Size = new System.Drawing.Size(229, 164);
+            this.gpbRiskCategory.TabIndex = 20;
             this.gpbRiskCategory.TabStop = false;
             this.gpbRiskCategory.Text = "Risk Category";
             // 
             // redHighRisk
             // 
             this.redHighRisk.AutoSize = true;
-            this.redHighRisk.Location = new System.Drawing.Point(52, 106);
-            this.redHighRisk.Margin = new System.Windows.Forms.Padding(2);
+            this.redHighRisk.Location = new System.Drawing.Point(69, 122);
+            this.redHighRisk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.redHighRisk.Name = "redHighRisk";
-            this.redHighRisk.Size = new System.Drawing.Size(78, 19);
-            this.redHighRisk.TabIndex = 4;
+            this.redHighRisk.Size = new System.Drawing.Size(95, 20);
+            this.redHighRisk.TabIndex = 25;
             this.redHighRisk.TabStop = true;
             this.redHighRisk.Text = "High Risk";
             this.redHighRisk.UseVisualStyleBackColor = true;
@@ -394,11 +399,11 @@ namespace FEAManager
             // radMediumRisk
             // 
             this.radMediumRisk.AutoSize = true;
-            this.radMediumRisk.Location = new System.Drawing.Point(101, 67);
-            this.radMediumRisk.Margin = new System.Windows.Forms.Padding(2);
+            this.radMediumRisk.Location = new System.Drawing.Point(135, 77);
+            this.radMediumRisk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radMediumRisk.Name = "radMediumRisk";
-            this.radMediumRisk.Size = new System.Drawing.Size(71, 19);
-            this.radMediumRisk.TabIndex = 3;
+            this.radMediumRisk.Size = new System.Drawing.Size(82, 20);
+            this.radMediumRisk.TabIndex = 24;
             this.radMediumRisk.TabStop = true;
             this.radMediumRisk.Text = "Medium";
             this.radMediumRisk.UseVisualStyleBackColor = true;
@@ -406,11 +411,11 @@ namespace FEAManager
             // radLowRisk
             // 
             this.radLowRisk.AutoSize = true;
-            this.radLowRisk.Location = new System.Drawing.Point(19, 67);
-            this.radLowRisk.Margin = new System.Windows.Forms.Padding(2);
+            this.radLowRisk.Location = new System.Drawing.Point(25, 77);
+            this.radLowRisk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radLowRisk.Name = "radLowRisk";
-            this.radLowRisk.Size = new System.Drawing.Size(48, 19);
-            this.radLowRisk.TabIndex = 2;
+            this.radLowRisk.Size = new System.Drawing.Size(56, 20);
+            this.radLowRisk.TabIndex = 23;
             this.radLowRisk.TabStop = true;
             this.radLowRisk.Text = "Low";
             this.radLowRisk.UseVisualStyleBackColor = true;
@@ -418,11 +423,11 @@ namespace FEAManager
             // radNoRisk
             // 
             this.radNoRisk.AutoSize = true;
-            this.radNoRisk.Location = new System.Drawing.Point(101, 26);
-            this.radNoRisk.Margin = new System.Windows.Forms.Padding(2);
+            this.radNoRisk.Location = new System.Drawing.Point(135, 30);
+            this.radNoRisk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radNoRisk.Name = "radNoRisk";
-            this.radNoRisk.Size = new System.Drawing.Size(55, 19);
-            this.radNoRisk.TabIndex = 1;
+            this.radNoRisk.Size = new System.Drawing.Size(64, 20);
+            this.radNoRisk.TabIndex = 22;
             this.radNoRisk.TabStop = true;
             this.radNoRisk.Text = "None";
             this.radNoRisk.UseVisualStyleBackColor = true;
@@ -430,11 +435,11 @@ namespace FEAManager
             // radMinimalRisk
             // 
             this.radMinimalRisk.AutoSize = true;
-            this.radMinimalRisk.Location = new System.Drawing.Point(19, 27);
-            this.radMinimalRisk.Margin = new System.Windows.Forms.Padding(2);
+            this.radMinimalRisk.Location = new System.Drawing.Point(25, 31);
+            this.radMinimalRisk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radMinimalRisk.Name = "radMinimalRisk";
-            this.radMinimalRisk.Size = new System.Drawing.Size(70, 19);
-            this.radMinimalRisk.TabIndex = 0;
+            this.radMinimalRisk.Size = new System.Drawing.Size(81, 20);
+            this.radMinimalRisk.TabIndex = 21;
             this.radMinimalRisk.TabStop = true;
             this.radMinimalRisk.Text = "Minimal";
             this.radMinimalRisk.UseVisualStyleBackColor = true;
@@ -442,79 +447,76 @@ namespace FEAManager
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(52, 223);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Location = new System.Drawing.Point(69, 257);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(105, 15);
+            this.label12.Size = new System.Drawing.Size(126, 16);
             this.label12.TabIndex = 7;
             this.label12.Text = "Research Method";
             // 
             // txtResearchMethod
             // 
-            this.txtResearchMethod.Location = new System.Drawing.Point(11, 240);
-            this.txtResearchMethod.Margin = new System.Windows.Forms.Padding(2);
+            this.txtResearchMethod.Location = new System.Drawing.Point(15, 277);
+            this.txtResearchMethod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtResearchMethod.Name = "txtResearchMethod";
-            this.txtResearchMethod.Size = new System.Drawing.Size(174, 20);
-            this.txtResearchMethod.TabIndex = 6;
+            this.txtResearchMethod.Size = new System.Drawing.Size(231, 23);
+            this.txtResearchMethod.TabIndex = 19;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(55, 169);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Location = new System.Drawing.Point(73, 195);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(96, 15);
+            this.label11.Size = new System.Drawing.Size(123, 16);
             this.label11.TabIndex = 5;
             this.label11.Text = "Application Type";
             // 
             // txtApplicationType
             // 
-            this.txtApplicationType.Location = new System.Drawing.Point(11, 185);
-            this.txtApplicationType.Margin = new System.Windows.Forms.Padding(2);
+            this.txtApplicationType.Location = new System.Drawing.Point(15, 214);
+            this.txtApplicationType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtApplicationType.Name = "txtApplicationType";
-            this.txtApplicationType.Size = new System.Drawing.Size(174, 20);
-            this.txtApplicationType.TabIndex = 4;
+            this.txtApplicationType.Size = new System.Drawing.Size(231, 23);
+            this.txtApplicationType.TabIndex = 18;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(48, 115);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Location = new System.Drawing.Point(64, 133);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(115, 15);
+            this.label10.Size = new System.Drawing.Size(143, 16);
             this.label10.TabIndex = 3;
             this.label10.Text = "Application Number";
             // 
             // txtApplicationNumber
             // 
-            this.txtApplicationNumber.Location = new System.Drawing.Point(11, 131);
-            this.txtApplicationNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.txtApplicationNumber.Location = new System.Drawing.Point(15, 151);
+            this.txtApplicationNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtApplicationNumber.Name = "txtApplicationNumber";
-            this.txtApplicationNumber.Size = new System.Drawing.Size(174, 20);
-            this.txtApplicationNumber.TabIndex = 2;
+            this.txtApplicationNumber.Size = new System.Drawing.Size(231, 23);
+            this.txtApplicationNumber.TabIndex = 17;
             // 
             // gpbStatus
             // 
             this.gpbStatus.Controls.Add(this.radGranted);
             this.gpbStatus.Controls.Add(this.radRejected);
             this.gpbStatus.Controls.Add(this.radPending);
-            this.gpbStatus.Location = new System.Drawing.Point(11, 34);
-            this.gpbStatus.Margin = new System.Windows.Forms.Padding(2);
+            this.gpbStatus.Location = new System.Drawing.Point(15, 39);
+            this.gpbStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gpbStatus.Name = "gpbStatus";
-            this.gpbStatus.Padding = new System.Windows.Forms.Padding(2);
-            this.gpbStatus.Size = new System.Drawing.Size(172, 61);
-            this.gpbStatus.TabIndex = 1;
+            this.gpbStatus.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpbStatus.Size = new System.Drawing.Size(229, 70);
+            this.gpbStatus.TabIndex = 13;
             this.gpbStatus.TabStop = false;
             this.gpbStatus.Text = "Application Status";
             // 
             // radGranted
             // 
             this.radGranted.AutoSize = true;
-            this.radGranted.Location = new System.Drawing.Point(56, 39);
-            this.radGranted.Margin = new System.Windows.Forms.Padding(2);
+            this.radGranted.Location = new System.Drawing.Point(75, 45);
+            this.radGranted.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radGranted.Name = "radGranted";
-            this.radGranted.Size = new System.Drawing.Size(69, 19);
-            this.radGranted.TabIndex = 2;
+            this.radGranted.Size = new System.Drawing.Size(84, 20);
+            this.radGranted.TabIndex = 16;
             this.radGranted.TabStop = true;
             this.radGranted.Text = "Granted";
             this.radGranted.UseVisualStyleBackColor = true;
@@ -522,11 +524,11 @@ namespace FEAManager
             // radRejected
             // 
             this.radRejected.AutoSize = true;
-            this.radRejected.Location = new System.Drawing.Point(105, 18);
-            this.radRejected.Margin = new System.Windows.Forms.Padding(2);
+            this.radRejected.Location = new System.Drawing.Point(140, 21);
+            this.radRejected.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radRejected.Name = "radRejected";
-            this.radRejected.Size = new System.Drawing.Size(74, 19);
-            this.radRejected.TabIndex = 1;
+            this.radRejected.Size = new System.Drawing.Size(89, 20);
+            this.radRejected.TabIndex = 15;
             this.radRejected.TabStop = true;
             this.radRejected.Text = "Rejected";
             this.radRejected.UseVisualStyleBackColor = true;
@@ -534,11 +536,11 @@ namespace FEAManager
             // radPending
             // 
             this.radPending.AutoSize = true;
-            this.radPending.Location = new System.Drawing.Point(19, 18);
-            this.radPending.Margin = new System.Windows.Forms.Padding(2);
+            this.radPending.Location = new System.Drawing.Point(25, 21);
+            this.radPending.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radPending.Name = "radPending";
-            this.radPending.Size = new System.Drawing.Size(71, 19);
-            this.radPending.TabIndex = 0;
+            this.radPending.Size = new System.Drawing.Size(84, 20);
+            this.radPending.TabIndex = 14;
             this.radPending.TabStop = true;
             this.radPending.Text = "Pending";
             this.radPending.UseVisualStyleBackColor = true;
@@ -546,15 +548,15 @@ namespace FEAManager
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(52, 9);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Location = new System.Drawing.Point(69, 10);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(110, 15);
+            this.label9.Size = new System.Drawing.Size(140, 16);
             this.label9.TabIndex = 0;
             this.label9.Text = "Current Application";
             // 
             // panel4
             // 
+            this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.btnShowPassword);
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.label7);
@@ -563,65 +565,73 @@ namespace FEAManager
             this.panel4.Controls.Add(this.mtxtPassword);
             this.panel4.Controls.Add(this.cmbStudyProgram);
             this.panel4.Controls.Add(this.mtxtEmail);
-            this.panel4.Controls.Add(this.txtUsername);
-            this.panel4.Location = new System.Drawing.Point(286, 41);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Controls.Add(this.txtStudentNumber);
+            this.panel4.Location = new System.Drawing.Point(381, 47);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(210, 220);
+            this.panel4.Size = new System.Drawing.Size(280, 254);
             this.panel4.TabIndex = 1;
             // 
             // btnShowPassword
             // 
-            this.btnShowPassword.Image = ((System.Drawing.Image)(resources.GetObject("btnShowPassword.Image")));
-            this.btnShowPassword.Location = new System.Drawing.Point(182, 76);
-            this.btnShowPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.btnShowPassword.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowPassword.BackgroundImage")));
+            this.btnShowPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnShowPassword.Location = new System.Drawing.Point(243, 86);
+            this.btnShowPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnShowPassword.Name = "btnShowPassword";
-            this.btnShowPassword.Size = new System.Drawing.Size(16, 18);
-            this.btnShowPassword.TabIndex = 42;
+            this.btnShowPassword.Size = new System.Drawing.Size(27, 27);
+            this.btnShowPassword.TabIndex = 10;
             this.btnShowPassword.UseVisualStyleBackColor = true;
+            this.btnShowPassword.Click += new System.EventHandler(this.btnShowPassword_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(67, 169);
+            this.label8.Location = new System.Drawing.Point(89, 195);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 15);
+            this.label8.Size = new System.Drawing.Size(109, 16);
             this.label8.TabIndex = 41;
             this.label8.Text = "Study Program";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(89, 112);
+            this.label7.Location = new System.Drawing.Point(119, 129);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 15);
+            this.label7.Size = new System.Drawing.Size(45, 16);
             this.label7.TabIndex = 40;
             this.label7.Text = "Email";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(79, 59);
+            this.label6.Location = new System.Drawing.Point(105, 68);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 15);
+            this.label6.Size = new System.Drawing.Size(75, 16);
             this.label6.TabIndex = 39;
             this.label6.Text = "Password";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(63, 9);
+            this.label5.Location = new System.Drawing.Point(84, 10);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 15);
+            this.label5.Size = new System.Drawing.Size(118, 16);
             this.label5.TabIndex = 38;
             this.label5.Text = "Student Number";
             // 
             // mtxtPassword
             // 
-            this.mtxtPassword.Location = new System.Drawing.Point(11, 76);
+            this.mtxtPassword.Location = new System.Drawing.Point(15, 88);
+            this.mtxtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.mtxtPassword.Name = "mtxtPassword";
-            this.mtxtPassword.Size = new System.Drawing.Size(166, 20);
-            this.mtxtPassword.TabIndex = 29;
+            this.mtxtPassword.PasswordChar = '*';
+            this.mtxtPassword.Size = new System.Drawing.Size(220, 23);
+            this.mtxtPassword.TabIndex = 9;
             // 
             // cmbStudyProgram
             // 
@@ -629,73 +639,68 @@ namespace FEAManager
             this.cmbStudyProgram.Items.AddRange(new object[] {
             "Honours",
             "Coursework Masters",
-            "Full research Masters",
+            "Full Research Masters",
             "PHD"});
-            this.cmbStudyProgram.Location = new System.Drawing.Point(11, 185);
+            this.cmbStudyProgram.Location = new System.Drawing.Point(15, 214);
+            this.cmbStudyProgram.Margin = new System.Windows.Forms.Padding(4);
             this.cmbStudyProgram.Name = "cmbStudyProgram";
-            this.cmbStudyProgram.Size = new System.Drawing.Size(188, 21);
-            this.cmbStudyProgram.TabIndex = 28;
+            this.cmbStudyProgram.Size = new System.Drawing.Size(249, 23);
+            this.cmbStudyProgram.TabIndex = 12;
             // 
             // mtxtEmail
             // 
-            this.mtxtEmail.Location = new System.Drawing.Point(11, 129);
+            this.mtxtEmail.Location = new System.Drawing.Point(15, 149);
+            this.mtxtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.mtxtEmail.Name = "mtxtEmail";
-            this.mtxtEmail.Size = new System.Drawing.Size(188, 20);
-            this.mtxtEmail.TabIndex = 27;
+            this.mtxtEmail.Size = new System.Drawing.Size(249, 23);
+            this.mtxtEmail.TabIndex = 11;
             // 
-            // txtUsername
+            // txtStudentNumber
             // 
-            this.txtUsername.Location = new System.Drawing.Point(11, 26);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(188, 20);
-            this.txtUsername.TabIndex = 26;
+            this.txtStudentNumber.Location = new System.Drawing.Point(15, 30);
+            this.txtStudentNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStudentNumber.Name = "txtStudentNumber";
+            this.txtStudentNumber.Size = new System.Drawing.Size(249, 23);
+            this.txtStudentNumber.TabIndex = 8;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.groupBox7);
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.grpTitle);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.mtxtTelephone);
             this.panel1.Controls.Add(this.txtLName);
             this.panel1.Controls.Add(this.txtFName);
-            this.panel1.Location = new System.Drawing.Point(38, 41);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(51, 47);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(210, 220);
+            this.panel1.Size = new System.Drawing.Size(280, 254);
             this.panel1.TabIndex = 0;
             // 
-            // groupBox7
+            // grpTitle
             // 
-            this.groupBox7.Controls.Add(this.textBox1);
-            this.groupBox7.Controls.Add(this.radMr);
-            this.groupBox7.Controls.Add(this.radioButton6);
-            this.groupBox7.Controls.Add(this.radMs);
-            this.groupBox7.Location = new System.Drawing.Point(11, 169);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox7.Size = new System.Drawing.Size(188, 36);
-            this.groupBox7.TabIndex = 29;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Title";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(134, 14);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(50, 20);
-            this.textBox1.TabIndex = 32;
+            this.grpTitle.Controls.Add(this.radMr);
+            this.grpTitle.Controls.Add(this.radioButton6);
+            this.grpTitle.Controls.Add(this.radMs);
+            this.grpTitle.Location = new System.Drawing.Point(15, 195);
+            this.grpTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpTitle.Name = "grpTitle";
+            this.grpTitle.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpTitle.Size = new System.Drawing.Size(251, 41);
+            this.grpTitle.TabIndex = 4;
+            this.grpTitle.TabStop = false;
+            this.grpTitle.Text = "Title";
             // 
             // radMr
             // 
             this.radMr.AutoSize = true;
-            this.radMr.Location = new System.Drawing.Point(11, 14);
-            this.radMr.Margin = new System.Windows.Forms.Padding(2);
+            this.radMr.Location = new System.Drawing.Point(15, 16);
+            this.radMr.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radMr.Name = "radMr";
-            this.radMr.Size = new System.Drawing.Size(40, 19);
-            this.radMr.TabIndex = 29;
+            this.radMr.Size = new System.Drawing.Size(47, 20);
+            this.radMr.TabIndex = 5;
             this.radMr.TabStop = true;
             this.radMr.Text = "Mr";
             this.radMr.UseVisualStyleBackColor = true;
@@ -703,11 +708,11 @@ namespace FEAManager
             // radioButton6
             // 
             this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(80, 14);
-            this.radioButton6.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton6.Location = new System.Drawing.Point(165, 16);
+            this.radioButton6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(55, 19);
-            this.radioButton6.TabIndex = 31;
+            this.radioButton6.Size = new System.Drawing.Size(67, 20);
+            this.radioButton6.TabIndex = 7;
             this.radioButton6.TabStop = true;
             this.radioButton6.Text = "Other";
             this.radioButton6.UseVisualStyleBackColor = true;
@@ -715,11 +720,11 @@ namespace FEAManager
             // radMs
             // 
             this.radMs.AutoSize = true;
-            this.radMs.Location = new System.Drawing.Point(45, 14);
-            this.radMs.Margin = new System.Windows.Forms.Padding(2);
+            this.radMs.Location = new System.Drawing.Point(89, 16);
+            this.radMs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radMs.Name = "radMs";
-            this.radMs.Size = new System.Drawing.Size(42, 19);
-            this.radMs.TabIndex = 30;
+            this.radMs.Size = new System.Drawing.Size(49, 20);
+            this.radMs.TabIndex = 6;
             this.radMs.TabStop = true;
             this.radMs.Text = "Ms";
             this.radMs.UseVisualStyleBackColor = true;
@@ -727,76 +732,84 @@ namespace FEAManager
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(58, 112);
+            this.label4.Location = new System.Drawing.Point(77, 129);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(111, 15);
+            this.label4.Size = new System.Drawing.Size(133, 16);
             this.label4.TabIndex = 37;
             this.label4.Text = "Cellphone Number";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(76, 59);
+            this.label1.Location = new System.Drawing.Point(101, 68);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 15);
+            this.label1.Size = new System.Drawing.Size(80, 16);
             this.label1.TabIndex = 35;
             this.label1.Text = "Last Name";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(76, 9);
+            this.label2.Location = new System.Drawing.Point(101, 10);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 15);
+            this.label2.Size = new System.Drawing.Size(82, 16);
             this.label2.TabIndex = 34;
             this.label2.Text = "First Name";
             // 
             // mtxtTelephone
             // 
-            this.mtxtTelephone.Location = new System.Drawing.Point(11, 129);
+            this.mtxtTelephone.Location = new System.Drawing.Point(15, 149);
+            this.mtxtTelephone.Margin = new System.Windows.Forms.Padding(4);
             this.mtxtTelephone.Name = "mtxtTelephone";
-            this.mtxtTelephone.Size = new System.Drawing.Size(188, 20);
-            this.mtxtTelephone.TabIndex = 32;
+            this.mtxtTelephone.Size = new System.Drawing.Size(249, 23);
+            this.mtxtTelephone.TabIndex = 2;
             // 
             // txtLName
             // 
-            this.txtLName.Location = new System.Drawing.Point(11, 76);
+            this.txtLName.Location = new System.Drawing.Point(15, 88);
+            this.txtLName.Margin = new System.Windows.Forms.Padding(4);
             this.txtLName.Name = "txtLName";
-            this.txtLName.Size = new System.Drawing.Size(188, 20);
-            this.txtLName.TabIndex = 31;
+            this.txtLName.Size = new System.Drawing.Size(249, 23);
+            this.txtLName.TabIndex = 1;
             // 
             // txtFName
             // 
-            this.txtFName.Location = new System.Drawing.Point(11, 26);
+            this.txtFName.Location = new System.Drawing.Point(15, 30);
+            this.txtFName.Margin = new System.Windows.Forms.Padding(4);
             this.txtFName.Name = "txtFName";
-            this.txtFName.Size = new System.Drawing.Size(188, 20);
-            this.txtFName.TabIndex = 30;
+            this.txtFName.Size = new System.Drawing.Size(249, 23);
+            this.txtFName.TabIndex = 0;
             // 
             // tbpCreateApplication
             // 
+            this.tbpCreateApplication.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             this.tbpCreateApplication.Controls.Add(this.pnlRiskCategoryTable);
             this.tbpCreateApplication.Controls.Add(this.pnlWaiver);
             this.tbpCreateApplication.Controls.Add(this.panel5);
             this.tbpCreateApplication.Controls.Add(this.pnlEthics);
-            this.tbpCreateApplication.Location = new System.Drawing.Point(4, 22);
+            this.tbpCreateApplication.Location = new System.Drawing.Point(4, 24);
+            this.tbpCreateApplication.Margin = new System.Windows.Forms.Padding(4);
             this.tbpCreateApplication.Name = "tbpCreateApplication";
-            this.tbpCreateApplication.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpCreateApplication.Size = new System.Drawing.Size(780, 299);
+            this.tbpCreateApplication.Padding = new System.Windows.Forms.Padding(4);
+            this.tbpCreateApplication.Size = new System.Drawing.Size(1043, 372);
             this.tbpCreateApplication.TabIndex = 0;
             this.tbpCreateApplication.Text = "Create Application";
-            this.tbpCreateApplication.UseVisualStyleBackColor = true;
             // 
             // pnlRiskCategoryTable
             // 
             this.pnlRiskCategoryTable.AutoScroll = true;
             this.pnlRiskCategoryTable.AutoScrollMargin = new System.Drawing.Size(0, 50);
             this.pnlRiskCategoryTable.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnlRiskCategoryTable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlRiskCategoryTable.Controls.Add(this.pictureBox1);
             this.pnlRiskCategoryTable.Controls.Add(this.btnFullScreen);
-            this.pnlRiskCategoryTable.Location = new System.Drawing.Point(334, 26);
-            this.pnlRiskCategoryTable.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlRiskCategoryTable.Location = new System.Drawing.Point(445, 21);
+            this.pnlRiskCategoryTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlRiskCategoryTable.Name = "pnlRiskCategoryTable";
-            this.pnlRiskCategoryTable.Size = new System.Drawing.Size(412, 264);
+            this.pnlRiskCategoryTable.Size = new System.Drawing.Size(549, 305);
             this.pnlRiskCategoryTable.TabIndex = 29;
             // 
             // pictureBox1
@@ -804,10 +817,10 @@ namespace FEAManager
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.ImageLocation = "";
-            this.pictureBox1.Location = new System.Drawing.Point(11, 28);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 32);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(376, 354);
+            this.pictureBox1.Size = new System.Drawing.Size(501, 408);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -816,10 +829,10 @@ namespace FEAManager
             // 
             this.btnFullScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFullScreen.BackgroundImage")));
             this.btnFullScreen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnFullScreen.Location = new System.Drawing.Point(376, 0);
-            this.btnFullScreen.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFullScreen.Location = new System.Drawing.Point(501, 0);
+            this.btnFullScreen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFullScreen.Name = "btnFullScreen";
-            this.btnFullScreen.Size = new System.Drawing.Size(19, 20);
+            this.btnFullScreen.Size = new System.Drawing.Size(25, 23);
             this.btnFullScreen.TabIndex = 0;
             this.btnFullScreen.UseVisualStyleBackColor = true;
             // 
@@ -830,10 +843,10 @@ namespace FEAManager
             this.pnlWaiver.Controls.Add(this.gpbWaiverResearchProject);
             this.pnlWaiver.Controls.Add(this.groupBox8);
             this.pnlWaiver.Controls.Add(this.label30);
-            this.pnlWaiver.Location = new System.Drawing.Point(334, 26);
-            this.pnlWaiver.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlWaiver.Location = new System.Drawing.Point(445, 30);
+            this.pnlWaiver.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlWaiver.Name = "pnlWaiver";
-            this.pnlWaiver.Size = new System.Drawing.Size(412, 264);
+            this.pnlWaiver.Size = new System.Drawing.Size(549, 305);
             this.pnlWaiver.TabIndex = 2;
             // 
             // gpbWaiverResearchProject
@@ -847,11 +860,11 @@ namespace FEAManager
             this.gpbWaiverResearchProject.Controls.Add(this.groupBox9);
             this.gpbWaiverResearchProject.Controls.Add(this.txtWaiverProjectTitle);
             this.gpbWaiverResearchProject.Controls.Add(this.label32);
-            this.gpbWaiverResearchProject.Location = new System.Drawing.Point(30, 219);
-            this.gpbWaiverResearchProject.Margin = new System.Windows.Forms.Padding(2);
+            this.gpbWaiverResearchProject.Location = new System.Drawing.Point(40, 253);
+            this.gpbWaiverResearchProject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gpbWaiverResearchProject.Name = "gpbWaiverResearchProject";
-            this.gpbWaiverResearchProject.Padding = new System.Windows.Forms.Padding(2);
-            this.gpbWaiverResearchProject.Size = new System.Drawing.Size(338, 894);
+            this.gpbWaiverResearchProject.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpbWaiverResearchProject.Size = new System.Drawing.Size(451, 1031);
             this.gpbWaiverResearchProject.TabIndex = 5;
             this.gpbWaiverResearchProject.TabStop = false;
             this.gpbWaiverResearchProject.Text = "Research Project";
@@ -861,30 +874,29 @@ namespace FEAManager
             this.groupBox13.Controls.Add(this.rtbProjectMembers);
             this.groupBox13.Controls.Add(this.label36);
             this.groupBox13.Controls.Add(this.groupBox14);
-            this.groupBox13.Location = new System.Drawing.Point(19, 642);
-            this.groupBox13.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox13.Location = new System.Drawing.Point(25, 741);
+            this.groupBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox13.Size = new System.Drawing.Size(302, 233);
+            this.groupBox13.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox13.Size = new System.Drawing.Size(403, 269);
             this.groupBox13.TabIndex = 11;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Collaboration";
             // 
             // rtbProjectMembers
             // 
-            this.rtbProjectMembers.Location = new System.Drawing.Point(16, 140);
-            this.rtbProjectMembers.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbProjectMembers.Location = new System.Drawing.Point(21, 161);
+            this.rtbProjectMembers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbProjectMembers.Name = "rtbProjectMembers";
-            this.rtbProjectMembers.Size = new System.Drawing.Size(269, 72);
+            this.rtbProjectMembers.Size = new System.Drawing.Size(357, 83);
             this.rtbProjectMembers.TabIndex = 10;
             this.rtbProjectMembers.Text = "";
             // 
             // label36
             // 
-            this.label36.Location = new System.Drawing.Point(16, 110);
-            this.label36.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label36.Location = new System.Drawing.Point(21, 127);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(268, 28);
+            this.label36.Size = new System.Drawing.Size(357, 32);
             this.label36.TabIndex = 2;
             this.label36.Text = "If YES, list the names and student numbers of additional students working on this" +
     " project:";
@@ -894,11 +906,11 @@ namespace FEAManager
             // 
             this.groupBox14.Controls.Add(this.radioButton7);
             this.groupBox14.Controls.Add(this.radioButton8);
-            this.groupBox14.Location = new System.Drawing.Point(16, 24);
-            this.groupBox14.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox14.Location = new System.Drawing.Point(21, 28);
+            this.groupBox14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox14.Size = new System.Drawing.Size(268, 61);
+            this.groupBox14.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox14.Size = new System.Drawing.Size(357, 70);
             this.groupBox14.TabIndex = 3;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Is this application for a multi-student project?";
@@ -906,10 +918,10 @@ namespace FEAManager
             // radioButton7
             // 
             this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(195, 28);
-            this.radioButton7.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton7.Location = new System.Drawing.Point(260, 32);
+            this.radioButton7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(41, 19);
+            this.radioButton7.Size = new System.Drawing.Size(48, 20);
             this.radioButton7.TabIndex = 1;
             this.radioButton7.TabStop = true;
             this.radioButton7.Text = "No";
@@ -918,10 +930,10 @@ namespace FEAManager
             // radioButton8
             // 
             this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(38, 28);
-            this.radioButton8.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton8.Location = new System.Drawing.Point(51, 32);
+            this.radioButton8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(45, 19);
+            this.radioButton8.Size = new System.Drawing.Size(54, 20);
             this.radioButton8.TabIndex = 0;
             this.radioButton8.TabStop = true;
             this.radioButton8.Text = "Yes";
@@ -931,11 +943,11 @@ namespace FEAManager
             // 
             this.groupBox10.Controls.Add(this.groupBox12);
             this.groupBox10.Controls.Add(this.groupBox11);
-            this.groupBox10.Location = new System.Drawing.Point(19, 406);
-            this.groupBox10.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox10.Location = new System.Drawing.Point(25, 469);
+            this.groupBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox10.Size = new System.Drawing.Size(302, 211);
+            this.groupBox10.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox10.Size = new System.Drawing.Size(403, 244);
             this.groupBox10.TabIndex = 10;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Permissions";
@@ -945,21 +957,20 @@ namespace FEAManager
             this.groupBox12.Controls.Add(this.label35);
             this.groupBox12.Controls.Add(this.radPermissionNo);
             this.groupBox12.Controls.Add(this.radPermissionYes);
-            this.groupBox12.Location = new System.Drawing.Point(16, 122);
-            this.groupBox12.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox12.Location = new System.Drawing.Point(21, 141);
+            this.groupBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox12.Size = new System.Drawing.Size(268, 73);
+            this.groupBox12.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox12.Size = new System.Drawing.Size(357, 84);
             this.groupBox12.TabIndex = 2;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "If YES, do you have written permission to reuse the data?";
             // 
             // label35
             // 
-            this.label35.Location = new System.Drawing.Point(232, 15);
-            this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label35.Location = new System.Drawing.Point(309, 17);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(32, 15);
+            this.label35.Size = new System.Drawing.Size(43, 17);
             this.label35.TabIndex = 2;
             this.label35.Text = "INFO If you don’t, you must obtain this permission from the principal investigato" +
     "r";
@@ -968,10 +979,10 @@ namespace FEAManager
             // radPermissionNo
             // 
             this.radPermissionNo.AutoSize = true;
-            this.radPermissionNo.Location = new System.Drawing.Point(195, 37);
-            this.radPermissionNo.Margin = new System.Windows.Forms.Padding(2);
+            this.radPermissionNo.Location = new System.Drawing.Point(260, 43);
+            this.radPermissionNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radPermissionNo.Name = "radPermissionNo";
-            this.radPermissionNo.Size = new System.Drawing.Size(41, 19);
+            this.radPermissionNo.Size = new System.Drawing.Size(48, 20);
             this.radPermissionNo.TabIndex = 1;
             this.radPermissionNo.TabStop = true;
             this.radPermissionNo.Text = "No";
@@ -980,10 +991,10 @@ namespace FEAManager
             // radPermissionYes
             // 
             this.radPermissionYes.AutoSize = true;
-            this.radPermissionYes.Location = new System.Drawing.Point(38, 37);
-            this.radPermissionYes.Margin = new System.Windows.Forms.Padding(2);
+            this.radPermissionYes.Location = new System.Drawing.Point(51, 43);
+            this.radPermissionYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radPermissionYes.Name = "radPermissionYes";
-            this.radPermissionYes.Size = new System.Drawing.Size(45, 19);
+            this.radPermissionYes.Size = new System.Drawing.Size(54, 20);
             this.radPermissionYes.TabIndex = 0;
             this.radPermissionYes.TabStop = true;
             this.radPermissionYes.Text = "Yes";
@@ -993,11 +1004,11 @@ namespace FEAManager
             // 
             this.groupBox11.Controls.Add(this.radReuseNo);
             this.groupBox11.Controls.Add(this.radReuseYes);
-            this.groupBox11.Location = new System.Drawing.Point(16, 24);
-            this.groupBox11.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox11.Location = new System.Drawing.Point(21, 28);
+            this.groupBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox11.Size = new System.Drawing.Size(268, 73);
+            this.groupBox11.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox11.Size = new System.Drawing.Size(357, 84);
             this.groupBox11.TabIndex = 0;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Will this study reuse data that have been previously collected by other researche" +
@@ -1006,10 +1017,10 @@ namespace FEAManager
             // radReuseNo
             // 
             this.radReuseNo.AutoSize = true;
-            this.radReuseNo.Location = new System.Drawing.Point(195, 37);
-            this.radReuseNo.Margin = new System.Windows.Forms.Padding(2);
+            this.radReuseNo.Location = new System.Drawing.Point(260, 43);
+            this.radReuseNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radReuseNo.Name = "radReuseNo";
-            this.radReuseNo.Size = new System.Drawing.Size(41, 19);
+            this.radReuseNo.Size = new System.Drawing.Size(48, 20);
             this.radReuseNo.TabIndex = 1;
             this.radReuseNo.TabStop = true;
             this.radReuseNo.Text = "No";
@@ -1018,10 +1029,10 @@ namespace FEAManager
             // radReuseYes
             // 
             this.radReuseYes.AutoSize = true;
-            this.radReuseYes.Location = new System.Drawing.Point(38, 37);
-            this.radReuseYes.Margin = new System.Windows.Forms.Padding(2);
+            this.radReuseYes.Location = new System.Drawing.Point(51, 43);
+            this.radReuseYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radReuseYes.Name = "radReuseYes";
-            this.radReuseYes.Size = new System.Drawing.Size(45, 19);
+            this.radReuseYes.Size = new System.Drawing.Size(54, 20);
             this.radReuseYes.TabIndex = 0;
             this.radReuseYes.TabStop = true;
             this.radReuseYes.Text = "Yes";
@@ -1029,39 +1040,37 @@ namespace FEAManager
             // 
             // rtbAbstractSummary
             // 
-            this.rtbAbstractSummary.Location = new System.Drawing.Point(19, 309);
-            this.rtbAbstractSummary.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbAbstractSummary.Location = new System.Drawing.Point(25, 356);
+            this.rtbAbstractSummary.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbAbstractSummary.Name = "rtbAbstractSummary";
-            this.rtbAbstractSummary.Size = new System.Drawing.Size(303, 72);
+            this.rtbAbstractSummary.Size = new System.Drawing.Size(403, 83);
             this.rtbAbstractSummary.TabIndex = 9;
             this.rtbAbstractSummary.Text = "";
             // 
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(117, 292);
-            this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label34.Location = new System.Drawing.Point(156, 337);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(119, 15);
+            this.label34.Size = new System.Drawing.Size(149, 16);
             this.label34.TabIndex = 8;
             this.label34.Text = "Summary of abstract";
             // 
             // rtbAimsAndObjectives
             // 
-            this.rtbAimsAndObjectives.Location = new System.Drawing.Point(19, 195);
-            this.rtbAimsAndObjectives.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbAimsAndObjectives.Location = new System.Drawing.Point(25, 225);
+            this.rtbAimsAndObjectives.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbAimsAndObjectives.Name = "rtbAimsAndObjectives";
-            this.rtbAimsAndObjectives.Size = new System.Drawing.Size(303, 72);
+            this.rtbAimsAndObjectives.Size = new System.Drawing.Size(403, 83);
             this.rtbAimsAndObjectives.TabIndex = 7;
             this.rtbAimsAndObjectives.Text = "";
             // 
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(46, 179);
-            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label33.Location = new System.Drawing.Point(61, 206);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(278, 15);
+            this.label33.Size = new System.Drawing.Size(346, 16);
             this.label33.TabIndex = 6;
             this.label33.Text = "What are the aims and objectives of the research?";
             // 
@@ -1072,30 +1081,30 @@ namespace FEAManager
             this.groupBox9.Controls.Add(this.radWaiverDegreePruposeOther);
             this.groupBox9.Controls.Add(this.radWaiverDegreePruposeMasters);
             this.groupBox9.Controls.Add(this.radWaiverDegreePruposeHonours);
-            this.groupBox9.Location = new System.Drawing.Point(19, 61);
-            this.groupBox9.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox9.Location = new System.Drawing.Point(25, 70);
+            this.groupBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox9.Size = new System.Drawing.Size(302, 93);
+            this.groupBox9.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox9.Size = new System.Drawing.Size(403, 107);
             this.groupBox9.TabIndex = 2;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Degree project is for";
             // 
             // txtWaiverOtherDegree
             // 
-            this.txtWaiverOtherDegree.Location = new System.Drawing.Point(70, 54);
-            this.txtWaiverOtherDegree.Margin = new System.Windows.Forms.Padding(2);
+            this.txtWaiverOtherDegree.Location = new System.Drawing.Point(93, 62);
+            this.txtWaiverOtherDegree.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtWaiverOtherDegree.Name = "txtWaiverOtherDegree";
-            this.txtWaiverOtherDegree.Size = new System.Drawing.Size(217, 20);
+            this.txtWaiverOtherDegree.Size = new System.Drawing.Size(288, 23);
             this.txtWaiverOtherDegree.TabIndex = 4;
             // 
             // radWaiverDegreePruposeNone
             // 
             this.radWaiverDegreePruposeNone.AutoSize = true;
-            this.radWaiverDegreePruposeNone.Location = new System.Drawing.Point(238, 24);
-            this.radWaiverDegreePruposeNone.Margin = new System.Windows.Forms.Padding(2);
+            this.radWaiverDegreePruposeNone.Location = new System.Drawing.Point(317, 28);
+            this.radWaiverDegreePruposeNone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radWaiverDegreePruposeNone.Name = "radWaiverDegreePruposeNone";
-            this.radWaiverDegreePruposeNone.Size = new System.Drawing.Size(55, 19);
+            this.radWaiverDegreePruposeNone.Size = new System.Drawing.Size(64, 20);
             this.radWaiverDegreePruposeNone.TabIndex = 3;
             this.radWaiverDegreePruposeNone.TabStop = true;
             this.radWaiverDegreePruposeNone.Text = "None";
@@ -1104,10 +1113,10 @@ namespace FEAManager
             // radWaiverDegreePruposeOther
             // 
             this.radWaiverDegreePruposeOther.AutoSize = true;
-            this.radWaiverDegreePruposeOther.Location = new System.Drawing.Point(16, 55);
-            this.radWaiverDegreePruposeOther.Margin = new System.Windows.Forms.Padding(2);
+            this.radWaiverDegreePruposeOther.Location = new System.Drawing.Point(21, 64);
+            this.radWaiverDegreePruposeOther.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radWaiverDegreePruposeOther.Name = "radWaiverDegreePruposeOther";
-            this.radWaiverDegreePruposeOther.Size = new System.Drawing.Size(55, 19);
+            this.radWaiverDegreePruposeOther.Size = new System.Drawing.Size(67, 20);
             this.radWaiverDegreePruposeOther.TabIndex = 2;
             this.radWaiverDegreePruposeOther.TabStop = true;
             this.radWaiverDegreePruposeOther.Text = "Other";
@@ -1116,10 +1125,10 @@ namespace FEAManager
             // radWaiverDegreePruposeMasters
             // 
             this.radWaiverDegreePruposeMasters.AutoSize = true;
-            this.radWaiverDegreePruposeMasters.Location = new System.Drawing.Point(125, 24);
-            this.radWaiverDegreePruposeMasters.Margin = new System.Windows.Forms.Padding(2);
+            this.radWaiverDegreePruposeMasters.Location = new System.Drawing.Point(167, 28);
+            this.radWaiverDegreePruposeMasters.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radWaiverDegreePruposeMasters.Name = "radWaiverDegreePruposeMasters";
-            this.radWaiverDegreePruposeMasters.Size = new System.Drawing.Size(69, 19);
+            this.radWaiverDegreePruposeMasters.Size = new System.Drawing.Size(84, 20);
             this.radWaiverDegreePruposeMasters.TabIndex = 1;
             this.radWaiverDegreePruposeMasters.TabStop = true;
             this.radWaiverDegreePruposeMasters.Text = "Masters";
@@ -1128,10 +1137,10 @@ namespace FEAManager
             // radWaiverDegreePruposeHonours
             // 
             this.radWaiverDegreePruposeHonours.AutoSize = true;
-            this.radWaiverDegreePruposeHonours.Location = new System.Drawing.Point(16, 24);
-            this.radWaiverDegreePruposeHonours.Margin = new System.Windows.Forms.Padding(2);
+            this.radWaiverDegreePruposeHonours.Location = new System.Drawing.Point(21, 28);
+            this.radWaiverDegreePruposeHonours.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radWaiverDegreePruposeHonours.Name = "radWaiverDegreePruposeHonours";
-            this.radWaiverDegreePruposeHonours.Size = new System.Drawing.Size(72, 19);
+            this.radWaiverDegreePruposeHonours.Size = new System.Drawing.Size(86, 20);
             this.radWaiverDegreePruposeHonours.TabIndex = 0;
             this.radWaiverDegreePruposeHonours.TabStop = true;
             this.radWaiverDegreePruposeHonours.Text = "Honours";
@@ -1139,19 +1148,18 @@ namespace FEAManager
             // 
             // txtWaiverProjectTitle
             // 
-            this.txtWaiverProjectTitle.Location = new System.Drawing.Point(142, 22);
-            this.txtWaiverProjectTitle.Margin = new System.Windows.Forms.Padding(2);
+            this.txtWaiverProjectTitle.Location = new System.Drawing.Point(189, 25);
+            this.txtWaiverProjectTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtWaiverProjectTitle.Name = "txtWaiverProjectTitle";
-            this.txtWaiverProjectTitle.Size = new System.Drawing.Size(180, 20);
+            this.txtWaiverProjectTitle.Size = new System.Drawing.Size(239, 23);
             this.txtWaiverProjectTitle.TabIndex = 1;
             // 
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(16, 24);
-            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label32.Location = new System.Drawing.Point(21, 28);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(137, 15);
+            this.label32.Size = new System.Drawing.Size(175, 16);
             this.label32.TabIndex = 0;
             this.label32.Text = "Title of research project:";
             // 
@@ -1160,11 +1168,11 @@ namespace FEAManager
             this.groupBox8.Controls.Add(this.radConfirmationNo);
             this.groupBox8.Controls.Add(this.radConfirmationYes);
             this.groupBox8.Controls.Add(this.label31);
-            this.groupBox8.Location = new System.Drawing.Point(30, 32);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox8.Location = new System.Drawing.Point(40, 37);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox8.Size = new System.Drawing.Size(338, 154);
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox8.Size = new System.Drawing.Size(451, 178);
             this.groupBox8.TabIndex = 4;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Confirmation";
@@ -1172,10 +1180,10 @@ namespace FEAManager
             // radConfirmationNo
             // 
             this.radConfirmationNo.AutoSize = true;
-            this.radConfirmationNo.Location = new System.Drawing.Point(263, 102);
-            this.radConfirmationNo.Margin = new System.Windows.Forms.Padding(2);
+            this.radConfirmationNo.Location = new System.Drawing.Point(351, 118);
+            this.radConfirmationNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radConfirmationNo.Name = "radConfirmationNo";
-            this.radConfirmationNo.Size = new System.Drawing.Size(41, 19);
+            this.radConfirmationNo.Size = new System.Drawing.Size(48, 20);
             this.radConfirmationNo.TabIndex = 2;
             this.radConfirmationNo.TabStop = true;
             this.radConfirmationNo.Text = "No";
@@ -1184,10 +1192,10 @@ namespace FEAManager
             // radConfirmationYes
             // 
             this.radConfirmationYes.AutoSize = true;
-            this.radConfirmationYes.Location = new System.Drawing.Point(261, 41);
-            this.radConfirmationYes.Margin = new System.Windows.Forms.Padding(2);
+            this.radConfirmationYes.Location = new System.Drawing.Point(348, 47);
+            this.radConfirmationYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radConfirmationYes.Name = "radConfirmationYes";
-            this.radConfirmationYes.Size = new System.Drawing.Size(45, 19);
+            this.radConfirmationYes.Size = new System.Drawing.Size(54, 20);
             this.radConfirmationYes.TabIndex = 1;
             this.radConfirmationYes.TabStop = true;
             this.radConfirmationYes.Text = "Yes";
@@ -1195,20 +1203,18 @@ namespace FEAManager
             // 
             // label31
             // 
-            this.label31.Location = new System.Drawing.Point(26, 32);
-            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label31.Location = new System.Drawing.Point(35, 37);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(225, 97);
+            this.label31.Size = new System.Drawing.Size(300, 112);
             this.label31.TabIndex = 0;
             this.label31.Text = resources.GetString("label31.Text");
             // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(146, 13);
-            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label30.Location = new System.Drawing.Point(195, 15);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(122, 15);
+            this.label30.Size = new System.Drawing.Size(152, 16);
             this.label30.TabIndex = 3;
             this.label30.Text = "Waiver Specific Form";
             // 
@@ -1216,6 +1222,8 @@ namespace FEAManager
             // 
             this.panel5.AutoScroll = true;
             this.panel5.AutoScrollMargin = new System.Drawing.Size(0, 25);
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.grpRiskCategory);
             this.panel5.Controls.Add(this.gpbSupervisor);
             this.panel5.Controls.Add(this.StudyProgram);
@@ -1225,10 +1233,10 @@ namespace FEAManager
             this.panel5.Controls.Add(this.ApplicationType);
             this.panel5.Controls.Add(this.label13);
             this.panel5.Controls.Add(this.label14);
-            this.panel5.Location = new System.Drawing.Point(16, 18);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2);
+            this.panel5.Location = new System.Drawing.Point(21, 21);
+            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(300, 264);
+            this.panel5.Size = new System.Drawing.Size(400, 330);
             this.panel5.TabIndex = 0;
             // 
             // grpRiskCategory
@@ -1236,28 +1244,29 @@ namespace FEAManager
             this.grpRiskCategory.Controls.Add(this.groupBox1);
             this.grpRiskCategory.Controls.Add(this.gpbReadRiskTable);
             this.grpRiskCategory.Controls.Add(this.gpbInvolveHumans);
-            this.grpRiskCategory.Location = new System.Drawing.Point(8, 577);
-            this.grpRiskCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.grpRiskCategory.Location = new System.Drawing.Point(11, 666);
+            this.grpRiskCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grpRiskCategory.Name = "grpRiskCategory";
-            this.grpRiskCategory.Padding = new System.Windows.Forms.Padding(2);
-            this.grpRiskCategory.Size = new System.Drawing.Size(274, 345);
+            this.grpRiskCategory.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpRiskCategory.Size = new System.Drawing.Size(365, 398);
             this.grpRiskCategory.TabIndex = 30;
             this.grpRiskCategory.TabStop = false;
             this.grpRiskCategory.Text = "Summary of Risk Categories";
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton3);
             this.groupBox1.Controls.Add(this.radioButton4);
             this.groupBox1.Controls.Add(this.radioButton5);
-            this.groupBox1.Location = new System.Drawing.Point(11, 187);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Location = new System.Drawing.Point(15, 216);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(251, 142);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(335, 164);
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Risk Category";
@@ -1265,20 +1274,19 @@ namespace FEAManager
             // label21
             // 
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(222, 7);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Location = new System.Drawing.Point(296, 8);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(52, 20);
+            this.label21.Size = new System.Drawing.Size(69, 23);
             this.label21.TabIndex = 33;
             this.label21.Text = "ethics / waiver will have certain  buttons greyed out";
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(92, 106);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton1.Location = new System.Drawing.Point(123, 122);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(78, 19);
+            this.radioButton1.Size = new System.Drawing.Size(95, 20);
             this.radioButton1.TabIndex = 4;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "High Risk";
@@ -1287,10 +1295,10 @@ namespace FEAManager
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(161, 67);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton2.Location = new System.Drawing.Point(215, 77);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(71, 19);
+            this.radioButton2.Size = new System.Drawing.Size(82, 20);
             this.radioButton2.TabIndex = 3;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Medium";
@@ -1299,10 +1307,10 @@ namespace FEAManager
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(38, 67);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton3.Location = new System.Drawing.Point(51, 77);
+            this.radioButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(48, 19);
+            this.radioButton3.Size = new System.Drawing.Size(56, 20);
             this.radioButton3.TabIndex = 2;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Low";
@@ -1311,10 +1319,10 @@ namespace FEAManager
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(161, 26);
-            this.radioButton4.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton4.Location = new System.Drawing.Point(215, 30);
+            this.radioButton4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(55, 19);
+            this.radioButton4.Size = new System.Drawing.Size(64, 20);
             this.radioButton4.TabIndex = 1;
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "None";
@@ -1323,10 +1331,10 @@ namespace FEAManager
             // radioButton5
             // 
             this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(38, 27);
-            this.radioButton5.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton5.Location = new System.Drawing.Point(51, 31);
+            this.radioButton5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(70, 19);
+            this.radioButton5.Size = new System.Drawing.Size(81, 20);
             this.radioButton5.TabIndex = 0;
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "Minimal";
@@ -1334,15 +1342,16 @@ namespace FEAManager
             // 
             // gpbReadRiskTable
             // 
+            this.gpbReadRiskTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             this.gpbReadRiskTable.Controls.Add(this.btnViewRisKCategoryTable);
             this.gpbReadRiskTable.Controls.Add(this.radReadRiskTableNo);
             this.gpbReadRiskTable.Controls.Add(this.radReadRiskTableYes);
             this.gpbReadRiskTable.Controls.Add(this.label20);
-            this.gpbReadRiskTable.Location = new System.Drawing.Point(11, 106);
-            this.gpbReadRiskTable.Margin = new System.Windows.Forms.Padding(2);
+            this.gpbReadRiskTable.Location = new System.Drawing.Point(15, 122);
+            this.gpbReadRiskTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gpbReadRiskTable.Name = "gpbReadRiskTable";
-            this.gpbReadRiskTable.Padding = new System.Windows.Forms.Padding(2);
-            this.gpbReadRiskTable.Size = new System.Drawing.Size(251, 61);
+            this.gpbReadRiskTable.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpbReadRiskTable.Size = new System.Drawing.Size(335, 70);
             this.gpbReadRiskTable.TabIndex = 33;
             this.gpbReadRiskTable.TabStop = false;
             this.gpbReadRiskTable.Text = "Have you read the risk category table?";
@@ -1350,20 +1359,20 @@ namespace FEAManager
             // btnViewRisKCategoryTable
             // 
             this.btnViewRisKCategoryTable.Image = ((System.Drawing.Image)(resources.GetObject("btnViewRisKCategoryTable.Image")));
-            this.btnViewRisKCategoryTable.Location = new System.Drawing.Point(117, 24);
-            this.btnViewRisKCategoryTable.Margin = new System.Windows.Forms.Padding(2);
+            this.btnViewRisKCategoryTable.Location = new System.Drawing.Point(156, 28);
+            this.btnViewRisKCategoryTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnViewRisKCategoryTable.Name = "btnViewRisKCategoryTable";
-            this.btnViewRisKCategoryTable.Size = new System.Drawing.Size(16, 18);
+            this.btnViewRisKCategoryTable.Size = new System.Drawing.Size(21, 21);
             this.btnViewRisKCategoryTable.TabIndex = 43;
             this.btnViewRisKCategoryTable.UseVisualStyleBackColor = true;
             // 
             // radReadRiskTableNo
             // 
             this.radReadRiskTableNo.AutoSize = true;
-            this.radReadRiskTableNo.Location = new System.Drawing.Point(191, 24);
-            this.radReadRiskTableNo.Margin = new System.Windows.Forms.Padding(2);
+            this.radReadRiskTableNo.Location = new System.Drawing.Point(255, 28);
+            this.radReadRiskTableNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radReadRiskTableNo.Name = "radReadRiskTableNo";
-            this.radReadRiskTableNo.Size = new System.Drawing.Size(41, 19);
+            this.radReadRiskTableNo.Size = new System.Drawing.Size(48, 20);
             this.radReadRiskTableNo.TabIndex = 32;
             this.radReadRiskTableNo.TabStop = true;
             this.radReadRiskTableNo.Text = "No";
@@ -1373,10 +1382,10 @@ namespace FEAManager
             // radReadRiskTableYes
             // 
             this.radReadRiskTableYes.AutoSize = true;
-            this.radReadRiskTableYes.Location = new System.Drawing.Point(38, 24);
-            this.radReadRiskTableYes.Margin = new System.Windows.Forms.Padding(2);
+            this.radReadRiskTableYes.Location = new System.Drawing.Point(51, 28);
+            this.radReadRiskTableYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radReadRiskTableYes.Name = "radReadRiskTableYes";
-            this.radReadRiskTableYes.Size = new System.Drawing.Size(45, 19);
+            this.radReadRiskTableYes.Size = new System.Drawing.Size(54, 20);
             this.radReadRiskTableYes.TabIndex = 31;
             this.radReadRiskTableYes.TabStop = true;
             this.radReadRiskTableYes.Text = "Yes";
@@ -1386,23 +1395,23 @@ namespace FEAManager
             // label20
             // 
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(222, 7);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Location = new System.Drawing.Point(296, 8);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(52, 20);
+            this.label20.Size = new System.Drawing.Size(69, 23);
             this.label20.TabIndex = 30;
             this.label20.Text = "this has to be a yes if they want to submit";
             // 
             // gpbInvolveHumans
             // 
+            this.gpbInvolveHumans.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             this.gpbInvolveHumans.Controls.Add(this.radInvolveHumansNo);
             this.gpbInvolveHumans.Controls.Add(this.radInvolveHumansYes);
             this.gpbInvolveHumans.Controls.Add(this.label19);
-            this.gpbInvolveHumans.Location = new System.Drawing.Point(11, 24);
-            this.gpbInvolveHumans.Margin = new System.Windows.Forms.Padding(2);
+            this.gpbInvolveHumans.Location = new System.Drawing.Point(15, 28);
+            this.gpbInvolveHumans.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gpbInvolveHumans.Name = "gpbInvolveHumans";
-            this.gpbInvolveHumans.Padding = new System.Windows.Forms.Padding(2);
-            this.gpbInvolveHumans.Size = new System.Drawing.Size(251, 61);
+            this.gpbInvolveHumans.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpbInvolveHumans.Size = new System.Drawing.Size(335, 70);
             this.gpbInvolveHumans.TabIndex = 0;
             this.gpbInvolveHumans.TabStop = false;
             this.gpbInvolveHumans.Text = "Does this project involve human participants?";
@@ -1410,10 +1419,10 @@ namespace FEAManager
             // radInvolveHumansNo
             // 
             this.radInvolveHumansNo.AutoSize = true;
-            this.radInvolveHumansNo.Location = new System.Drawing.Point(191, 24);
-            this.radInvolveHumansNo.Margin = new System.Windows.Forms.Padding(2);
+            this.radInvolveHumansNo.Location = new System.Drawing.Point(255, 28);
+            this.radInvolveHumansNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radInvolveHumansNo.Name = "radInvolveHumansNo";
-            this.radInvolveHumansNo.Size = new System.Drawing.Size(41, 19);
+            this.radInvolveHumansNo.Size = new System.Drawing.Size(48, 20);
             this.radInvolveHumansNo.TabIndex = 32;
             this.radInvolveHumansNo.TabStop = true;
             this.radInvolveHumansNo.Text = "No";
@@ -1423,10 +1432,10 @@ namespace FEAManager
             // radInvolveHumansYes
             // 
             this.radInvolveHumansYes.AutoSize = true;
-            this.radInvolveHumansYes.Location = new System.Drawing.Point(38, 24);
-            this.radInvolveHumansYes.Margin = new System.Windows.Forms.Padding(2);
+            this.radInvolveHumansYes.Location = new System.Drawing.Point(51, 28);
+            this.radInvolveHumansYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radInvolveHumansYes.Name = "radInvolveHumansYes";
-            this.radInvolveHumansYes.Size = new System.Drawing.Size(45, 19);
+            this.radInvolveHumansYes.Size = new System.Drawing.Size(54, 20);
             this.radInvolveHumansYes.TabIndex = 31;
             this.radInvolveHumansYes.TabStop = true;
             this.radInvolveHumansYes.Text = "Yes";
@@ -1436,15 +1445,15 @@ namespace FEAManager
             // label19
             // 
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(222, 7);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Location = new System.Drawing.Point(296, 8);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(52, 20);
+            this.label19.Size = new System.Drawing.Size(69, 23);
             this.label19.TabIndex = 30;
             this.label19.Text = "if yes, then you must do ethics";
             // 
             // gpbSupervisor
             // 
+            this.gpbSupervisor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             this.gpbSupervisor.Controls.Add(this.label28);
             this.gpbSupervisor.Controls.Add(this.label3);
             this.gpbSupervisor.Controls.Add(this.mtxtSupervisorCellphone);
@@ -1453,11 +1462,11 @@ namespace FEAManager
             this.gpbSupervisor.Controls.Add(this.txtSupervisorFirstName);
             this.gpbSupervisor.Controls.Add(this.label18);
             this.gpbSupervisor.Controls.Add(this.label17);
-            this.gpbSupervisor.Location = new System.Drawing.Point(8, 402);
-            this.gpbSupervisor.Margin = new System.Windows.Forms.Padding(2);
+            this.gpbSupervisor.Location = new System.Drawing.Point(11, 464);
+            this.gpbSupervisor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gpbSupervisor.Name = "gpbSupervisor";
-            this.gpbSupervisor.Padding = new System.Windows.Forms.Padding(2);
-            this.gpbSupervisor.Size = new System.Drawing.Size(274, 150);
+            this.gpbSupervisor.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpbSupervisor.Size = new System.Drawing.Size(365, 173);
             this.gpbSupervisor.TabIndex = 10;
             this.gpbSupervisor.TabStop = false;
             this.gpbSupervisor.Text = "Supervisor";
@@ -1465,84 +1474,83 @@ namespace FEAManager
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(11, 84);
-            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label28.Location = new System.Drawing.Point(15, 97);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(42, 15);
+            this.label28.Size = new System.Drawing.Size(49, 16);
             this.label28.TabIndex = 31;
             this.label28.Text = "Email:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 115);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(15, 133);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 15);
+            this.label3.Size = new System.Drawing.Size(79, 16);
             this.label3.TabIndex = 30;
             this.label3.Text = "Cellphone:";
             // 
             // mtxtSupervisorCellphone
             // 
-            this.mtxtSupervisorCellphone.Location = new System.Drawing.Point(86, 112);
+            this.mtxtSupervisorCellphone.Location = new System.Drawing.Point(115, 129);
+            this.mtxtSupervisorCellphone.Margin = new System.Windows.Forms.Padding(4);
             this.mtxtSupervisorCellphone.Name = "mtxtSupervisorCellphone";
-            this.mtxtSupervisorCellphone.Size = new System.Drawing.Size(177, 20);
+            this.mtxtSupervisorCellphone.Size = new System.Drawing.Size(235, 23);
             this.mtxtSupervisorCellphone.TabIndex = 29;
             // 
             // mtxtSupervisorEmail
             // 
-            this.mtxtSupervisorEmail.Location = new System.Drawing.Point(86, 82);
+            this.mtxtSupervisorEmail.Location = new System.Drawing.Point(115, 95);
+            this.mtxtSupervisorEmail.Margin = new System.Windows.Forms.Padding(4);
             this.mtxtSupervisorEmail.Name = "mtxtSupervisorEmail";
-            this.mtxtSupervisorEmail.Size = new System.Drawing.Size(177, 20);
+            this.mtxtSupervisorEmail.Size = new System.Drawing.Size(235, 23);
             this.mtxtSupervisorEmail.TabIndex = 28;
             // 
             // txtSupervisorLastName
             // 
-            this.txtSupervisorLastName.Location = new System.Drawing.Point(86, 52);
-            this.txtSupervisorLastName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSupervisorLastName.Location = new System.Drawing.Point(115, 60);
+            this.txtSupervisorLastName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSupervisorLastName.Name = "txtSupervisorLastName";
-            this.txtSupervisorLastName.Size = new System.Drawing.Size(177, 20);
+            this.txtSupervisorLastName.Size = new System.Drawing.Size(235, 23);
             this.txtSupervisorLastName.TabIndex = 3;
             // 
             // txtSupervisorFirstName
             // 
-            this.txtSupervisorFirstName.Location = new System.Drawing.Point(86, 22);
-            this.txtSupervisorFirstName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSupervisorFirstName.Location = new System.Drawing.Point(115, 25);
+            this.txtSupervisorFirstName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSupervisorFirstName.Name = "txtSupervisorFirstName";
-            this.txtSupervisorFirstName.Size = new System.Drawing.Size(177, 20);
+            this.txtSupervisorFirstName.Size = new System.Drawing.Size(235, 23);
             this.txtSupervisorFirstName.TabIndex = 2;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(11, 54);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Location = new System.Drawing.Point(15, 62);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(70, 15);
+            this.label18.Size = new System.Drawing.Size(84, 16);
             this.label18.TabIndex = 1;
             this.label18.Text = "Last Name:";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(11, 24);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Location = new System.Drawing.Point(15, 28);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(70, 15);
+            this.label17.Size = new System.Drawing.Size(86, 16);
             this.label17.TabIndex = 0;
             this.label17.Text = "First Name:";
             // 
             // StudyProgram
             // 
+            this.StudyProgram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             this.StudyProgram.Controls.Add(this.radResearchMasters);
             this.StudyProgram.Controls.Add(this.radPHD);
             this.StudyProgram.Controls.Add(this.radCourseworkMasters);
             this.StudyProgram.Controls.Add(this.radHonours);
-            this.StudyProgram.Location = new System.Drawing.Point(8, 256);
-            this.StudyProgram.Margin = new System.Windows.Forms.Padding(2);
+            this.StudyProgram.Location = new System.Drawing.Point(11, 295);
+            this.StudyProgram.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.StudyProgram.Name = "StudyProgram";
-            this.StudyProgram.Padding = new System.Windows.Forms.Padding(2);
-            this.StudyProgram.Size = new System.Drawing.Size(274, 122);
+            this.StudyProgram.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.StudyProgram.Size = new System.Drawing.Size(365, 141);
             this.StudyProgram.TabIndex = 9;
             this.StudyProgram.TabStop = false;
             this.StudyProgram.Text = "Study Program";
@@ -1550,10 +1558,10 @@ namespace FEAManager
             // radResearchMasters
             // 
             this.radResearchMasters.AutoSize = true;
-            this.radResearchMasters.Location = new System.Drawing.Point(22, 68);
-            this.radResearchMasters.Margin = new System.Windows.Forms.Padding(2);
+            this.radResearchMasters.Location = new System.Drawing.Point(29, 79);
+            this.radResearchMasters.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radResearchMasters.Name = "radResearchMasters";
-            this.radResearchMasters.Size = new System.Drawing.Size(148, 19);
+            this.radResearchMasters.Size = new System.Drawing.Size(180, 20);
             this.radResearchMasters.TabIndex = 3;
             this.radResearchMasters.TabStop = true;
             this.radResearchMasters.Text = "Full Research masters";
@@ -1562,10 +1570,10 @@ namespace FEAManager
             // radPHD
             // 
             this.radPHD.AutoSize = true;
-            this.radPHD.Location = new System.Drawing.Point(22, 90);
-            this.radPHD.Margin = new System.Windows.Forms.Padding(2);
+            this.radPHD.Location = new System.Drawing.Point(29, 104);
+            this.radPHD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radPHD.Name = "radPHD";
-            this.radPHD.Size = new System.Drawing.Size(51, 19);
+            this.radPHD.Size = new System.Drawing.Size(59, 20);
             this.radPHD.TabIndex = 2;
             this.radPHD.TabStop = true;
             this.radPHD.Text = "PHD";
@@ -1574,10 +1582,10 @@ namespace FEAManager
             // radCourseworkMasters
             // 
             this.radCourseworkMasters.AutoSize = true;
-            this.radCourseworkMasters.Location = new System.Drawing.Point(22, 46);
-            this.radCourseworkMasters.Margin = new System.Windows.Forms.Padding(2);
+            this.radCourseworkMasters.Location = new System.Drawing.Point(29, 53);
+            this.radCourseworkMasters.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radCourseworkMasters.Name = "radCourseworkMasters";
-            this.radCourseworkMasters.Size = new System.Drawing.Size(137, 19);
+            this.radCourseworkMasters.Size = new System.Drawing.Size(169, 20);
             this.radCourseworkMasters.TabIndex = 1;
             this.radCourseworkMasters.TabStop = true;
             this.radCourseworkMasters.Text = "Coursework Masters";
@@ -1586,10 +1594,10 @@ namespace FEAManager
             // radHonours
             // 
             this.radHonours.AutoSize = true;
-            this.radHonours.Location = new System.Drawing.Point(22, 24);
-            this.radHonours.Margin = new System.Windows.Forms.Padding(2);
+            this.radHonours.Location = new System.Drawing.Point(29, 28);
+            this.radHonours.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radHonours.Name = "radHonours";
-            this.radHonours.Size = new System.Drawing.Size(72, 19);
+            this.radHonours.Size = new System.Drawing.Size(86, 20);
             this.radHonours.TabIndex = 0;
             this.radHonours.TabStop = true;
             this.radHonours.Text = "Honours";
@@ -1598,30 +1606,30 @@ namespace FEAManager
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(11, 50);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Location = new System.Drawing.Point(15, 58);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(99, 15);
+            this.label16.Size = new System.Drawing.Size(120, 16);
             this.label16.TabIndex = 8;
             this.label16.Text = "Date Completed:";
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(100, 48);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePicker1.Location = new System.Drawing.Point(135, 55);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(174, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(231, 23);
             this.dateTimePicker1.TabIndex = 7;
             // 
             // gpbCollectingData
             // 
+            this.gpbCollectingData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             this.gpbCollectingData.Controls.Add(this.radNo);
             this.gpbCollectingData.Controls.Add(this.radYes);
-            this.gpbCollectingData.Location = new System.Drawing.Point(8, 171);
-            this.gpbCollectingData.Margin = new System.Windows.Forms.Padding(2);
+            this.gpbCollectingData.Location = new System.Drawing.Point(11, 197);
+            this.gpbCollectingData.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gpbCollectingData.Name = "gpbCollectingData";
-            this.gpbCollectingData.Padding = new System.Windows.Forms.Padding(2);
-            this.gpbCollectingData.Size = new System.Drawing.Size(274, 61);
+            this.gpbCollectingData.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpbCollectingData.Size = new System.Drawing.Size(365, 70);
             this.gpbCollectingData.TabIndex = 5;
             this.gpbCollectingData.TabStop = false;
             this.gpbCollectingData.Text = "Collecting Data";
@@ -1630,10 +1638,10 @@ namespace FEAManager
             // radNo
             // 
             this.radNo.AutoSize = true;
-            this.radNo.Location = new System.Drawing.Point(191, 24);
-            this.radNo.Margin = new System.Windows.Forms.Padding(2);
+            this.radNo.Location = new System.Drawing.Point(255, 28);
+            this.radNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radNo.Name = "radNo";
-            this.radNo.Size = new System.Drawing.Size(41, 19);
+            this.radNo.Size = new System.Drawing.Size(48, 20);
             this.radNo.TabIndex = 2;
             this.radNo.TabStop = true;
             this.radNo.Text = "No";
@@ -1643,10 +1651,10 @@ namespace FEAManager
             // radYes
             // 
             this.radYes.AutoSize = true;
-            this.radYes.Location = new System.Drawing.Point(38, 24);
-            this.radYes.Margin = new System.Windows.Forms.Padding(2);
+            this.radYes.Location = new System.Drawing.Point(51, 28);
+            this.radYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radYes.Name = "radYes";
-            this.radYes.Size = new System.Drawing.Size(45, 19);
+            this.radYes.Size = new System.Drawing.Size(54, 20);
             this.radYes.TabIndex = 0;
             this.radYes.TabStop = true;
             this.radYes.Text = "Yes";
@@ -1655,13 +1663,14 @@ namespace FEAManager
             // 
             // ApplicationType
             // 
+            this.ApplicationType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             this.ApplicationType.Controls.Add(this.redWaiver);
             this.ApplicationType.Controls.Add(this.radEthics);
-            this.ApplicationType.Location = new System.Drawing.Point(8, 85);
-            this.ApplicationType.Margin = new System.Windows.Forms.Padding(2);
+            this.ApplicationType.Location = new System.Drawing.Point(11, 98);
+            this.ApplicationType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ApplicationType.Name = "ApplicationType";
-            this.ApplicationType.Padding = new System.Windows.Forms.Padding(2);
-            this.ApplicationType.Size = new System.Drawing.Size(274, 61);
+            this.ApplicationType.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ApplicationType.Size = new System.Drawing.Size(365, 70);
             this.ApplicationType.TabIndex = 3;
             this.ApplicationType.TabStop = false;
             this.ApplicationType.Text = "Application Type";
@@ -1669,10 +1678,10 @@ namespace FEAManager
             // redWaiver
             // 
             this.redWaiver.AutoSize = true;
-            this.redWaiver.Location = new System.Drawing.Point(196, 24);
-            this.redWaiver.Margin = new System.Windows.Forms.Padding(2);
+            this.redWaiver.Location = new System.Drawing.Point(261, 28);
+            this.redWaiver.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.redWaiver.Name = "redWaiver";
-            this.redWaiver.Size = new System.Drawing.Size(62, 19);
+            this.redWaiver.Size = new System.Drawing.Size(76, 20);
             this.redWaiver.TabIndex = 1;
             this.redWaiver.TabStop = true;
             this.redWaiver.Text = "Waiver";
@@ -1681,10 +1690,10 @@ namespace FEAManager
             // radEthics
             // 
             this.radEthics.AutoSize = true;
-            this.radEthics.Location = new System.Drawing.Point(22, 24);
-            this.radEthics.Margin = new System.Windows.Forms.Padding(2);
+            this.radEthics.Location = new System.Drawing.Point(29, 28);
+            this.radEthics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radEthics.Name = "radEthics";
-            this.radEthics.Size = new System.Drawing.Size(58, 19);
+            this.radEthics.Size = new System.Drawing.Size(71, 20);
             this.radEthics.TabIndex = 0;
             this.radEthics.TabStop = true;
             this.radEthics.Text = "Ethics";
@@ -1693,20 +1702,18 @@ namespace FEAManager
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(11, 12);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Location = new System.Drawing.Point(15, 14);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(105, 15);
+            this.label13.Size = new System.Drawing.Size(126, 16);
             this.label13.TabIndex = 0;
             this.label13.Text = "Admin Full Name:";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(104, 12);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Location = new System.Drawing.Point(139, 14);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(15, 15);
+            this.label14.Size = new System.Drawing.Size(22, 16);
             this.label14.TabIndex = 1;
             this.label14.Text = "\"\"";
             // 
@@ -1725,21 +1732,21 @@ namespace FEAManager
             this.pnlEthics.Controls.Add(this.label29);
             this.pnlEthics.Controls.Add(this.groupBox2);
             this.pnlEthics.Controls.Add(this.label15);
-            this.pnlEthics.Location = new System.Drawing.Point(334, 26);
-            this.pnlEthics.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlEthics.Location = new System.Drawing.Point(445, 30);
+            this.pnlEthics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlEthics.Name = "pnlEthics";
-            this.pnlEthics.Size = new System.Drawing.Size(412, 264);
+            this.pnlEthics.Size = new System.Drawing.Size(549, 305);
             this.pnlEthics.TabIndex = 1;
             // 
             // groupBox35
             // 
             this.groupBox35.Controls.Add(this.btnFullScreenEthicsCV);
             this.groupBox35.Controls.Add(this.pictureBox2);
-            this.groupBox35.Location = new System.Drawing.Point(29, 4534);
-            this.groupBox35.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox35.Location = new System.Drawing.Point(39, 5231);
+            this.groupBox35.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox35.Name = "groupBox35";
-            this.groupBox35.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox35.Size = new System.Drawing.Size(338, 447);
+            this.groupBox35.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox35.Size = new System.Drawing.Size(451, 516);
             this.groupBox35.TabIndex = 13;
             this.groupBox35.TabStop = false;
             this.groupBox35.Text = "Ensure all applicants fill this form";
@@ -1748,20 +1755,20 @@ namespace FEAManager
             // 
             this.btnFullScreenEthicsCV.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFullScreenEthicsCV.BackgroundImage")));
             this.btnFullScreenEthicsCV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnFullScreenEthicsCV.Location = new System.Drawing.Point(300, 16);
-            this.btnFullScreenEthicsCV.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFullScreenEthicsCV.Location = new System.Drawing.Point(400, 19);
+            this.btnFullScreenEthicsCV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFullScreenEthicsCV.Name = "btnFullScreenEthicsCV";
-            this.btnFullScreenEthicsCV.Size = new System.Drawing.Size(19, 20);
+            this.btnFullScreenEthicsCV.Size = new System.Drawing.Size(25, 23);
             this.btnFullScreenEthicsCV.TabIndex = 1;
             this.btnFullScreenEthicsCV.UseVisualStyleBackColor = true;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(19, 41);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Location = new System.Drawing.Point(25, 47);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(300, 390);
+            this.pictureBox2.Size = new System.Drawing.Size(400, 450);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -1774,30 +1781,29 @@ namespace FEAManager
             this.groupBox34.Controls.Add(this.label52);
             this.groupBox34.Controls.Add(this.rtbDataProtectionDuringResearch);
             this.groupBox34.Controls.Add(this.label51);
-            this.groupBox34.Location = new System.Drawing.Point(29, 4022);
-            this.groupBox34.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox34.Location = new System.Drawing.Point(39, 4641);
+            this.groupBox34.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox34.Name = "groupBox34";
-            this.groupBox34.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox34.Size = new System.Drawing.Size(338, 488);
+            this.groupBox34.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox34.Size = new System.Drawing.Size(451, 563);
             this.groupBox34.TabIndex = 12;
             this.groupBox34.TabStop = false;
             this.groupBox34.Text = "Data Protection";
             // 
             // rtbDatadisposalSpecifications
             // 
-            this.rtbDatadisposalSpecifications.Location = new System.Drawing.Point(16, 386);
-            this.rtbDatadisposalSpecifications.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbDatadisposalSpecifications.Location = new System.Drawing.Point(21, 445);
+            this.rtbDatadisposalSpecifications.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbDatadisposalSpecifications.Name = "rtbDatadisposalSpecifications";
-            this.rtbDatadisposalSpecifications.Size = new System.Drawing.Size(301, 72);
+            this.rtbDatadisposalSpecifications.Size = new System.Drawing.Size(400, 83);
             this.rtbDatadisposalSpecifications.TabIndex = 14;
             this.rtbDatadisposalSpecifications.Text = "";
             // 
             // label53
             // 
-            this.label53.Location = new System.Drawing.Point(16, 345);
-            this.label53.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label53.Location = new System.Drawing.Point(21, 398);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(300, 28);
+            this.label53.Size = new System.Drawing.Size(400, 32);
             this.label53.TabIndex = 13;
             this.label53.Text = "Please specify which archives or online databases will be used (if applicable):";
             this.label53.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1814,37 +1820,35 @@ namespace FEAManager
             "Stored in digital form with all identifying features removed",
             "Stored for future secondary analysis",
             "Destroyed after … years (insert numbers of years, if applicable)"});
-            this.checkedListBox1.Location = new System.Drawing.Point(16, 211);
-            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.checkedListBox1.Location = new System.Drawing.Point(21, 244);
+            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(301, 110);
+            this.checkedListBox1.Size = new System.Drawing.Size(400, 126);
             this.checkedListBox1.TabIndex = 3;
             // 
             // label52
             // 
-            this.label52.Location = new System.Drawing.Point(19, 177);
-            this.label52.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label52.Location = new System.Drawing.Point(25, 204);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(300, 28);
+            this.label52.Size = new System.Drawing.Size(400, 32);
             this.label52.TabIndex = 2;
             this.label52.Text = "What is to be done with the research data after completion of the project?";
             this.label52.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // rtbDataProtectionDuringResearch
             // 
-            this.rtbDataProtectionDuringResearch.Location = new System.Drawing.Point(16, 81);
-            this.rtbDataProtectionDuringResearch.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbDataProtectionDuringResearch.Location = new System.Drawing.Point(21, 94);
+            this.rtbDataProtectionDuringResearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbDataProtectionDuringResearch.Name = "rtbDataProtectionDuringResearch";
-            this.rtbDataProtectionDuringResearch.Size = new System.Drawing.Size(301, 72);
+            this.rtbDataProtectionDuringResearch.Size = new System.Drawing.Size(400, 83);
             this.rtbDataProtectionDuringResearch.TabIndex = 1;
             this.rtbDataProtectionDuringResearch.Text = "";
             // 
             // label51
             // 
-            this.label51.Location = new System.Drawing.Point(16, 28);
-            this.label51.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label51.Location = new System.Drawing.Point(21, 32);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(300, 41);
+            this.label51.Size = new System.Drawing.Size(400, 47);
             this.label51.TabIndex = 0;
             this.label51.Text = "How will the data be protected while the research is in progress? (This includes " +
     "how the identities of participants will be protected).";
@@ -1857,30 +1861,29 @@ namespace FEAManager
             this.groupBox30.Controls.Add(this.groupBox33);
             this.groupBox30.Controls.Add(this.groupBox32);
             this.groupBox30.Controls.Add(this.groupBox31);
-            this.groupBox30.Location = new System.Drawing.Point(29, 3530);
-            this.groupBox30.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox30.Location = new System.Drawing.Point(39, 4073);
+            this.groupBox30.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox30.Name = "groupBox30";
-            this.groupBox30.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox30.Size = new System.Drawing.Size(338, 467);
+            this.groupBox30.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox30.Size = new System.Drawing.Size(451, 539);
             this.groupBox30.TabIndex = 11;
             this.groupBox30.TabStop = false;
             this.groupBox30.Text = "Protecting participant identities";
             // 
             // rtdAnonymityConfidentialityMethod
             // 
-            this.rtdAnonymityConfidentialityMethod.Location = new System.Drawing.Point(16, 366);
-            this.rtdAnonymityConfidentialityMethod.Margin = new System.Windows.Forms.Padding(2);
+            this.rtdAnonymityConfidentialityMethod.Location = new System.Drawing.Point(21, 422);
+            this.rtdAnonymityConfidentialityMethod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtdAnonymityConfidentialityMethod.Name = "rtdAnonymityConfidentialityMethod";
-            this.rtdAnonymityConfidentialityMethod.Size = new System.Drawing.Size(301, 72);
+            this.rtdAnonymityConfidentialityMethod.Size = new System.Drawing.Size(400, 83);
             this.rtdAnonymityConfidentialityMethod.TabIndex = 5;
             this.rtdAnonymityConfidentialityMethod.Text = "";
             // 
             // label50
             // 
-            this.label50.Location = new System.Drawing.Point(16, 309);
-            this.label50.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label50.Location = new System.Drawing.Point(21, 356);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(300, 41);
+            this.label50.Size = new System.Drawing.Size(400, 47);
             this.label50.TabIndex = 4;
             this.label50.Text = "Explain how you will manage issues of anonymity and confidentiality in your proje" +
     "ct (What will participants be told in this regard?)";
@@ -1890,11 +1893,11 @@ namespace FEAManager
             // 
             this.groupBox33.Controls.Add(this.radAnonymityInResultsNo);
             this.groupBox33.Controls.Add(this.radAnonymityInResultsYes);
-            this.groupBox33.Location = new System.Drawing.Point(16, 215);
-            this.groupBox33.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox33.Location = new System.Drawing.Point(21, 248);
+            this.groupBox33.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox33.Name = "groupBox33";
-            this.groupBox33.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox33.Size = new System.Drawing.Size(300, 69);
+            this.groupBox33.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox33.Size = new System.Drawing.Size(400, 80);
             this.groupBox33.TabIndex = 3;
             this.groupBox33.TabStop = false;
             this.groupBox33.Text = "Can anonymity be guaranteed in resulting research reports or publications?";
@@ -1902,10 +1905,10 @@ namespace FEAManager
             // radAnonymityInResultsNo
             // 
             this.radAnonymityInResultsNo.AutoSize = true;
-            this.radAnonymityInResultsNo.Location = new System.Drawing.Point(208, 37);
-            this.radAnonymityInResultsNo.Margin = new System.Windows.Forms.Padding(2);
+            this.radAnonymityInResultsNo.Location = new System.Drawing.Point(277, 43);
+            this.radAnonymityInResultsNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radAnonymityInResultsNo.Name = "radAnonymityInResultsNo";
-            this.radAnonymityInResultsNo.Size = new System.Drawing.Size(41, 19);
+            this.radAnonymityInResultsNo.Size = new System.Drawing.Size(48, 20);
             this.radAnonymityInResultsNo.TabIndex = 1;
             this.radAnonymityInResultsNo.TabStop = true;
             this.radAnonymityInResultsNo.Text = "No";
@@ -1914,10 +1917,10 @@ namespace FEAManager
             // radAnonymityInResultsYes
             // 
             this.radAnonymityInResultsYes.AutoSize = true;
-            this.radAnonymityInResultsYes.Location = new System.Drawing.Point(56, 37);
-            this.radAnonymityInResultsYes.Margin = new System.Windows.Forms.Padding(2);
+            this.radAnonymityInResultsYes.Location = new System.Drawing.Point(75, 43);
+            this.radAnonymityInResultsYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radAnonymityInResultsYes.Name = "radAnonymityInResultsYes";
-            this.radAnonymityInResultsYes.Size = new System.Drawing.Size(45, 19);
+            this.radAnonymityInResultsYes.Size = new System.Drawing.Size(54, 20);
             this.radAnonymityInResultsYes.TabIndex = 0;
             this.radAnonymityInResultsYes.TabStop = true;
             this.radAnonymityInResultsYes.Text = "Yes";
@@ -1927,11 +1930,11 @@ namespace FEAManager
             // 
             this.groupBox32.Controls.Add(this.radAnonymityInDataCollectionNo);
             this.groupBox32.Controls.Add(this.radAnonymityInDataCollectionYes);
-            this.groupBox32.Location = new System.Drawing.Point(16, 122);
-            this.groupBox32.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox32.Location = new System.Drawing.Point(21, 141);
+            this.groupBox32.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox32.Name = "groupBox32";
-            this.groupBox32.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox32.Size = new System.Drawing.Size(300, 69);
+            this.groupBox32.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox32.Size = new System.Drawing.Size(400, 80);
             this.groupBox32.TabIndex = 2;
             this.groupBox32.TabStop = false;
             this.groupBox32.Text = "Can anonymity be guaranteed throughout the data collection process?";
@@ -1939,10 +1942,10 @@ namespace FEAManager
             // radAnonymityInDataCollectionNo
             // 
             this.radAnonymityInDataCollectionNo.AutoSize = true;
-            this.radAnonymityInDataCollectionNo.Location = new System.Drawing.Point(208, 37);
-            this.radAnonymityInDataCollectionNo.Margin = new System.Windows.Forms.Padding(2);
+            this.radAnonymityInDataCollectionNo.Location = new System.Drawing.Point(277, 43);
+            this.radAnonymityInDataCollectionNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radAnonymityInDataCollectionNo.Name = "radAnonymityInDataCollectionNo";
-            this.radAnonymityInDataCollectionNo.Size = new System.Drawing.Size(41, 19);
+            this.radAnonymityInDataCollectionNo.Size = new System.Drawing.Size(48, 20);
             this.radAnonymityInDataCollectionNo.TabIndex = 1;
             this.radAnonymityInDataCollectionNo.TabStop = true;
             this.radAnonymityInDataCollectionNo.Text = "No";
@@ -1951,10 +1954,10 @@ namespace FEAManager
             // radAnonymityInDataCollectionYes
             // 
             this.radAnonymityInDataCollectionYes.AutoSize = true;
-            this.radAnonymityInDataCollectionYes.Location = new System.Drawing.Point(56, 37);
-            this.radAnonymityInDataCollectionYes.Margin = new System.Windows.Forms.Padding(2);
+            this.radAnonymityInDataCollectionYes.Location = new System.Drawing.Point(75, 43);
+            this.radAnonymityInDataCollectionYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radAnonymityInDataCollectionYes.Name = "radAnonymityInDataCollectionYes";
-            this.radAnonymityInDataCollectionYes.Size = new System.Drawing.Size(45, 19);
+            this.radAnonymityInDataCollectionYes.Size = new System.Drawing.Size(54, 20);
             this.radAnonymityInDataCollectionYes.TabIndex = 0;
             this.radAnonymityInDataCollectionYes.TabStop = true;
             this.radAnonymityInDataCollectionYes.Text = "Yes";
@@ -1964,11 +1967,11 @@ namespace FEAManager
             // 
             this.groupBox31.Controls.Add(this.radConfidentialityNo);
             this.groupBox31.Controls.Add(this.radConfidentialityYes);
-            this.groupBox31.Location = new System.Drawing.Point(16, 28);
-            this.groupBox31.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox31.Location = new System.Drawing.Point(21, 32);
+            this.groupBox31.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox31.Name = "groupBox31";
-            this.groupBox31.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox31.Size = new System.Drawing.Size(300, 69);
+            this.groupBox31.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox31.Size = new System.Drawing.Size(400, 80);
             this.groupBox31.TabIndex = 0;
             this.groupBox31.TabStop = false;
             this.groupBox31.Text = "Can confidentiality of participants’ responses be guaranteed throughout the data " +
@@ -1977,10 +1980,10 @@ namespace FEAManager
             // radConfidentialityNo
             // 
             this.radConfidentialityNo.AutoSize = true;
-            this.radConfidentialityNo.Location = new System.Drawing.Point(208, 37);
-            this.radConfidentialityNo.Margin = new System.Windows.Forms.Padding(2);
+            this.radConfidentialityNo.Location = new System.Drawing.Point(277, 43);
+            this.radConfidentialityNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radConfidentialityNo.Name = "radConfidentialityNo";
-            this.radConfidentialityNo.Size = new System.Drawing.Size(41, 19);
+            this.radConfidentialityNo.Size = new System.Drawing.Size(48, 20);
             this.radConfidentialityNo.TabIndex = 1;
             this.radConfidentialityNo.TabStop = true;
             this.radConfidentialityNo.Text = "No";
@@ -1989,10 +1992,10 @@ namespace FEAManager
             // radConfidentialityYes
             // 
             this.radConfidentialityYes.AutoSize = true;
-            this.radConfidentialityYes.Location = new System.Drawing.Point(56, 37);
-            this.radConfidentialityYes.Margin = new System.Windows.Forms.Padding(2);
+            this.radConfidentialityYes.Location = new System.Drawing.Point(75, 43);
+            this.radConfidentialityYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radConfidentialityYes.Name = "radConfidentialityYes";
-            this.radConfidentialityYes.Size = new System.Drawing.Size(45, 19);
+            this.radConfidentialityYes.Size = new System.Drawing.Size(54, 20);
             this.radConfidentialityYes.TabIndex = 0;
             this.radConfidentialityYes.TabStop = true;
             this.radConfidentialityYes.Text = "Yes";
@@ -2004,11 +2007,11 @@ namespace FEAManager
             this.groupBox27.Controls.Add(this.groupBox28);
             this.groupBox27.Controls.Add(this.rtbPerticipantSelectionMathods);
             this.groupBox27.Controls.Add(this.label47);
-            this.groupBox27.Location = new System.Drawing.Point(29, 2958);
-            this.groupBox27.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox27.Location = new System.Drawing.Point(39, 3413);
+            this.groupBox27.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox27.Name = "groupBox27";
-            this.groupBox27.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox27.Size = new System.Drawing.Size(338, 548);
+            this.groupBox27.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox27.Size = new System.Drawing.Size(451, 632);
             this.groupBox27.TabIndex = 10;
             this.groupBox27.TabStop = false;
             this.groupBox27.Text = "How will informed consent be obtained?";
@@ -2020,31 +2023,30 @@ namespace FEAManager
             this.groupBox29.Controls.Add(this.radConsentOther);
             this.groupBox29.Controls.Add(this.radConsentInformal);
             this.groupBox29.Controls.Add(this.radConsentFormal);
-            this.groupBox29.Location = new System.Drawing.Point(16, 333);
-            this.groupBox29.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox29.Location = new System.Drawing.Point(21, 384);
+            this.groupBox29.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox29.Name = "groupBox29";
-            this.groupBox29.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox29.Size = new System.Drawing.Size(300, 203);
+            this.groupBox29.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox29.Size = new System.Drawing.Size(400, 234);
             this.groupBox29.TabIndex = 6;
             this.groupBox29.TabStop = false;
             this.groupBox29.Text = "How will informed consent be obtained?";
             // 
             // rtbNonFormalConsentReason
             // 
-            this.rtbNonFormalConsentReason.Location = new System.Drawing.Point(16, 118);
-            this.rtbNonFormalConsentReason.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbNonFormalConsentReason.Location = new System.Drawing.Point(21, 136);
+            this.rtbNonFormalConsentReason.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbNonFormalConsentReason.Name = "rtbNonFormalConsentReason";
-            this.rtbNonFormalConsentReason.Size = new System.Drawing.Size(268, 72);
+            this.rtbNonFormalConsentReason.Size = new System.Drawing.Size(356, 83);
             this.rtbNonFormalConsentReason.TabIndex = 4;
             this.rtbNonFormalConsentReason.Text = "";
             // 
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(17, 93);
-            this.label49.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label49.Location = new System.Drawing.Point(23, 107);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(305, 15);
+            this.label49.Size = new System.Drawing.Size(382, 16);
             this.label49.TabIndex = 3;
             this.label49.Text = "If you cannot obtain formal written consent, explain why";
             this.label49.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -2052,10 +2054,10 @@ namespace FEAManager
             // radConsentOther
             // 
             this.radConsentOther.AutoSize = true;
-            this.radConsentOther.Location = new System.Drawing.Point(125, 57);
-            this.radConsentOther.Margin = new System.Windows.Forms.Padding(2);
+            this.radConsentOther.Location = new System.Drawing.Point(167, 66);
+            this.radConsentOther.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radConsentOther.Name = "radConsentOther";
-            this.radConsentOther.Size = new System.Drawing.Size(55, 19);
+            this.radConsentOther.Size = new System.Drawing.Size(67, 20);
             this.radConsentOther.TabIndex = 2;
             this.radConsentOther.TabStop = true;
             this.radConsentOther.Text = "Other";
@@ -2064,10 +2066,10 @@ namespace FEAManager
             // radConsentInformal
             // 
             this.radConsentInformal.AutoSize = true;
-            this.radConsentInformal.Location = new System.Drawing.Point(183, 28);
-            this.radConsentInformal.Margin = new System.Windows.Forms.Padding(2);
+            this.radConsentInformal.Location = new System.Drawing.Point(244, 32);
+            this.radConsentInformal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radConsentInformal.Name = "radConsentInformal";
-            this.radConsentInformal.Size = new System.Drawing.Size(116, 19);
+            this.radConsentInformal.Size = new System.Drawing.Size(143, 20);
             this.radConsentInformal.TabIndex = 1;
             this.radConsentInformal.TabStop = true;
             this.radConsentInformal.Text = "Informal (Verbal)";
@@ -2076,10 +2078,10 @@ namespace FEAManager
             // radConsentFormal
             // 
             this.radConsentFormal.AutoSize = true;
-            this.radConsentFormal.Location = new System.Drawing.Point(16, 28);
-            this.radConsentFormal.Margin = new System.Windows.Forms.Padding(2);
+            this.radConsentFormal.Location = new System.Drawing.Point(21, 32);
+            this.radConsentFormal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radConsentFormal.Name = "radConsentFormal";
-            this.radConsentFormal.Size = new System.Drawing.Size(146, 19);
+            this.radConsentFormal.Size = new System.Drawing.Size(174, 20);
             this.radConsentFormal.TabIndex = 0;
             this.radConsentFormal.TabStop = true;
             this.radConsentFormal.Text = "Formal (Signed Form)";
@@ -2091,41 +2093,40 @@ namespace FEAManager
             this.groupBox28.Controls.Add(this.label48);
             this.groupBox28.Controls.Add(this.radIncentiveNo);
             this.groupBox28.Controls.Add(this.radIncentiveYes);
-            this.groupBox28.Location = new System.Drawing.Point(16, 146);
-            this.groupBox28.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox28.Location = new System.Drawing.Point(21, 169);
+            this.groupBox28.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox28.Name = "groupBox28";
-            this.groupBox28.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox28.Size = new System.Drawing.Size(300, 162);
+            this.groupBox28.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox28.Size = new System.Drawing.Size(400, 187);
             this.groupBox28.TabIndex = 5;
             this.groupBox28.TabStop = false;
             this.groupBox28.Text = "Will any incentives be offered to participants?";
             // 
             // rtbIncentiveDescription
             // 
-            this.rtbIncentiveDescription.Location = new System.Drawing.Point(16, 73);
-            this.rtbIncentiveDescription.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbIncentiveDescription.Location = new System.Drawing.Point(21, 84);
+            this.rtbIncentiveDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbIncentiveDescription.Name = "rtbIncentiveDescription";
-            this.rtbIncentiveDescription.Size = new System.Drawing.Size(268, 72);
+            this.rtbIncentiveDescription.Size = new System.Drawing.Size(356, 83);
             this.rtbIncentiveDescription.TabIndex = 5;
             this.rtbIncentiveDescription.Text = "";
             // 
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(16, 53);
-            this.label48.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label48.Location = new System.Drawing.Point(21, 61);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(86, 15);
+            this.label48.Size = new System.Drawing.Size(109, 16);
             this.label48.TabIndex = 2;
             this.label48.Text = "If yes, expliain:";
             // 
             // radIncentiveNo
             // 
             this.radIncentiveNo.AutoSize = true;
-            this.radIncentiveNo.Location = new System.Drawing.Point(208, 24);
-            this.radIncentiveNo.Margin = new System.Windows.Forms.Padding(2);
+            this.radIncentiveNo.Location = new System.Drawing.Point(277, 28);
+            this.radIncentiveNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radIncentiveNo.Name = "radIncentiveNo";
-            this.radIncentiveNo.Size = new System.Drawing.Size(41, 19);
+            this.radIncentiveNo.Size = new System.Drawing.Size(48, 20);
             this.radIncentiveNo.TabIndex = 1;
             this.radIncentiveNo.TabStop = true;
             this.radIncentiveNo.Text = "No";
@@ -2134,10 +2135,10 @@ namespace FEAManager
             // radIncentiveYes
             // 
             this.radIncentiveYes.AutoSize = true;
-            this.radIncentiveYes.Location = new System.Drawing.Point(56, 24);
-            this.radIncentiveYes.Margin = new System.Windows.Forms.Padding(2);
+            this.radIncentiveYes.Location = new System.Drawing.Point(75, 28);
+            this.radIncentiveYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radIncentiveYes.Name = "radIncentiveYes";
-            this.radIncentiveYes.Size = new System.Drawing.Size(45, 19);
+            this.radIncentiveYes.Size = new System.Drawing.Size(54, 20);
             this.radIncentiveYes.TabIndex = 0;
             this.radIncentiveYes.TabStop = true;
             this.radIncentiveYes.Text = "Yes";
@@ -2145,20 +2146,19 @@ namespace FEAManager
             // 
             // rtbPerticipantSelectionMathods
             // 
-            this.rtbPerticipantSelectionMathods.Location = new System.Drawing.Point(16, 49);
-            this.rtbPerticipantSelectionMathods.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbPerticipantSelectionMathods.Location = new System.Drawing.Point(21, 56);
+            this.rtbPerticipantSelectionMathods.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbPerticipantSelectionMathods.Name = "rtbPerticipantSelectionMathods";
-            this.rtbPerticipantSelectionMathods.Size = new System.Drawing.Size(301, 72);
+            this.rtbPerticipantSelectionMathods.Size = new System.Drawing.Size(400, 83);
             this.rtbPerticipantSelectionMathods.TabIndex = 4;
             this.rtbPerticipantSelectionMathods.Text = "";
             // 
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(11, 28);
-            this.label47.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label47.Location = new System.Drawing.Point(15, 32);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(358, 15);
+            this.label47.Size = new System.Drawing.Size(455, 16);
             this.label47.TabIndex = 0;
             this.label47.Text = "How will potential participants be identified / selected / recruited?";
             // 
@@ -2168,30 +2168,29 @@ namespace FEAManager
             this.groupBox26.Controls.Add(this.label46);
             this.groupBox26.Controls.Add(this.rtbParticipantGroups);
             this.groupBox26.Controls.Add(this.label45);
-            this.groupBox26.Location = new System.Drawing.Point(29, 2628);
-            this.groupBox26.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox26.Location = new System.Drawing.Point(39, 3032);
+            this.groupBox26.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox26.Name = "groupBox26";
-            this.groupBox26.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox26.Size = new System.Drawing.Size(338, 305);
+            this.groupBox26.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox26.Size = new System.Drawing.Size(451, 352);
             this.groupBox26.TabIndex = 9;
             this.groupBox26.TabStop = false;
             this.groupBox26.Text = "Who will the research participants be?";
             // 
             // rtbParticipantGroupDescriptions
             // 
-            this.rtbParticipantGroupDescriptions.Location = new System.Drawing.Point(19, 208);
-            this.rtbParticipantGroupDescriptions.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbParticipantGroupDescriptions.Location = new System.Drawing.Point(25, 240);
+            this.rtbParticipantGroupDescriptions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbParticipantGroupDescriptions.Name = "rtbParticipantGroupDescriptions";
-            this.rtbParticipantGroupDescriptions.Size = new System.Drawing.Size(301, 72);
+            this.rtbParticipantGroupDescriptions.Size = new System.Drawing.Size(400, 83);
             this.rtbParticipantGroupDescriptions.TabIndex = 3;
             this.rtbParticipantGroupDescriptions.Text = "";
             // 
             // label46
             // 
-            this.label46.Location = new System.Drawing.Point(16, 169);
-            this.label46.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label46.Location = new System.Drawing.Point(21, 195);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(300, 28);
+            this.label46.Size = new System.Drawing.Size(400, 32);
             this.label46.TabIndex = 2;
             this.label46.Text = "Description of these participant groups, including age range and sample size, for" +
     " each group:";
@@ -2199,19 +2198,18 @@ namespace FEAManager
             // 
             // rtbParticipantGroups
             // 
-            this.rtbParticipantGroups.Location = new System.Drawing.Point(16, 73);
-            this.rtbParticipantGroups.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbParticipantGroups.Location = new System.Drawing.Point(21, 84);
+            this.rtbParticipantGroups.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbParticipantGroups.Name = "rtbParticipantGroups";
-            this.rtbParticipantGroups.Size = new System.Drawing.Size(301, 72);
+            this.rtbParticipantGroups.Size = new System.Drawing.Size(400, 83);
             this.rtbParticipantGroups.TabIndex = 1;
             this.rtbParticipantGroups.Text = "";
             // 
             // label45
             // 
-            this.label45.Location = new System.Drawing.Point(16, 28);
-            this.label45.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label45.Location = new System.Drawing.Point(21, 32);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(300, 41);
+            this.label45.Size = new System.Drawing.Size(400, 47);
             this.label45.TabIndex = 0;
             this.label45.Text = "List the different participant groups (e.g. experts, community members, key infor" +
     "mants) that you will be working with in your project:";
@@ -2220,11 +2218,11 @@ namespace FEAManager
             // groupBox25
             // 
             this.groupBox25.Controls.Add(this.cblHowDataWillBeCollected);
-            this.groupBox25.Location = new System.Drawing.Point(29, 2299);
-            this.groupBox25.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox25.Location = new System.Drawing.Point(39, 2653);
+            this.groupBox25.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox25.Name = "groupBox25";
-            this.groupBox25.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox25.Size = new System.Drawing.Size(338, 305);
+            this.groupBox25.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox25.Size = new System.Drawing.Size(451, 352);
             this.groupBox25.TabIndex = 8;
             this.groupBox25.TabStop = false;
             this.groupBox25.Text = "How will data on human research participants be collected";
@@ -2255,10 +2253,10 @@ namespace FEAManager
             "Audio recording (e.g. of interviews)",
             "Use of data from social media",
             "Other research methods or techniques (you must explain in the box below)"});
-            this.cblHowDataWillBeCollected.Location = new System.Drawing.Point(16, 28);
-            this.cblHowDataWillBeCollected.Margin = new System.Windows.Forms.Padding(2);
+            this.cblHowDataWillBeCollected.Location = new System.Drawing.Point(21, 32);
+            this.cblHowDataWillBeCollected.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cblHowDataWillBeCollected.Name = "cblHowDataWillBeCollected";
-            this.cblHowDataWillBeCollected.Size = new System.Drawing.Size(301, 257);
+            this.cblHowDataWillBeCollected.Size = new System.Drawing.Size(400, 296);
             this.cblHowDataWillBeCollected.TabIndex = 0;
             // 
             // groupBox23
@@ -2266,11 +2264,11 @@ namespace FEAManager
             this.groupBox23.Controls.Add(this.groupBox24);
             this.groupBox23.Controls.Add(this.richTextBox1);
             this.groupBox23.Controls.Add(this.label43);
-            this.groupBox23.Location = new System.Drawing.Point(29, 2011);
-            this.groupBox23.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox23.Location = new System.Drawing.Point(39, 2320);
+            this.groupBox23.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox23.Name = "groupBox23";
-            this.groupBox23.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox23.Size = new System.Drawing.Size(338, 264);
+            this.groupBox23.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox23.Size = new System.Drawing.Size(451, 305);
             this.groupBox23.TabIndex = 7;
             this.groupBox23.TabStop = false;
             this.groupBox23.Text = "Formal Permission";
@@ -2281,21 +2279,20 @@ namespace FEAManager
             this.groupBox24.Controls.Add(this.radFormalPermissionPending);
             this.groupBox24.Controls.Add(this.radFormalPermissionNotRequired);
             this.groupBox24.Controls.Add(this.radFormalPermissionYes);
-            this.groupBox24.Location = new System.Drawing.Point(19, 171);
-            this.groupBox24.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox24.Location = new System.Drawing.Point(25, 197);
+            this.groupBox24.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox24.Name = "groupBox24";
-            this.groupBox24.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox24.Size = new System.Drawing.Size(302, 69);
+            this.groupBox24.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox24.Size = new System.Drawing.Size(403, 80);
             this.groupBox24.TabIndex = 3;
             this.groupBox24.TabStop = false;
             this.groupBox24.Text = "Has appropriate formal permission been obtained, if required?";
             // 
             // label44
             // 
-            this.label44.Location = new System.Drawing.Point(258, 15);
-            this.label44.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label44.Location = new System.Drawing.Point(344, 17);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(34, 19);
+            this.label44.Size = new System.Drawing.Size(45, 22);
             this.label44.TabIndex = 3;
             this.label44.Text = "Note, if yes prompt user at the end, if still peniding, proompt the user that the" +
     "y must submit it before the ethics can be cleared";
@@ -2303,10 +2300,10 @@ namespace FEAManager
             // radFormalPermissionPending
             // 
             this.radFormalPermissionPending.AutoSize = true;
-            this.radFormalPermissionPending.Location = new System.Drawing.Point(225, 37);
-            this.radFormalPermissionPending.Margin = new System.Windows.Forms.Padding(2);
+            this.radFormalPermissionPending.Location = new System.Drawing.Point(300, 43);
+            this.radFormalPermissionPending.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radFormalPermissionPending.Name = "radFormalPermissionPending";
-            this.radFormalPermissionPending.Size = new System.Drawing.Size(71, 19);
+            this.radFormalPermissionPending.Size = new System.Drawing.Size(84, 20);
             this.radFormalPermissionPending.TabIndex = 2;
             this.radFormalPermissionPending.TabStop = true;
             this.radFormalPermissionPending.Text = "Pending";
@@ -2315,10 +2312,10 @@ namespace FEAManager
             // radFormalPermissionNotRequired
             // 
             this.radFormalPermissionNotRequired.AutoSize = true;
-            this.radFormalPermissionNotRequired.Location = new System.Drawing.Point(98, 37);
-            this.radFormalPermissionNotRequired.Margin = new System.Windows.Forms.Padding(2);
+            this.radFormalPermissionNotRequired.Location = new System.Drawing.Point(131, 43);
+            this.radFormalPermissionNotRequired.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radFormalPermissionNotRequired.Name = "radFormalPermissionNotRequired";
-            this.radFormalPermissionNotRequired.Size = new System.Drawing.Size(98, 19);
+            this.radFormalPermissionNotRequired.Size = new System.Drawing.Size(119, 20);
             this.radFormalPermissionNotRequired.TabIndex = 1;
             this.radFormalPermissionNotRequired.TabStop = true;
             this.radFormalPermissionNotRequired.Text = "Not Required";
@@ -2327,10 +2324,10 @@ namespace FEAManager
             // radFormalPermissionYes
             // 
             this.radFormalPermissionYes.AutoSize = true;
-            this.radFormalPermissionYes.Location = new System.Drawing.Point(16, 37);
-            this.radFormalPermissionYes.Margin = new System.Windows.Forms.Padding(2);
+            this.radFormalPermissionYes.Location = new System.Drawing.Point(21, 43);
+            this.radFormalPermissionYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radFormalPermissionYes.Name = "radFormalPermissionYes";
-            this.radFormalPermissionYes.Size = new System.Drawing.Size(45, 19);
+            this.radFormalPermissionYes.Size = new System.Drawing.Size(54, 20);
             this.radFormalPermissionYes.TabIndex = 0;
             this.radFormalPermissionYes.TabStop = true;
             this.radFormalPermissionYes.Text = "Yes";
@@ -2338,19 +2335,18 @@ namespace FEAManager
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(19, 68);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox1.Location = new System.Drawing.Point(25, 79);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(303, 79);
+            this.richTextBox1.Size = new System.Drawing.Size(403, 90);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
             // label43
             // 
-            this.label43.Location = new System.Drawing.Point(16, 24);
-            this.label43.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label43.Location = new System.Drawing.Point(21, 28);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(302, 41);
+            this.label43.Size = new System.Drawing.Size(403, 47);
             this.label43.TabIndex = 0;
             this.label43.Text = "Where will the research be carried out? (Please give a specific location and /or " +
     "the names of specific organisations or institutions)";
@@ -2367,11 +2363,11 @@ namespace FEAManager
             this.groupBox15.Controls.Add(this.groupBox21);
             this.groupBox15.Controls.Add(this.txtEthicsProjectTitle);
             this.groupBox15.Controls.Add(this.label41);
-            this.groupBox15.Location = new System.Drawing.Point(29, 849);
-            this.groupBox15.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox15.Location = new System.Drawing.Point(39, 980);
+            this.groupBox15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox15.Size = new System.Drawing.Size(338, 1138);
+            this.groupBox15.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox15.Size = new System.Drawing.Size(451, 1313);
             this.groupBox15.TabIndex = 6;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Research Project";
@@ -2384,30 +2380,29 @@ namespace FEAManager
             this.groupBox16.Controls.Add(this.rtbAdditionalResearchers);
             this.groupBox16.Controls.Add(this.label37);
             this.groupBox16.Controls.Add(this.groupBox17);
-            this.groupBox16.Location = new System.Drawing.Point(19, 642);
-            this.groupBox16.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox16.Location = new System.Drawing.Point(25, 741);
+            this.groupBox16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox16.Size = new System.Drawing.Size(302, 475);
+            this.groupBox16.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox16.Size = new System.Drawing.Size(403, 548);
             this.groupBox16.TabIndex = 11;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Collaboration";
             // 
             // rtbExplainConflictResolution
             // 
-            this.rtbExplainConflictResolution.Location = new System.Drawing.Point(16, 388);
-            this.rtbExplainConflictResolution.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbExplainConflictResolution.Location = new System.Drawing.Point(21, 448);
+            this.rtbExplainConflictResolution.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbExplainConflictResolution.Name = "rtbExplainConflictResolution";
-            this.rtbExplainConflictResolution.Size = new System.Drawing.Size(269, 72);
+            this.rtbExplainConflictResolution.Size = new System.Drawing.Size(357, 83);
             this.rtbExplainConflictResolution.TabIndex = 12;
             this.rtbExplainConflictResolution.Text = "";
             // 
             // label42
             // 
-            this.label42.Location = new System.Drawing.Point(16, 344);
-            this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label42.Location = new System.Drawing.Point(21, 397);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(268, 41);
+            this.label42.Size = new System.Drawing.Size(357, 47);
             this.label42.TabIndex = 11;
             this.label42.Text = "If yes, please explain how you will manage any existing or potential conflicts of" +
     " interest and potential coercion during recruitment and data collection, if appl" +
@@ -2418,11 +2413,11 @@ namespace FEAManager
             // 
             this.groupBox22.Controls.Add(this.radRelationshipsNo);
             this.groupBox22.Controls.Add(this.radrelationshipsYes);
-            this.groupBox22.Location = new System.Drawing.Point(16, 222);
-            this.groupBox22.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox22.Location = new System.Drawing.Point(21, 256);
+            this.groupBox22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox22.Name = "groupBox22";
-            this.groupBox22.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox22.Size = new System.Drawing.Size(268, 102);
+            this.groupBox22.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox22.Size = new System.Drawing.Size(357, 118);
             this.groupBox22.TabIndex = 4;
             this.groupBox22.TabStop = false;
             this.groupBox22.Text = "Do you have any financial or material interests or a relationship associated with" +
@@ -2432,10 +2427,10 @@ namespace FEAManager
             // radRelationshipsNo
             // 
             this.radRelationshipsNo.AutoSize = true;
-            this.radRelationshipsNo.Location = new System.Drawing.Point(195, 69);
-            this.radRelationshipsNo.Margin = new System.Windows.Forms.Padding(2);
+            this.radRelationshipsNo.Location = new System.Drawing.Point(260, 80);
+            this.radRelationshipsNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radRelationshipsNo.Name = "radRelationshipsNo";
-            this.radRelationshipsNo.Size = new System.Drawing.Size(41, 19);
+            this.radRelationshipsNo.Size = new System.Drawing.Size(48, 20);
             this.radRelationshipsNo.TabIndex = 1;
             this.radRelationshipsNo.TabStop = true;
             this.radRelationshipsNo.Text = "No";
@@ -2444,10 +2439,10 @@ namespace FEAManager
             // radrelationshipsYes
             // 
             this.radrelationshipsYes.AutoSize = true;
-            this.radrelationshipsYes.Location = new System.Drawing.Point(38, 69);
-            this.radrelationshipsYes.Margin = new System.Windows.Forms.Padding(2);
+            this.radrelationshipsYes.Location = new System.Drawing.Point(51, 80);
+            this.radrelationshipsYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radrelationshipsYes.Name = "radrelationshipsYes";
-            this.radrelationshipsYes.Size = new System.Drawing.Size(45, 19);
+            this.radrelationshipsYes.Size = new System.Drawing.Size(54, 20);
             this.radrelationshipsYes.TabIndex = 0;
             this.radrelationshipsYes.TabStop = true;
             this.radrelationshipsYes.Text = "Yes";
@@ -2455,19 +2450,18 @@ namespace FEAManager
             // 
             // rtbAdditionalResearchers
             // 
-            this.rtbAdditionalResearchers.Location = new System.Drawing.Point(16, 126);
-            this.rtbAdditionalResearchers.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbAdditionalResearchers.Location = new System.Drawing.Point(21, 145);
+            this.rtbAdditionalResearchers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbAdditionalResearchers.Name = "rtbAdditionalResearchers";
-            this.rtbAdditionalResearchers.Size = new System.Drawing.Size(269, 72);
+            this.rtbAdditionalResearchers.Size = new System.Drawing.Size(357, 83);
             this.rtbAdditionalResearchers.TabIndex = 10;
             this.rtbAdditionalResearchers.Text = "";
             // 
             // label37
             // 
-            this.label37.Location = new System.Drawing.Point(16, 110);
-            this.label37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label37.Location = new System.Drawing.Point(21, 127);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(268, 14);
+            this.label37.Size = new System.Drawing.Size(357, 16);
             this.label37.TabIndex = 2;
             this.label37.Text = "If yes, please identify their name, affiliation and role.";
             this.label37.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -2476,11 +2470,11 @@ namespace FEAManager
             // 
             this.groupBox17.Controls.Add(this.radCollaborationEthicsNo);
             this.groupBox17.Controls.Add(this.radCollaborationEthicsYes);
-            this.groupBox17.Location = new System.Drawing.Point(16, 24);
-            this.groupBox17.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox17.Location = new System.Drawing.Point(21, 28);
+            this.groupBox17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox17.Size = new System.Drawing.Size(268, 61);
+            this.groupBox17.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox17.Size = new System.Drawing.Size(357, 70);
             this.groupBox17.TabIndex = 3;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Will there be any additional researches?";
@@ -2488,10 +2482,10 @@ namespace FEAManager
             // radCollaborationEthicsNo
             // 
             this.radCollaborationEthicsNo.AutoSize = true;
-            this.radCollaborationEthicsNo.Location = new System.Drawing.Point(195, 28);
-            this.radCollaborationEthicsNo.Margin = new System.Windows.Forms.Padding(2);
+            this.radCollaborationEthicsNo.Location = new System.Drawing.Point(260, 32);
+            this.radCollaborationEthicsNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radCollaborationEthicsNo.Name = "radCollaborationEthicsNo";
-            this.radCollaborationEthicsNo.Size = new System.Drawing.Size(41, 19);
+            this.radCollaborationEthicsNo.Size = new System.Drawing.Size(48, 20);
             this.radCollaborationEthicsNo.TabIndex = 1;
             this.radCollaborationEthicsNo.TabStop = true;
             this.radCollaborationEthicsNo.Text = "No";
@@ -2500,10 +2494,10 @@ namespace FEAManager
             // radCollaborationEthicsYes
             // 
             this.radCollaborationEthicsYes.AutoSize = true;
-            this.radCollaborationEthicsYes.Location = new System.Drawing.Point(38, 28);
-            this.radCollaborationEthicsYes.Margin = new System.Windows.Forms.Padding(2);
+            this.radCollaborationEthicsYes.Location = new System.Drawing.Point(51, 32);
+            this.radCollaborationEthicsYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radCollaborationEthicsYes.Name = "radCollaborationEthicsYes";
-            this.radCollaborationEthicsYes.Size = new System.Drawing.Size(45, 19);
+            this.radCollaborationEthicsYes.Size = new System.Drawing.Size(54, 20);
             this.radCollaborationEthicsYes.TabIndex = 0;
             this.radCollaborationEthicsYes.TabStop = true;
             this.radCollaborationEthicsYes.Text = "Yes";
@@ -2513,11 +2507,11 @@ namespace FEAManager
             // 
             this.groupBox18.Controls.Add(this.groupBox19);
             this.groupBox18.Controls.Add(this.groupBox20);
-            this.groupBox18.Location = new System.Drawing.Point(19, 406);
-            this.groupBox18.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox18.Location = new System.Drawing.Point(25, 469);
+            this.groupBox18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox18.Size = new System.Drawing.Size(302, 211);
+            this.groupBox18.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox18.Size = new System.Drawing.Size(403, 244);
             this.groupBox18.TabIndex = 10;
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "Permissions";
@@ -2527,21 +2521,20 @@ namespace FEAManager
             this.groupBox19.Controls.Add(this.label38);
             this.groupBox19.Controls.Add(this.radioButton11);
             this.groupBox19.Controls.Add(this.radioButton12);
-            this.groupBox19.Location = new System.Drawing.Point(16, 122);
-            this.groupBox19.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox19.Location = new System.Drawing.Point(21, 141);
+            this.groupBox19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox19.Size = new System.Drawing.Size(268, 73);
+            this.groupBox19.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox19.Size = new System.Drawing.Size(357, 84);
             this.groupBox19.TabIndex = 2;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "If YES, do you have written permission to reuse the data?";
             // 
             // label38
             // 
-            this.label38.Location = new System.Drawing.Point(232, 15);
-            this.label38.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label38.Location = new System.Drawing.Point(309, 17);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(32, 15);
+            this.label38.Size = new System.Drawing.Size(43, 17);
             this.label38.TabIndex = 2;
             this.label38.Text = "INFO If you don’t, you must obtain this permission from the principal investigato" +
     "r";
@@ -2550,10 +2543,10 @@ namespace FEAManager
             // radioButton11
             // 
             this.radioButton11.AutoSize = true;
-            this.radioButton11.Location = new System.Drawing.Point(195, 37);
-            this.radioButton11.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton11.Location = new System.Drawing.Point(260, 43);
+            this.radioButton11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(41, 19);
+            this.radioButton11.Size = new System.Drawing.Size(48, 20);
             this.radioButton11.TabIndex = 1;
             this.radioButton11.TabStop = true;
             this.radioButton11.Text = "No";
@@ -2562,10 +2555,10 @@ namespace FEAManager
             // radioButton12
             // 
             this.radioButton12.AutoSize = true;
-            this.radioButton12.Location = new System.Drawing.Point(38, 37);
-            this.radioButton12.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton12.Location = new System.Drawing.Point(51, 43);
+            this.radioButton12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton12.Name = "radioButton12";
-            this.radioButton12.Size = new System.Drawing.Size(45, 19);
+            this.radioButton12.Size = new System.Drawing.Size(54, 20);
             this.radioButton12.TabIndex = 0;
             this.radioButton12.TabStop = true;
             this.radioButton12.Text = "Yes";
@@ -2575,11 +2568,11 @@ namespace FEAManager
             // 
             this.groupBox20.Controls.Add(this.radioButton13);
             this.groupBox20.Controls.Add(this.radioButton14);
-            this.groupBox20.Location = new System.Drawing.Point(16, 24);
-            this.groupBox20.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox20.Location = new System.Drawing.Point(21, 28);
+            this.groupBox20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox20.Size = new System.Drawing.Size(268, 73);
+            this.groupBox20.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox20.Size = new System.Drawing.Size(357, 84);
             this.groupBox20.TabIndex = 0;
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "Will this study reuse data that have been previously collected by other researche" +
@@ -2588,10 +2581,10 @@ namespace FEAManager
             // radioButton13
             // 
             this.radioButton13.AutoSize = true;
-            this.radioButton13.Location = new System.Drawing.Point(195, 37);
-            this.radioButton13.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton13.Location = new System.Drawing.Point(260, 43);
+            this.radioButton13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton13.Name = "radioButton13";
-            this.radioButton13.Size = new System.Drawing.Size(41, 19);
+            this.radioButton13.Size = new System.Drawing.Size(48, 20);
             this.radioButton13.TabIndex = 1;
             this.radioButton13.TabStop = true;
             this.radioButton13.Text = "No";
@@ -2600,10 +2593,10 @@ namespace FEAManager
             // radioButton14
             // 
             this.radioButton14.AutoSize = true;
-            this.radioButton14.Location = new System.Drawing.Point(38, 37);
-            this.radioButton14.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton14.Location = new System.Drawing.Point(51, 43);
+            this.radioButton14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton14.Name = "radioButton14";
-            this.radioButton14.Size = new System.Drawing.Size(45, 19);
+            this.radioButton14.Size = new System.Drawing.Size(54, 20);
             this.radioButton14.TabIndex = 0;
             this.radioButton14.TabStop = true;
             this.radioButton14.Text = "Yes";
@@ -2611,39 +2604,37 @@ namespace FEAManager
             // 
             // rtbEthicsAbstractSummary
             // 
-            this.rtbEthicsAbstractSummary.Location = new System.Drawing.Point(19, 309);
-            this.rtbEthicsAbstractSummary.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbEthicsAbstractSummary.Location = new System.Drawing.Point(25, 356);
+            this.rtbEthicsAbstractSummary.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbEthicsAbstractSummary.Name = "rtbEthicsAbstractSummary";
-            this.rtbEthicsAbstractSummary.Size = new System.Drawing.Size(303, 72);
+            this.rtbEthicsAbstractSummary.Size = new System.Drawing.Size(403, 83);
             this.rtbEthicsAbstractSummary.TabIndex = 9;
             this.rtbEthicsAbstractSummary.Text = "";
             // 
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(117, 292);
-            this.label39.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label39.Location = new System.Drawing.Point(156, 337);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(119, 15);
+            this.label39.Size = new System.Drawing.Size(149, 16);
             this.label39.TabIndex = 8;
             this.label39.Text = "Summary of abstract";
             // 
             // rtbEthicsAimsAndObjectives
             // 
-            this.rtbEthicsAimsAndObjectives.Location = new System.Drawing.Point(19, 195);
-            this.rtbEthicsAimsAndObjectives.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbEthicsAimsAndObjectives.Location = new System.Drawing.Point(25, 225);
+            this.rtbEthicsAimsAndObjectives.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbEthicsAimsAndObjectives.Name = "rtbEthicsAimsAndObjectives";
-            this.rtbEthicsAimsAndObjectives.Size = new System.Drawing.Size(303, 72);
+            this.rtbEthicsAimsAndObjectives.Size = new System.Drawing.Size(403, 83);
             this.rtbEthicsAimsAndObjectives.TabIndex = 7;
             this.rtbEthicsAimsAndObjectives.Text = "";
             // 
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(46, 179);
-            this.label40.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label40.Location = new System.Drawing.Point(61, 206);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(278, 15);
+            this.label40.Size = new System.Drawing.Size(346, 16);
             this.label40.TabIndex = 6;
             this.label40.Text = "What are the aims and objectives of the research?";
             // 
@@ -2654,30 +2645,30 @@ namespace FEAManager
             this.groupBox21.Controls.Add(this.radEthicsDegreePruposeOther);
             this.groupBox21.Controls.Add(this.radEthicsDegreePruposeMasters);
             this.groupBox21.Controls.Add(this.radEthicsDegreePruposeHonours);
-            this.groupBox21.Location = new System.Drawing.Point(19, 61);
-            this.groupBox21.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox21.Location = new System.Drawing.Point(25, 70);
+            this.groupBox21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox21.Name = "groupBox21";
-            this.groupBox21.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox21.Size = new System.Drawing.Size(302, 93);
+            this.groupBox21.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox21.Size = new System.Drawing.Size(403, 107);
             this.groupBox21.TabIndex = 2;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "Degree project is for";
             // 
             // txtEthicsOtherDegree
             // 
-            this.txtEthicsOtherDegree.Location = new System.Drawing.Point(70, 54);
-            this.txtEthicsOtherDegree.Margin = new System.Windows.Forms.Padding(2);
+            this.txtEthicsOtherDegree.Location = new System.Drawing.Point(93, 62);
+            this.txtEthicsOtherDegree.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEthicsOtherDegree.Name = "txtEthicsOtherDegree";
-            this.txtEthicsOtherDegree.Size = new System.Drawing.Size(217, 20);
+            this.txtEthicsOtherDegree.Size = new System.Drawing.Size(288, 23);
             this.txtEthicsOtherDegree.TabIndex = 4;
             // 
             // radEthicsDegreePruposeNone
             // 
             this.radEthicsDegreePruposeNone.AutoSize = true;
-            this.radEthicsDegreePruposeNone.Location = new System.Drawing.Point(238, 24);
-            this.radEthicsDegreePruposeNone.Margin = new System.Windows.Forms.Padding(2);
+            this.radEthicsDegreePruposeNone.Location = new System.Drawing.Point(317, 28);
+            this.radEthicsDegreePruposeNone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radEthicsDegreePruposeNone.Name = "radEthicsDegreePruposeNone";
-            this.radEthicsDegreePruposeNone.Size = new System.Drawing.Size(55, 19);
+            this.radEthicsDegreePruposeNone.Size = new System.Drawing.Size(64, 20);
             this.radEthicsDegreePruposeNone.TabIndex = 3;
             this.radEthicsDegreePruposeNone.TabStop = true;
             this.radEthicsDegreePruposeNone.Text = "None";
@@ -2686,10 +2677,10 @@ namespace FEAManager
             // radEthicsDegreePruposeOther
             // 
             this.radEthicsDegreePruposeOther.AutoSize = true;
-            this.radEthicsDegreePruposeOther.Location = new System.Drawing.Point(16, 55);
-            this.radEthicsDegreePruposeOther.Margin = new System.Windows.Forms.Padding(2);
+            this.radEthicsDegreePruposeOther.Location = new System.Drawing.Point(21, 64);
+            this.radEthicsDegreePruposeOther.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radEthicsDegreePruposeOther.Name = "radEthicsDegreePruposeOther";
-            this.radEthicsDegreePruposeOther.Size = new System.Drawing.Size(55, 19);
+            this.radEthicsDegreePruposeOther.Size = new System.Drawing.Size(67, 20);
             this.radEthicsDegreePruposeOther.TabIndex = 2;
             this.radEthicsDegreePruposeOther.TabStop = true;
             this.radEthicsDegreePruposeOther.Text = "Other";
@@ -2698,10 +2689,10 @@ namespace FEAManager
             // radEthicsDegreePruposeMasters
             // 
             this.radEthicsDegreePruposeMasters.AutoSize = true;
-            this.radEthicsDegreePruposeMasters.Location = new System.Drawing.Point(125, 24);
-            this.radEthicsDegreePruposeMasters.Margin = new System.Windows.Forms.Padding(2);
+            this.radEthicsDegreePruposeMasters.Location = new System.Drawing.Point(167, 28);
+            this.radEthicsDegreePruposeMasters.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radEthicsDegreePruposeMasters.Name = "radEthicsDegreePruposeMasters";
-            this.radEthicsDegreePruposeMasters.Size = new System.Drawing.Size(69, 19);
+            this.radEthicsDegreePruposeMasters.Size = new System.Drawing.Size(84, 20);
             this.radEthicsDegreePruposeMasters.TabIndex = 1;
             this.radEthicsDegreePruposeMasters.TabStop = true;
             this.radEthicsDegreePruposeMasters.Text = "Masters";
@@ -2710,10 +2701,10 @@ namespace FEAManager
             // radEthicsDegreePruposeHonours
             // 
             this.radEthicsDegreePruposeHonours.AutoSize = true;
-            this.radEthicsDegreePruposeHonours.Location = new System.Drawing.Point(16, 24);
-            this.radEthicsDegreePruposeHonours.Margin = new System.Windows.Forms.Padding(2);
+            this.radEthicsDegreePruposeHonours.Location = new System.Drawing.Point(21, 28);
+            this.radEthicsDegreePruposeHonours.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radEthicsDegreePruposeHonours.Name = "radEthicsDegreePruposeHonours";
-            this.radEthicsDegreePruposeHonours.Size = new System.Drawing.Size(72, 19);
+            this.radEthicsDegreePruposeHonours.Size = new System.Drawing.Size(86, 20);
             this.radEthicsDegreePruposeHonours.TabIndex = 0;
             this.radEthicsDegreePruposeHonours.TabStop = true;
             this.radEthicsDegreePruposeHonours.Text = "Honours";
@@ -2721,29 +2712,27 @@ namespace FEAManager
             // 
             // txtEthicsProjectTitle
             // 
-            this.txtEthicsProjectTitle.Location = new System.Drawing.Point(142, 22);
-            this.txtEthicsProjectTitle.Margin = new System.Windows.Forms.Padding(2);
+            this.txtEthicsProjectTitle.Location = new System.Drawing.Point(189, 25);
+            this.txtEthicsProjectTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEthicsProjectTitle.Name = "txtEthicsProjectTitle";
-            this.txtEthicsProjectTitle.Size = new System.Drawing.Size(180, 20);
+            this.txtEthicsProjectTitle.Size = new System.Drawing.Size(239, 23);
             this.txtEthicsProjectTitle.TabIndex = 1;
             // 
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(16, 24);
-            this.label41.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label41.Location = new System.Drawing.Point(21, 28);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(137, 15);
+            this.label41.Size = new System.Drawing.Size(175, 16);
             this.label41.TabIndex = 0;
             this.label41.Text = "Title of research project:";
             // 
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(148, 8);
-            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label29.Location = new System.Drawing.Point(197, 9);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(118, 15);
+            this.label29.Size = new System.Drawing.Size(147, 16);
             this.label29.TabIndex = 2;
             this.label29.Text = "Ethics Specific Form";
             // 
@@ -2751,11 +2740,11 @@ namespace FEAManager
             // 
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Location = new System.Drawing.Point(30, 32);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Location = new System.Drawing.Point(40, 37);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(338, 792);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(451, 914);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Summary Of Risk Catergories";
@@ -2773,40 +2762,38 @@ namespace FEAManager
             this.groupBox4.Controls.Add(this.label23);
             this.groupBox4.Controls.Add(this.label22);
             this.groupBox4.Controls.Add(this.groupBox5);
-            this.groupBox4.Location = new System.Drawing.Point(26, 110);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox4.Location = new System.Drawing.Point(35, 127);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox4.Size = new System.Drawing.Size(285, 662);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox4.Size = new System.Drawing.Size(380, 764);
             this.groupBox4.TabIndex = 34;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Vulnerabilities";
             // 
             // rtbAddressPotentialRisks
             // 
-            this.rtbAddressPotentialRisks.Location = new System.Drawing.Point(16, 569);
-            this.rtbAddressPotentialRisks.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbAddressPotentialRisks.Location = new System.Drawing.Point(21, 656);
+            this.rtbAddressPotentialRisks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbAddressPotentialRisks.Name = "rtbAddressPotentialRisks";
-            this.rtbAddressPotentialRisks.Size = new System.Drawing.Size(248, 72);
+            this.rtbAddressPotentialRisks.Size = new System.Drawing.Size(329, 83);
             this.rtbAddressPotentialRisks.TabIndex = 44;
             this.rtbAddressPotentialRisks.Text = "";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(24, 550);
-            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label27.Location = new System.Drawing.Point(32, 635);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(262, 15);
+            this.label27.Size = new System.Drawing.Size(328, 16);
             this.label27.TabIndex = 43;
             this.label27.Text = "How will potential risks or harm be addressed?";
             // 
             // label26
             // 
-            this.label26.Location = new System.Drawing.Point(24, 516);
-            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label26.Location = new System.Drawing.Point(32, 595);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(40, 14);
+            this.label26.Size = new System.Drawing.Size(53, 16);
             this.label26.TabIndex = 0;
             this.label26.Text = "If Yes:";
             // 
@@ -2814,11 +2801,11 @@ namespace FEAManager
             // 
             this.groupBox6.Controls.Add(this.radRiskExposureNo);
             this.groupBox6.Controls.Add(this.radRiskExposureYes);
-            this.groupBox6.Location = new System.Drawing.Point(16, 394);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox6.Location = new System.Drawing.Point(21, 455);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox6.Size = new System.Drawing.Size(248, 102);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox6.Size = new System.Drawing.Size(331, 118);
             this.groupBox6.TabIndex = 41;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Does this research expose either the participant(s) or the researcher(s) to any p" +
@@ -2827,10 +2814,10 @@ namespace FEAManager
             // radRiskExposureNo
             // 
             this.radRiskExposureNo.AutoSize = true;
-            this.radRiskExposureNo.Location = new System.Drawing.Point(172, 69);
-            this.radRiskExposureNo.Margin = new System.Windows.Forms.Padding(2);
+            this.radRiskExposureNo.Location = new System.Drawing.Point(229, 80);
+            this.radRiskExposureNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radRiskExposureNo.Name = "radRiskExposureNo";
-            this.radRiskExposureNo.Size = new System.Drawing.Size(41, 19);
+            this.radRiskExposureNo.Size = new System.Drawing.Size(48, 20);
             this.radRiskExposureNo.TabIndex = 32;
             this.radRiskExposureNo.TabStop = true;
             this.radRiskExposureNo.Text = "No";
@@ -2840,10 +2827,10 @@ namespace FEAManager
             // radRiskExposureYes
             // 
             this.radRiskExposureYes.AutoSize = true;
-            this.radRiskExposureYes.Location = new System.Drawing.Point(38, 69);
-            this.radRiskExposureYes.Margin = new System.Windows.Forms.Padding(2);
+            this.radRiskExposureYes.Location = new System.Drawing.Point(51, 80);
+            this.radRiskExposureYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radRiskExposureYes.Name = "radRiskExposureYes";
-            this.radRiskExposureYes.Size = new System.Drawing.Size(45, 19);
+            this.radRiskExposureYes.Size = new System.Drawing.Size(54, 20);
             this.radRiskExposureYes.TabIndex = 31;
             this.radRiskExposureYes.TabStop = true;
             this.radRiskExposureYes.Text = "Yes";
@@ -2852,58 +2839,54 @@ namespace FEAManager
             // 
             // rtbAddressingVulnerabilities
             // 
-            this.rtbAddressingVulnerabilities.Location = new System.Drawing.Point(16, 302);
-            this.rtbAddressingVulnerabilities.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbAddressingVulnerabilities.Location = new System.Drawing.Point(21, 349);
+            this.rtbAddressingVulnerabilities.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbAddressingVulnerabilities.Name = "rtbAddressingVulnerabilities";
-            this.rtbAddressingVulnerabilities.Size = new System.Drawing.Size(248, 72);
+            this.rtbAddressingVulnerabilities.Size = new System.Drawing.Size(329, 83);
             this.rtbAddressingVulnerabilities.TabIndex = 40;
             this.rtbAddressingVulnerabilities.Text = "";
             // 
             // label25
             // 
-            this.label25.Location = new System.Drawing.Point(16, 272);
-            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label25.Location = new System.Drawing.Point(21, 314);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(248, 28);
+            this.label25.Size = new System.Drawing.Size(331, 32);
             this.label25.TabIndex = 0;
             this.label25.Text = "How will existing vulnerabilities  among participants be addressed:";
             this.label25.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // trbVulnerableCategories
             // 
-            this.trbVulnerableCategories.Location = new System.Drawing.Point(19, 180);
-            this.trbVulnerableCategories.Margin = new System.Windows.Forms.Padding(2);
+            this.trbVulnerableCategories.Location = new System.Drawing.Point(25, 208);
+            this.trbVulnerableCategories.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.trbVulnerableCategories.Name = "trbVulnerableCategories";
-            this.trbVulnerableCategories.Size = new System.Drawing.Size(248, 72);
+            this.trbVulnerableCategories.Size = new System.Drawing.Size(329, 83);
             this.trbVulnerableCategories.TabIndex = 38;
             this.trbVulnerableCategories.Text = "";
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(16, 164);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Location = new System.Drawing.Point(21, 189);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(281, 15);
+            this.label24.Size = new System.Drawing.Size(351, 16);
             this.label24.TabIndex = 0;
             this.label24.Text = "State which vulnerable categories will be included:";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label23
             // 
-            this.label23.Location = new System.Drawing.Point(16, 130);
-            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label23.Location = new System.Drawing.Point(21, 150);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(40, 14);
+            this.label23.Size = new System.Drawing.Size(53, 16);
             this.label23.TabIndex = 0;
             this.label23.Text = "If Yes:";
             // 
             // label22
             // 
-            this.label22.Location = new System.Drawing.Point(250, 9);
-            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Location = new System.Drawing.Point(333, 10);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(31, 17);
+            this.label22.Size = new System.Drawing.Size(41, 20);
             this.label22.TabIndex = 34;
             this.label22.Text = resources.GetString("label22.Text");
             // 
@@ -2911,11 +2894,11 @@ namespace FEAManager
             // 
             this.groupBox5.Controls.Add(this.radVulnerableNo);
             this.groupBox5.Controls.Add(this.radVulnerableYes);
-            this.groupBox5.Location = new System.Drawing.Point(19, 28);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox5.Location = new System.Drawing.Point(25, 32);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox5.Size = new System.Drawing.Size(248, 81);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox5.Size = new System.Drawing.Size(331, 94);
             this.groupBox5.TabIndex = 34;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Will human participant research involve vulnerable categories?";
@@ -2923,10 +2906,10 @@ namespace FEAManager
             // radVulnerableNo
             // 
             this.radVulnerableNo.AutoSize = true;
-            this.radVulnerableNo.Location = new System.Drawing.Point(172, 41);
-            this.radVulnerableNo.Margin = new System.Windows.Forms.Padding(2);
+            this.radVulnerableNo.Location = new System.Drawing.Point(229, 47);
+            this.radVulnerableNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radVulnerableNo.Name = "radVulnerableNo";
-            this.radVulnerableNo.Size = new System.Drawing.Size(41, 19);
+            this.radVulnerableNo.Size = new System.Drawing.Size(48, 20);
             this.radVulnerableNo.TabIndex = 32;
             this.radVulnerableNo.TabStop = true;
             this.radVulnerableNo.Text = "No";
@@ -2936,10 +2919,10 @@ namespace FEAManager
             // radVulnerableYes
             // 
             this.radVulnerableYes.AutoSize = true;
-            this.radVulnerableYes.Location = new System.Drawing.Point(38, 41);
-            this.radVulnerableYes.Margin = new System.Windows.Forms.Padding(2);
+            this.radVulnerableYes.Location = new System.Drawing.Point(51, 47);
+            this.radVulnerableYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radVulnerableYes.Name = "radVulnerableYes";
-            this.radVulnerableYes.Size = new System.Drawing.Size(45, 19);
+            this.radVulnerableYes.Size = new System.Drawing.Size(54, 20);
             this.radVulnerableYes.TabIndex = 31;
             this.radVulnerableYes.TabStop = true;
             this.radVulnerableYes.Text = "Yes";
@@ -2950,11 +2933,11 @@ namespace FEAManager
             // 
             this.groupBox3.Controls.Add(this.radExpertsNo);
             this.groupBox3.Controls.Add(this.radExpertsYes);
-            this.groupBox3.Location = new System.Drawing.Point(26, 28);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox3.Location = new System.Drawing.Point(35, 32);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Size = new System.Drawing.Size(285, 61);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Size = new System.Drawing.Size(380, 70);
             this.groupBox3.TabIndex = 33;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Are all of the participants selected as experts?";
@@ -2962,10 +2945,10 @@ namespace FEAManager
             // radExpertsNo
             // 
             this.radExpertsNo.AutoSize = true;
-            this.radExpertsNo.Location = new System.Drawing.Point(191, 24);
-            this.radExpertsNo.Margin = new System.Windows.Forms.Padding(2);
+            this.radExpertsNo.Location = new System.Drawing.Point(255, 28);
+            this.radExpertsNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radExpertsNo.Name = "radExpertsNo";
-            this.radExpertsNo.Size = new System.Drawing.Size(41, 19);
+            this.radExpertsNo.Size = new System.Drawing.Size(48, 20);
             this.radExpertsNo.TabIndex = 32;
             this.radExpertsNo.TabStop = true;
             this.radExpertsNo.Text = "No";
@@ -2975,10 +2958,10 @@ namespace FEAManager
             // radExpertsYes
             // 
             this.radExpertsYes.AutoSize = true;
-            this.radExpertsYes.Location = new System.Drawing.Point(38, 24);
-            this.radExpertsYes.Margin = new System.Windows.Forms.Padding(2);
+            this.radExpertsYes.Location = new System.Drawing.Point(51, 28);
+            this.radExpertsYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radExpertsYes.Name = "radExpertsYes";
-            this.radExpertsYes.Size = new System.Drawing.Size(45, 19);
+            this.radExpertsYes.Size = new System.Drawing.Size(54, 20);
             this.radExpertsYes.TabIndex = 31;
             this.radExpertsYes.TabStop = true;
             this.radExpertsYes.Text = "Yes";
@@ -2988,65 +2971,96 @@ namespace FEAManager
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(155, 197);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Location = new System.Drawing.Point(207, 227);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(118, 15);
+            this.label15.Size = new System.Drawing.Size(147, 16);
             this.label15.TabIndex = 0;
             this.label15.Text = "Ethics Specific Form";
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.btnReset);
             this.panel3.Controls.Add(this.btnUpdate);
             this.panel3.Controls.Add(this.btnBack);
-            this.panel3.Location = new System.Drawing.Point(75, 366);
+            this.panel3.Location = new System.Drawing.Point(100, 450);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(675, 77);
-            this.panel3.TabIndex = 28;
+            this.panel3.Size = new System.Drawing.Size(900, 89);
+            this.panel3.TabIndex = 16;
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(529, 18);
+            this.btnReset.BackColor = System.Drawing.Color.White;
+            this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnReset.FlatAppearance.BorderSize = 3;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Image = ((System.Drawing.Image)(resources.GetObject("btnReset.Image")));
+            this.btnReset.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnReset.Location = new System.Drawing.Point(705, 21);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(112, 41);
-            this.btnReset.TabIndex = 23;
+            this.btnReset.Size = new System.Drawing.Size(149, 47);
+            this.btnReset.TabIndex = 30;
             this.btnReset.Text = "&Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(281, 18);
+            this.btnUpdate.BackColor = System.Drawing.Color.White;
+            this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnUpdate.FlatAppearance.BorderSize = 3;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
+            this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUpdate.Location = new System.Drawing.Point(375, 21);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(112, 41);
-            this.btnUpdate.TabIndex = 22;
+            this.btnUpdate.Size = new System.Drawing.Size(149, 47);
+            this.btnUpdate.TabIndex = 28;
             this.btnUpdate.Text = "&Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(34, 18);
+            this.btnBack.BackColor = System.Drawing.Color.White;
+            this.btnBack.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnBack.FlatAppearance.BorderSize = 3;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Image = ((System.Drawing.Image)(resources.GetObject("btnBack.Image")));
+            this.btnBack.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBack.Location = new System.Drawing.Point(45, 21);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(112, 41);
-            this.btnBack.TabIndex = 20;
+            this.btnBack.Size = new System.Drawing.Size(149, 47);
+            this.btnBack.TabIndex = 27;
             this.btnBack.Text = "&Back";
-            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // StudentMainMenuForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 449);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1082, 553);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.tbcStudentMenu);
+            this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StudentMainMenuForm";
             this.Text = "Student Main Menu";
             this.tbcStudentMenu.ResumeLayout(false);
             this.tbpStudentDetails.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pnlCurrentApplication.ResumeLayout(false);
+            this.pnlCurrentApplication.PerformLayout();
             this.gpbRiskCategory.ResumeLayout(false);
             this.gpbRiskCategory.PerformLayout();
             this.gpbStatus.ResumeLayout(false);
@@ -3055,8 +3069,8 @@ namespace FEAManager
             this.panel4.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
+            this.grpTitle.ResumeLayout(false);
+            this.grpTitle.PerformLayout();
             this.tbpCreateApplication.ResumeLayout(false);
             this.pnlRiskCategoryTable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -3154,7 +3168,7 @@ namespace FEAManager
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlCurrentApplication;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.MaskedTextBox mtxtTelephone;
         private System.Windows.Forms.TextBox txtLName;
@@ -3168,7 +3182,7 @@ namespace FEAManager
         private System.Windows.Forms.MaskedTextBox mtxtPassword;
         private System.Windows.Forms.ComboBox cmbStudyProgram;
         private System.Windows.Forms.MaskedTextBox mtxtEmail;
-        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.TextBox txtStudentNumber;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox gpbRiskCategory;
         private System.Windows.Forms.RadioButton redHighRisk;
@@ -3195,8 +3209,7 @@ namespace FEAManager
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnFullScreen;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox grpTitle;
         private System.Windows.Forms.RadioButton radMr;
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.RadioButton radMs;

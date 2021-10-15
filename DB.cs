@@ -60,6 +60,8 @@ namespace FEAManager
                 resultSet.Add(tempDictionary);
             }
 
+            con.Close();
+
             return resultSet;
         }
         /**
