@@ -65,6 +65,11 @@ namespace FEAManager
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.fEAManager_DBDataSet = new FEAManager.FEAManager_DBDataSet();
+            this.adminBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.adminTableAdapter = new FEAManager.FEAManager_DBDataSetTableAdapters.AdminTableAdapter();
+            this.reviewerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reviewerTableAdapter = new FEAManager.FEAManager_DBDataSetTableAdapters.ReviewerTableAdapter();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -72,6 +77,9 @@ namespace FEAManager
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.npiReviewers)).BeginInit();
             this.npiReviewers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fEAManager_DBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adminBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reviewerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -95,7 +103,7 @@ namespace FEAManager
             this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnUpdate.FlatAppearance.BorderSize = 3;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
             this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUpdate.Location = new System.Drawing.Point(450, 22);
@@ -112,7 +120,7 @@ namespace FEAManager
             this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnDelete.FlatAppearance.BorderSize = 3;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDelete.Location = new System.Drawing.Point(650, 22);
@@ -129,7 +137,7 @@ namespace FEAManager
             this.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnClear.FlatAppearance.BorderSize = 3;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
             this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClear.Location = new System.Drawing.Point(850, 22);
@@ -146,7 +154,7 @@ namespace FEAManager
             this.btnCreate.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnCreate.FlatAppearance.BorderSize = 3;
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreate.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreate.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreate.Image = ((System.Drawing.Image)(resources.GetObject("btnCreate.Image")));
             this.btnCreate.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCreate.Location = new System.Drawing.Point(250, 22);
@@ -163,7 +171,7 @@ namespace FEAManager
             this.btnReturn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnReturn.FlatAppearance.BorderSize = 3;
             this.btnReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReturn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReturn.Image = ((System.Drawing.Image)(resources.GetObject("btnReturn.Image")));
             this.btnReturn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnReturn.Location = new System.Drawing.Point(50, 22);
@@ -178,16 +186,18 @@ namespace FEAManager
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Enabled = false;
             this.dataGridView1.Location = new System.Drawing.Point(15, 15);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 43;
             this.dataGridView1.Size = new System.Drawing.Size(1051, 235);
             this.dataGridView1.TabIndex = 28;
+            this.dataGridView1.CurrentCellChanged += new System.EventHandler(this.dataGridView1_CurrentCellChanged);
             // 
             // txtFName
             // 
+            this.txtFName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.txtFName.Location = new System.Drawing.Point(17, 38);
             this.txtFName.Margin = new System.Windows.Forms.Padding(4);
             this.txtFName.Name = "txtFName";
@@ -196,6 +206,7 @@ namespace FEAManager
             // 
             // txtLName
             // 
+            this.txtLName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.txtLName.Location = new System.Drawing.Point(169, 38);
             this.txtLName.Margin = new System.Windows.Forms.Padding(4);
             this.txtLName.Name = "txtLName";
@@ -204,6 +215,7 @@ namespace FEAManager
             // 
             // txtReviewerNumber
             // 
+            this.txtReviewerNumber.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.txtReviewerNumber.Location = new System.Drawing.Point(19, 39);
             this.txtReviewerNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtReviewerNumber.Name = "txtReviewerNumber";
@@ -213,9 +225,9 @@ namespace FEAManager
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(42, 17);
+            this.label1.Location = new System.Drawing.Point(36, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 16);
+            this.label1.Size = new System.Drawing.Size(94, 18);
             this.label1.TabIndex = 37;
             this.label1.Text = "First Name";
             // 
@@ -229,7 +241,7 @@ namespace FEAManager
             this.panel1.Controls.Add(this.txtLName);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtFName);
-            this.panel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8F);
+            this.panel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
             this.panel1.Location = new System.Drawing.Point(15, 359);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
@@ -238,6 +250,7 @@ namespace FEAManager
             // 
             // dtpDOB
             // 
+            this.dtpDOB.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.dtpDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDOB.Location = new System.Drawing.Point(321, 39);
             this.dtpDOB.Margin = new System.Windows.Forms.Padding(4);
@@ -248,27 +261,27 @@ namespace FEAManager
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(339, 17);
+            this.label3.Location = new System.Drawing.Point(332, 17);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 16);
+            this.label3.Size = new System.Drawing.Size(111, 18);
             this.label3.TabIndex = 39;
             this.label3.Text = "Date Of Birth";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(195, 17);
+            this.label2.Location = new System.Drawing.Point(189, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 16);
+            this.label2.Size = new System.Drawing.Size(93, 18);
             this.label2.TabIndex = 38;
             this.label2.Text = "Last Name";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 18);
+            this.label4.Location = new System.Drawing.Point(10, 18);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(129, 16);
+            this.label4.Size = new System.Drawing.Size(150, 18);
             this.label4.TabIndex = 40;
             this.label4.Text = "Reviewer Number";
             // 
@@ -278,7 +291,7 @@ namespace FEAManager
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.txtReviewerNumber);
-            this.panel4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8F);
+            this.panel4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
             this.panel4.Location = new System.Drawing.Point(459, 265);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
@@ -295,7 +308,7 @@ namespace FEAManager
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8F);
+            this.panel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
             this.panel2.Location = new System.Drawing.Point(595, 363);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
@@ -304,6 +317,7 @@ namespace FEAManager
             // 
             // cbbQulificationLevel
             // 
+            this.cbbQulificationLevel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.cbbQulificationLevel.FormattingEnabled = true;
             this.cbbQulificationLevel.Items.AddRange(new object[] {
             "Honours",
@@ -317,6 +331,7 @@ namespace FEAManager
             // 
             // mtxtEmail
             // 
+            this.mtxtEmail.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.mtxtEmail.Location = new System.Drawing.Point(169, 38);
             this.mtxtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.mtxtEmail.Name = "mtxtEmail";
@@ -325,6 +340,7 @@ namespace FEAManager
             // 
             // mtxtTelephone
             // 
+            this.mtxtTelephone.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.mtxtTelephone.Location = new System.Drawing.Point(17, 38);
             this.mtxtTelephone.Margin = new System.Windows.Forms.Padding(4);
             this.mtxtTelephone.Name = "mtxtTelephone";
@@ -334,27 +350,27 @@ namespace FEAManager
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(182, 17);
+            this.label5.Location = new System.Drawing.Point(174, 17);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(107, 16);
+            this.label5.Size = new System.Drawing.Size(122, 18);
             this.label5.TabIndex = 39;
             this.label5.Text = "Email Address";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(325, 17);
+            this.label6.Location = new System.Drawing.Point(315, 17);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(125, 16);
+            this.label6.Size = new System.Drawing.Size(145, 18);
             this.label6.TabIndex = 38;
             this.label6.Text = "Qulification Level";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(17, 17);
+            this.label7.Location = new System.Drawing.Point(6, 17);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(133, 16);
+            this.label7.Size = new System.Drawing.Size(155, 18);
             this.label7.TabIndex = 37;
             this.label7.Text = "Cellphone Number";
             // 
@@ -382,14 +398,14 @@ namespace FEAManager
             this.npiReviewers.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.npiReviewers.Name = "npiReviewers";
             this.npiReviewers.PositionItem = this.number;
-            this.npiReviewers.Size = new System.Drawing.Size(259, 31);
+            this.npiReviewers.Size = new System.Drawing.Size(224, 27);
             this.npiReviewers.TabIndex = 0;
             this.npiReviewers.Text = "bindingNavigator1";
             // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 28);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 24);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
@@ -399,7 +415,7 @@ namespace FEAManager
             this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(29, 28);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 24);
             this.bindingNavigatorMoveFirstItem.Text = "Move first";
             this.bindingNavigatorMoveFirstItem.Click += new System.EventHandler(this.bindingNavigatorMoveFirstItem_Click);
             // 
@@ -409,29 +425,29 @@ namespace FEAManager
             this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(29, 28);
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 24);
             this.bindingNavigatorMovePreviousItem.Text = "Move previous";
             this.bindingNavigatorMovePreviousItem.Click += new System.EventHandler(this.bindingNavigatorMovePreviousItem_Click);
             // 
             // bindingNavigatorSeparator
             // 
             this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 31);
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 27);
             // 
             // number
             // 
             this.number.AccessibleName = "Position";
             this.number.AutoSize = false;
-            this.number.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.number.Name = "number";
             this.number.Size = new System.Drawing.Size(65, 27);
             this.number.Text = "0";
             this.number.ToolTipText = "Current position";
+            this.number.TextChanged += new System.EventHandler(this.number_TextChanged);
             // 
             // bindingNavigatorSeparator1
             // 
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // bindingNavigatorMoveNextItem
             // 
@@ -439,7 +455,7 @@ namespace FEAManager
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(29, 28);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 24);
             this.bindingNavigatorMoveNextItem.Text = "Move next";
             this.bindingNavigatorMoveNextItem.Click += new System.EventHandler(this.bindingNavigatorMoveNextItem_Click);
             // 
@@ -449,19 +465,40 @@ namespace FEAManager
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(29, 28);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 24);
             this.bindingNavigatorMoveLastItem.Text = "Move last";
             this.bindingNavigatorMoveLastItem.Click += new System.EventHandler(this.bindingNavigatorMoveLastItem_Click);
             // 
             // bindingNavigatorSeparator2
             // 
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 27);
+            // 
+            // fEAManager_DBDataSet
+            // 
+            this.fEAManager_DBDataSet.DataSetName = "FEAManager_DBDataSet";
+            this.fEAManager_DBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // adminBindingSource
+            // 
+            this.adminBindingSource.DataMember = "Admin";
+            this.adminBindingSource.DataSource = this.fEAManager_DBDataSet;
+            // 
+            // adminTableAdapter
+            // 
+            this.adminTableAdapter.ClearBeforeFill = true;
+            // 
+            // reviewerBindingSource
+            // 
+            this.reviewerBindingSource.DataMember = "Reviewer";
+            this.reviewerBindingSource.DataSource = this.fEAManager_DBDataSet;
+            // 
+            // reviewerTableAdapter
+            // 
+            this.reviewerTableAdapter.ClearBeforeFill = true;
             // 
             // ManageRevierwerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -489,6 +526,9 @@ namespace FEAManager
             ((System.ComponentModel.ISupportInitialize)(this.npiReviewers)).EndInit();
             this.npiReviewers.ResumeLayout(false);
             this.npiReviewers.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fEAManager_DBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adminBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reviewerBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -530,5 +570,10 @@ namespace FEAManager
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.ComboBox cbbQulificationLevel;
+        private FEAManager_DBDataSet fEAManager_DBDataSet;
+        private System.Windows.Forms.BindingSource adminBindingSource;
+        private FEAManager_DBDataSetTableAdapters.AdminTableAdapter adminTableAdapter;
+        private System.Windows.Forms.BindingSource reviewerBindingSource;
+        private FEAManager_DBDataSetTableAdapters.ReviewerTableAdapter reviewerTableAdapter;
     }
 }

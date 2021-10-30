@@ -30,7 +30,7 @@ namespace FEAManager
             command = formCommand(sqlSelect, dictAttributes);
 
             con.Open();
-            MessageBox.Show(command.CommandText);
+            //MessageBox.Show(command.CommandText);
             reader = command.ExecuteReader();
             
             // read result
@@ -84,7 +84,7 @@ namespace FEAManager
             command = formCommand(sqlSelect, dictAttributes);
 
             con.Open();
-            MessageBox.Show(command.CommandText);
+            //MessageBox.Show(command.CommandText);
             reader = command.ExecuteReader();
 
             // read result
@@ -126,7 +126,7 @@ namespace FEAManager
         /**
          * Inserts a record into the prescribed database
          */
-        public void insertQuery(string strTable, string strParams, Dictionary<string, string> dictAttributes)
+        public int insertQuery(string strTable, string strParams, Dictionary<string, string> dictAttributes)
         {
             int affectedRows;
             string sqlIinsert;
@@ -136,23 +136,26 @@ namespace FEAManager
 
             affectedRows = executeSQL(sqlIinsert, dictAttributes);
 
-            MessageBox.Show("INSERT COMPLETE! Affected rows: " + affectedRows);
+            //MessageBox.Show("INSERT COMPLETE! Affected rows: " + affectedRows);
+            return affectedRows;
         }
 
 
-        public void updateQuery(string strTable, string strParams, string strConditional, Dictionary<string, string> dictAttributes)
+        public int updateQuery(string strTable, string strParams, string strConditional, Dictionary<string, string> dictAttributes)
         {
             int affectedRows;
             string sqlUpdate;
 
-            sqlUpdate = "UPDATE " + strTable + " SET " + strParams + " " + strConditional;
+            //sqlUpdate = "UPDATE " + strTable + " SET " + strParams + " " + strConditional;
+            sqlUpdate = "update Reviewer set [FNAME] = 'Fish' where [REVIEWER_NUM] =  'REV8989865008'";
 
             affectedRows = executeSQL(sqlUpdate, dictAttributes);
 
-            MessageBox.Show("UPDATE COMPLETE! Affected rows: " + affectedRows);
+            //MessageBox.Show("UPDATE COMPLETE! Affected rows: " + affectedRows);
+            return affectedRows;
         }
 
-        public void deleteQuery(string strTable, string strConditional, Dictionary<string, string> dictAttributes)
+        public int deleteQuery(string strTable, string strConditional, Dictionary<string, string> dictAttributes)
         {
             int affectedRows;
             string sqlUpdate;
@@ -161,7 +164,8 @@ namespace FEAManager
 
             affectedRows = executeSQL(sqlUpdate, dictAttributes);
 
-            MessageBox.Show("DELETE COMPLETE! Affected rows: " + affectedRows);
+            //MessageBox.Show("DELETE COMPLETE! Affected rows: " + affectedRows);
+            return affectedRows;
         }
 
         /**

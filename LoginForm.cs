@@ -17,29 +17,18 @@ namespace FEAManager
             InitializeComponent();
         }
 
-        private bool ValidateInformation(TextBox txtUsername, MaskedTextBox mtxtPassword, GroupBox groupBox)
+        private bool ValidateInformation()
         {
             bool valid = true;
             valid = CommonMethods.validateTextBox(txtUsername, "username") && valid;
-
-            //Determing correct length
-            int length = -1;
-            foreach (RadioButton radio in groupBox.Controls)
-            {length = (radio.Text.Equals("&Admin") && radio.Checked) ? 15 : (radio.Text.Equals("&Student") && radio.Checked) ? 13 : length;}
-            valid = CommonMethods.validateTextBox(txtUsername, "username", length) && valid;
             valid = CommonMethods.validateTextBox(mtxtPassword, "password") && valid;
-            valid = CommonMethods.validateRadioButtonsInGroup(groupBox, "user type") && valid;
+            valid = CommonMethods.validateRadioButtonsInGroup(grpUserType, "user type") && valid;
             return valid;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            // Validate input
-
-            bool validInformation = ValidateInformation(txtUsername, mtxtPassword, grpUserType);
-
-            // if valid, check DB of respective user type
-
+            bool validInformation = ValidateInformation();
             if (validInformation)
             {
                 string table, conditional;
@@ -60,35 +49,19 @@ namespace FEAManager
                         ["@adminNum"] = username,
                         ["@passwd"] = passwd
                     };
+                    resultSet = dbLogin.selectQuery(table, 1, conditional, dictAttributes);
 
-                    resultSet = dbLogin.selectQuery(table, 5, conditional, dictAttributes);
-
-                    string output = "";
-
-                    // load respective form if correct info is given
-
-                    if (resultSet.Count > 0)
+                    if (resultSet.Count != 0)
                     {
-                        resultRow = resultSet[0];
-                        foreach (var kv in resultRow)
-                        {
-                            output += kv.Key + " : " + kv.Value + "\n";
-                        }
-                        MessageBox.Show(output);
-
+                        CommonMethods.myConfirmationMessageBox("Admin Login Successful");
                         AdminMainMenuForm.loadForm(this);
                     }
                     else
                     {
-                        MessageBox.Show(" DOES NOT EXIST");
-                        MessageBox.Show("Heading", "Caption", MessageBoxButtons.YesNo, MessageBoxIcon.None);
+                        MessageBox.Show("Either the password or username was incorrect.", "Login Faliure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
-
                 }
-
-                // studentLogin
-                if (radStudent.Checked)
+                else if (radStudent.Checked)
                 {
                     table = "Student";
                     conditional = "WHERE [STU_NUM] = @studentNum AND [PASSWORD] = @passwd";
@@ -98,26 +71,16 @@ namespace FEAManager
                         ["@passwd"] = passwd
                     };
 
-                    resultSet = dbLogin.selectQuery(table, 6, conditional, dictAttributes);
+                    resultSet = dbLogin.selectQuery(table, 1, conditional, dictAttributes);
 
-                    string output = "";
-
-                    // load respective form if correct info is given
-
-                    if (resultSet.Count > 0)
+                    if (resultSet.Count != 0)
                     {
-                        resultRow = resultSet[0];
-                        foreach (var kv in resultRow)
-                        {
-                            output += kv.Key + " : " + kv.Value + "\n";
-                        }
-                        MessageBox.Show(output);
-
+                        CommonMethods.myConfirmationMessageBox("Student  Login Successful");
                         StudentMainMenuForm.loadForm(this, username);
                     }
                     else
                     {
-                        MessageBox.Show(" DOES NOT EXIST");
+                        MessageBox.Show("Either the password or username was incorrect.", "Login Faliure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -125,34 +88,25 @@ namespace FEAManager
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            // validate
-
-            // laod form
             RegisterStudentForm.loadForm(this);
         }
 
         public static void loadForm (Form previousForm)
         {
             LoginForm frmLogin = new LoginForm();
-            frmLogin.clearForm();
             previousForm.Visible = false;
             frmLogin.ShowDialog(previousForm);
             previousForm.Visible = true;
-           
+        }
+
+        public void preliminaryActions()
+        {
+            clearForm();
         }
 
         private void clearForm()
         {
-            radAdmin.Checked = false;
-            radStudent.Checked = false;
-            txtUsername.Text = "";
-            mtxtPassword.Text = "";
-            mtxtPassword.PasswordChar = '*';
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
+            CommonMethods.clearForm(this);
         }
 
         private void btnShowPassword_Click(object sender, EventArgs e)

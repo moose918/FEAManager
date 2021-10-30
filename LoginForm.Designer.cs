@@ -110,10 +110,10 @@ namespace FEAManager
             // 
             this.btnShowPassword.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowPassword.BackgroundImage")));
             this.btnShowPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnShowPassword.Location = new System.Drawing.Point(357, 101);
+            this.btnShowPassword.Location = new System.Drawing.Point(357, 102);
             this.btnShowPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnShowPassword.Name = "btnShowPassword";
-            this.btnShowPassword.Size = new System.Drawing.Size(32, 32);
+            this.btnShowPassword.Size = new System.Drawing.Size(26, 26);
             this.btnShowPassword.TabIndex = 4;
             this.btnShowPassword.UseVisualStyleBackColor = true;
             this.btnShowPassword.Click += new System.EventHandler(this.btnShowPassword_Click);
@@ -127,6 +127,7 @@ namespace FEAManager
             this.mtxtPassword.PasswordChar = '*';
             this.mtxtPassword.Size = new System.Drawing.Size(210, 27);
             this.mtxtPassword.TabIndex = 3;
+            this.mtxtPassword.Text = "]wVF8gL&R:eRmZE,";
             // 
             // label3
             // 
@@ -158,6 +159,7 @@ namespace FEAManager
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(210, 27);
             this.txtUsername.TabIndex = 2;
+            this.txtUsername.Text = "ADMIN6158455417";
             // 
             // panel3
             // 
@@ -178,7 +180,7 @@ namespace FEAManager
             this.btnRegister.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnRegister.FlatAppearance.BorderSize = 3;
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegister.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegister.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegister.Image = ((System.Drawing.Image)(resources.GetObject("btnRegister.Image")));
             this.btnRegister.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRegister.Location = new System.Drawing.Point(213, 22);
@@ -197,7 +199,7 @@ namespace FEAManager
             this.btnLogin.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnLogin.FlatAppearance.BorderSize = 3;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.Image")));
             this.btnLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLogin.Location = new System.Drawing.Point(27, 22);
@@ -236,6 +238,7 @@ namespace FEAManager
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.grpUserType.ResumeLayout(false);
             this.grpUserType.PerformLayout();

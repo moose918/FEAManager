@@ -30,7 +30,7 @@ namespace FEAManager
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterStudentForm));
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblHeading = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtpDOB = new System.Windows.Forms.DateTimePicker();
             this.mtxtTelephone = new System.Windows.Forms.MaskedTextBox();
@@ -64,17 +64,17 @@ namespace FEAManager
             this.grpTitle.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label9
+            // lblHeading
             // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Arial Rounded MT Bold", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(85, 20);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(930, 58);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "Please enter your registration details";
+            this.lblHeading.AutoSize = true;
+            this.lblHeading.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.lblHeading.Font = new System.Drawing.Font("Arial Rounded MT Bold", 30F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeading.Location = new System.Drawing.Point(85, 20);
+            this.lblHeading.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHeading.Name = "lblHeading";
+            this.lblHeading.Size = new System.Drawing.Size(930, 58);
+            this.lblHeading.TabIndex = 19;
+            this.lblHeading.Text = "Please enter your registration details";
             // 
             // panel1
             // 
@@ -106,9 +106,11 @@ namespace FEAManager
             // 
             this.mtxtTelephone.Location = new System.Drawing.Point(205, 223);
             this.mtxtTelephone.Margin = new System.Windows.Forms.Padding(4);
+            this.mtxtTelephone.Mask = "(999) 000-0000";
             this.mtxtTelephone.Name = "mtxtTelephone";
             this.mtxtTelephone.Size = new System.Drawing.Size(249, 27);
             this.mtxtTelephone.TabIndex = 3;
+            this.mtxtTelephone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // txtLName
             // 
@@ -229,7 +231,6 @@ namespace FEAManager
             this.cmbStudyProgram.Name = "cmbStudyProgram";
             this.cmbStudyProgram.Size = new System.Drawing.Size(249, 28);
             this.cmbStudyProgram.TabIndex = 8;
-            this.cmbStudyProgram.SelectedIndexChanged += new System.EventHandler(this.cmbStudyProgram_SelectedIndexChanged);
             // 
             // mtxtEmail
             // 
@@ -389,8 +390,6 @@ namespace FEAManager
             // 
             // RegisterStudentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -399,11 +398,12 @@ namespace FEAManager
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lblHeading);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RegisterStudentForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registration";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -418,7 +418,7 @@ namespace FEAManager
         }
 
         #endregion
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblHeading;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DateTimePicker dtpDOB;
         private System.Windows.Forms.MaskedTextBox mtxtTelephone;

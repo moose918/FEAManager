@@ -13,6 +13,16 @@ namespace FEAManager
     public partial class StudentMainMenuForm : Form
     {
         private String strStudentNumber = "";
+        private string strFName = "";
+        private string strLName = "";
+        private string strEmail = "";
+        private string strPassword = "";
+        private string strDOB = "";
+        private string strTelephone = "";
+        private string strStudyProgram = "";
+        private string strTitle = "";
+
+        List<List<string>> changes = new List<List<string>>();
 
         public StudentMainMenuForm()
         {
@@ -45,10 +55,10 @@ namespace FEAManager
                 valid = CommonMethods.validateRadioButtonsInGroup(gpbApplicationType, "application type") && valid;
                 valid = CommonMethods.validateRadioButtonsInGroup(gpbCollectingData, "last name") && valid;
                 valid = CommonMethods.validateRadioButtonsInGroup(gpbStudyProgram, "telephone") && valid;
-                valid = CommonMethods.validateTextBox(txtSupervisorFirstName, "supervisor\'s first name") && valid;
-                valid = CommonMethods.validateTextBox(txtSupervisorFirstName, "supervisor\'s last name") && valid;
-                valid = CommonMethods.validateTextBox(mtxtSupervisorEmail, "supervisor\'s email") && valid;
-                valid = CommonMethods.validateTextBox(mtxtSupervisorCellphone, "supervisor\'s cellphone") && valid;
+                valid = CommonMethods.validateTextBox(cmbSupervisorFirstName, "supervisor\'s first name") && valid;
+                valid = CommonMethods.validateTextBox(cmbSupervisorFirstName, "supervisor\'s last name") && valid;
+                valid = CommonMethods.validateTextBox(cmbSupervisorEmail, "supervisor\'s email") && valid;
+                valid = CommonMethods.validateTextBox(cmbSupervisorCellphone, "supervisor\'s cellphone") && valid;
                 valid = CommonMethods.validateRadioButtonsInGroup(gpbApplicationRiskCategory, "risk category") && valid;
                 valid = CommonMethods.validateRadioButtonsInGroup(gpbInvolveHumans, "option pertaining human involvement") && valid;
                 valid = CommonMethods.validateDOB(dtpDateCompleted) && valid;
@@ -124,6 +134,13 @@ namespace FEAManager
                     valid = CommonMethods.validateTextBox(rtbResearchLocation, "locations for where the research will be conducted.") && valid;
                     valid = CommonMethods.validateRadioButtonsInGroup(gpbFormalPermissionLocation, "indication of whether you have recieved formal permission to use those reseach locations.") && valid;
 
+                    if (radNo.Checked && cblHowDataWillBeCollected.CheckedItems.Count != 0)
+                    {
+                        CommonMethods.myErrorMessageBox("You indicated that you will not be collecting data. However, you have entered methods for collecting data on human participants.");
+                        gpbCollectingData.Focus();
+                        valid = false;
+                    }
+
                     valid = CommonMethods.validateTextBox(rtbParticipantSelectionMathods, "method of identifying and selecting participants.") && valid;
                     valid = CommonMethods.validateRadioButtonsInGroup(gpbFormalPermissionLocation, "indication of whether you will be giving participants incentives for participating.") && valid;
                     valid = CommonMethods.validateRadioButtonsInGroup(gpbInformedConcentGatheringMethod, "indication of how you will be getting informed concent from the participants.") && valid;
@@ -166,40 +183,97 @@ namespace FEAManager
             return valid;
         }
 
+        private bool ConfirmUpdate()
+        {
+            List<List<string>> newChanges = new List<List<string>>();
+            List<string> line = new List<string>();
+
+            line = new List<string>();
+            line.Add("student number");
+            line.Add(txtStudentNumber.Text);
+            newChanges.Add(line);
+
+            line = new List<string>();
+            line.Add("first name");
+            line.Add(txtFName.Text);
+            newChanges.Add(line);
+
+            line = new List<string>();
+            line.Add("last name");
+            line.Add(txtLName.Text);
+            newChanges.Add(line);
+
+            line = new List<string>();
+            line.Add("email address");
+            line.Add(mtxtEmail.Text);
+            newChanges.Add(line);
+
+            line = new List<string>();
+            line.Add("password");
+            line.Add(mtxtPassword.Text);
+            newChanges.Add(line);
+
+            line = new List<string>();
+            line.Add("date of birth");
+            line.Add(dtpDetailsDateOfBirth.Value.ToString("dd/MM/yyyy"));
+            newChanges.Add(line);
+
+            line = new List<string>();
+            line.Add("study program");
+            line.Add(cmbStudyProgram.Text);
+            newChanges.Add(line);
+
+            line = new List<string>();
+            line.Add("telephone number");
+            line.Add(mtxtTelephone.Text);
+            newChanges.Add(line);
+
+            line = new List<string>();
+            line.Add("title");
+            line.Add(CommonMethods.checkedString(grpTitle));
+            newChanges.Add(line);
+
+            CommonMethods.addNewChanges(changes, newChanges);
+            return CommonMethods.manageChanges(changes);
+        }
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (tbcStudentMenu.SelectedIndex == 0)
             {
-                //Validate information
                 bool validInformation = ValidateInformation(0);
-
                 if (validInformation)
                 {
-                    //Update student information
+                    bool confirmedUpdate = ConfirmUpdate();
 
-                    string strTable, strParams, strConditional;
-                    Dictionary<string, string> dictAttributes;
-                    DB dbReviewer = new DB();
-
-                    strTable = "Student";
-                    strParams = "[STU_NUM] = @stuNumber, [FNAME] = @fName, [LNAME] = @lName, [EMAIL] = @email, [PASSWORD] = @password, [DOB] = @dob, [TELEPHONE] = @telephone, [STUDY_PROGRAM] = @studyProgram, [TITLE] = @title";
-                    strConditional = "WHERE STU_NUM = @stuNumber";
-                    dictAttributes = new Dictionary<string, string>
+                    if (confirmedUpdate)
                     {
-                        ["@stuNumber"] = txtStudentNumber.Text,
-                        ["@fName"] = txtFName.Text,
-                        ["@lName"] = txtLName.Text,
-                        ["@email"] = mtxtEmail.Text,
-                        ["@password"] = mtxtPassword.Text,
-                        ["@dob"] = dtpDetailsDateOfBirth.Value.ToString("dd/MM/yyyy"),
-                        ["@telephone"] = mtxtTelephone.Text,
-                        ["@studyProgram"] = cmbStudyProgram.Text,
-                        ["@title"] = CommonMethods.checkedString(grpTitle)
-                    };
+                        string strTable, strParams, strConditional;
+                        Dictionary<string, string> dictAttributes;
+                        DB dbReviewer = new DB();
 
-                    dbReviewer.updateQuery(strTable, strParams, strConditional, dictAttributes);
+                        strTable = "Student";
+                        strParams = "[STU_NUM] = @stuNumber, [FNAME] = @fName, [LNAME] = @lName, [EMAIL] = @email, [PASSWORD] = @password, [DOB] = @dob, [TELEPHONE] = @telephone, [STUDY_PROGRAM] = @studyProgram, [TITLE] = @title";
+                        strConditional = "WHERE STU_NUM = @stuNumber";
+                        dictAttributes = new Dictionary<string, string>
+                        {
+                            ["@stuNumber"] = txtStudentNumber.Text,
+                            ["@fName"] = txtFName.Text,
+                            ["@lName"] = txtLName.Text,
+                            ["@email"] = mtxtEmail.Text,
+                            ["@password"] = mtxtPassword.Text,
+                            ["@dob"] = dtpDetailsDateOfBirth.Value.ToString("dd/MM/yyyy"),
+                            ["@telephone"] = mtxtTelephone.Text,
+                            ["@studyProgram"] = cmbStudyProgram.Text,
+                            ["@title"] = CommonMethods.checkedString(grpTitle)
+                        };
 
-                    loadDetails(txtStudentNumber.Text);
+                        dbReviewer.updateQuery(strTable, strParams, strConditional, dictAttributes);
+
+                        CommonMethods.myConfirmationMessageBox("Your student details have been updated successfully");
+
+                        loadDetails(strStudentNumber);
+                    }
                 }
             }
             else
@@ -212,10 +286,10 @@ namespace FEAManager
                 string strRiskCategory = CommonMethods.checkedString(gpbApplicationRiskCategory);
                 string strSupervisorNumber = getSupervisorNumber();
                 string strStatus = "Pending";
-                string strSupervisorfName = txtSupervisorFirstName.Text;
-                string strSupervisorlName = txtSupervisorLastName.Text;
-                string strSupervisorEmail = mtxtSupervisorEmail.Text;
-                string strSupervisorTelephone = mtxtSupervisorCellphone.Text;
+                string strSupervisorfName = cmbSupervisorFirstName.Text;
+                string strSupervisorlName = cmbSupervisorLastName.Text;
+                string strSupervisorEmail = cmbSupervisorEmail.Text;
+                string strSupervisorTelephone = cmbSupervisorCellphone.Text;
                 string strDateCompleted = dtpDateCompleted.Value.ToString("dd/MM/yyyy");
 
                 bool validInformation = ValidateInformation(1);
@@ -371,7 +445,7 @@ namespace FEAManager
         }
 
         public static void loadForm(Form previousForm, String strStudentNumber)
-        {
+        { 
             StudentMainMenuForm frmStudentMainMenu = new StudentMainMenuForm();
             frmStudentMainMenu.loadDetails(strStudentNumber);
             frmStudentMainMenu.strStudentNumber = strStudentNumber;
@@ -380,6 +454,20 @@ namespace FEAManager
             frmStudentMainMenu.setAdminName();
             frmStudentMainMenu.ShowDialog(previousForm);
             previousForm.Visible = true;
+        }
+
+        public static void loadForm(LoginForm previousForm, String strStudentNumber)
+        {
+            StudentMainMenuForm frmStudentMainMenu = new StudentMainMenuForm();
+            frmStudentMainMenu.loadDetails(strStudentNumber);
+            frmStudentMainMenu.strStudentNumber = strStudentNumber;
+            CommonMethods.getStudyPrograms(frmStudentMainMenu.cmbStudyProgram);
+            previousForm.Visible = false;
+            frmStudentMainMenu.initializePanels();
+            frmStudentMainMenu.setAdminName();
+            frmStudentMainMenu.ShowDialog(previousForm);
+            previousForm.Visible = true;
+            previousForm.preliminaryActions();
         }
 
         private void setAdminName()
@@ -397,8 +485,6 @@ namespace FEAManager
 
         private void initializePanels()
         {
-            pnlRiskCategoryTable.Visible = false;
-            pnlRiskCategoryTable.Location = new Point(445, 21);
             if (!radEthics.Checked && !radWaiver.Checked || radWaiver.Checked)
             {
                 radWaiver.Checked = true;
@@ -456,8 +542,8 @@ namespace FEAManager
             conditional = "WHERE [FNAME] = @fName AND [LNAME] = @lName";
             dictAttributes = new Dictionary<string, string> 
             {
-                ["@fName"] = txtSupervisorFirstName.Text,
-                ["@lName"] = txtSupervisorLastName.Text
+                ["@fName"] = cmbSupervisorFirstName.Text,
+                ["@lName"] = cmbSupervisorLastName.Text
             };
 
             resultSet = dbLogin.selectQuery(table, 5, conditional, dictAttributes);
@@ -535,6 +621,8 @@ namespace FEAManager
 
         private void loadDetails(String strStudentNumber)
         {
+            CommonMethods.getStudyPrograms(cmbStudyProgram);
+
             string table, conditional, strSupervisorNumber = "";
             Dictionary<string, string> dictAttributes, resultRow;
             List<Dictionary<string, string>> resultSet;
@@ -551,40 +639,98 @@ namespace FEAManager
 
             if (resultSet.Count > 0)
             {
+                changes = new List<List<string>>();
                 resultRow = resultSet[0];
                 foreach (var kv in resultRow)
                 {
                     if (kv.Key.Equals("STU_NUM"))
                     {
-                        txtStudentNumber.Text = kv.Value;
+                        strStudentNumber = kv.Value;
+
+                        List<string> line = new List<string>();
+                        line.Add("student number");
+                        line.Add(strStudentNumber);
+                        changes.Add(line);
+
+                        txtStudentNumber.Text = strStudentNumber;
                     }
                     if (kv.Key.Equals("FNAME"))
                     {
-                        txtFName.Text = kv.Value;
+                        strFName = kv.Value;
+
+                        List<string> line = new List<string>();
+                        line.Add("first name");
+                        line.Add(strFName);
+                        changes.Add(line);
+
+                        txtFName.Text = strFName;
                     }
                     if (kv.Key.Equals("LNAME"))
                     {
-                        txtLName.Text = kv.Value;
+                        strLName = kv.Value;
+
+                        List<string> line = new List<string>();
+                        line.Add("last name");
+                        line.Add(strLName);
+                        changes.Add(line);
+
+                        txtLName.Text = strLName;
                     }
                     if (kv.Key.Equals("EMAIL"))
                     {
-                        mtxtEmail.Text = kv.Value;
+                        strEmail = kv.Value;
+
+                        List<string> line = new List<string>();
+                        line.Add("email address");
+                        line.Add(strEmail);
+                        changes.Add(line);
+
+                        mtxtEmail.Text = strEmail;
                     }
                     if (kv.Key.Equals("PASSWORD"))
                     {
-                        mtxtPassword.Text = kv.Value;
+                        strPassword = kv.Value;
+
+                        List<string> line = new List<string>();
+                        line.Add("password");
+                        line.Add(strPassword);
+                        changes.Add(line);
+
+                        mtxtPassword.Text = strPassword;
                     }
                     if (kv.Key.Equals("DOB"))
                     {
-                        dtpDetailsDateOfBirth.Value = DateTime.Parse(kv.Value);
+                        DateTime actualValue = DateTime.Parse(kv.Value);
+                        strDOB = DateTime.Parse(kv.Value).ToString("dd/MM/yyyy");
+
+                        List<string> line = new List<string>();
+                        line.Add("date of birth");
+                        line.Add(strDOB);
+                        changes.Add(line);
+
+                        dtpDetailsDateOfBirth.Value = actualValue;
                     }
                     if (kv.Key.Equals("TELEPHONE"))
                     {
-                        mtxtTelephone.Text = kv.Value;
+                        strTelephone = kv.Value;
+
+                        List<string> line = new List<string>();
+                        line.Add("telephone number");
+                        line.Add(strTelephone);
+                        changes.Add(line);
+
+                        mtxtTelephone.Text = strTelephone;
                     }
                     if (kv.Key.Equals("STUDY_PROGRAM"))
                     {
-                        cmbStudyProgram.Text = kv.Value;
+                        strStudyProgram = kv.Value;
+
+                        List<string> line = new List<string>();
+                        line.Add("study program");
+                        line.Add(strStudyProgram);
+                        changes.Add(line);
+
+                        cmbStudyProgram.Text = strStudyProgram;
                     }
                     if (kv.Key.Equals("TITLE"))
                     {
@@ -592,6 +738,13 @@ namespace FEAManager
                         {
                             if (radioButton.Text.Equals(kv.Value))
                             {
+                                strTitle = kv.Value;
+
+                                List<string> line = new List<string>();
+                                line.Add("title");
+                                line.Add(strTitle);
+                                changes.Add(line);
+
                                 radioButton.Checked = true;
                                 break;
                             }
@@ -601,7 +754,8 @@ namespace FEAManager
             }
             else
             {
-                MessageBox.Show("Student DOES NOT EXIST");
+                MessageBox.Show("There was an error when trying to load your account, please re-register", "Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                RegisterStudentForm.loadForm(this);
             }
 
             table = "Application";
@@ -632,7 +786,7 @@ namespace FEAManager
                     }
                     if (kv.Key.Equals("RESEARCH_METHOD"))
                     {
-                        if (kv.Value.Equals("Colecting Data"))
+                        if (kv.Value.Equals("Yes"))
                         {
                             radDetailsCollectingDataYes.Checked = true;
                         }
@@ -658,6 +812,8 @@ namespace FEAManager
                         strSupervisorNumber = kv.Value;
                     }
                 }
+
+                btnCancelApplication.Enabled = true;
 
                 table = "Supervisor";
                 conditional = "WHERE [SUPERVISOR_NUM] = @supervisorNumber";
@@ -692,13 +848,15 @@ namespace FEAManager
             }
             else
             {
-                MessageBox.Show("Application DOES NOT EXIST");
+                //MessageBox.Show("Application DOES NOT EXIST");
+                CommonMethods.clearControl(pnlCurrentApplication, null);
+                btnCancelApplication.Enabled = false;
             }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            LoginForm.loadForm(this);
+            this.Close();
         }
 
         private void btnShowPassword_Click(object sender, EventArgs e)
@@ -785,6 +943,54 @@ namespace FEAManager
             radApplicationNoRisk.Enabled = true;
             radApplicationLowRisk.Enabled = true;
             radApplicationMinimalRisk.Enabled = true;
+        }
+
+        private void btnCancelApplication_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to cancel your application? This action is not reversable?", "Cancel Application", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                String strApplicationNumber = txtDetailsAdminNumber.Text;
+
+                string strTable, strConditional;
+                Dictionary<string, string> dictAttributes;
+                DB dbApplication = new DB();
+
+                strTable = "Application";
+                strConditional = "WHERE APP_NUM = @applicationNumber";
+                dictAttributes = new Dictionary<string, string>
+                {
+                    ["@applicationNumber"] = strApplicationNumber
+                };
+
+                dbApplication.deleteQuery(strTable, strConditional, dictAttributes);
+
+                loadDetails(strStudentNumber);
+            }
+            else
+            {
+                CommonMethods.myConfirmationMessageBox("Application cancellation Aborted");
+            }
+        }
+
+        private void tbcStudentMenu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!txtApplicationNumber.Text.Equals("") && tbcStudentMenu.SelectedIndex == 1)
+            {
+                MessageBox.Show("You already have an application, cancel your current one to create a new applicaiton.", "Duplicate Application", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                tbcStudentMenu.SelectedIndex = 0;
+            }
+        }
+
+        private void btnFullScreenEthicsCV_Click(object sender, EventArgs e)
+        {
+            FullScreenForm.loadForm(this, CommonMethods.applicantForm);
+        }
+
+        private void btnViewRisKCategoryTable_Click(object sender, EventArgs e)
+        {
+            FullScreenForm.loadForm(this, CommonMethods.riskCategoryTable);
         }
     }
 }

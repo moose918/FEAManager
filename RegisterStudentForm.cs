@@ -36,12 +36,9 @@ namespace FEAManager
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            // Validate information
             bool validInformation = ValidateInformation();
-
             if (validInformation)
             {
-                int intSuccessful;
                 string strTable, strRows, strConditional, strStudentNum, strFName, strLName, strEmail, strPasswd, strDOB, strTelephone, strStudyProgram, strTitle;
                 Dictionary<string, string> dictAttributes;
                 List<Dictionary<string, string>> resultSet;
@@ -57,9 +54,6 @@ namespace FEAManager
                 strDOB = dtpDOB.Value.ToString("dd/MM/yyyy");
                 strTitle = CommonMethods.checkedString(grpTitle);
 
-                // check if student exists in DB
-                bool exists = false;
-
                 strTable = "Student";
                 strConditional = "WHERE [STU_NUM] = @stuNum";
                 dictAttributes = new Dictionary<string, string>
@@ -67,23 +61,18 @@ namespace FEAManager
                     ["@stuNum"] = strStudentNum
                 };
 
-                resultSet = dbStudent.selectQuery(strTable, 8, strConditional, dictAttributes);
+                resultSet = dbStudent.selectQuery(strTable, 1, strConditional, dictAttributes);
 
-                if (resultSet.Count > 0)
+                bool exists = (resultSet.Count != 0);
+
+                if (exists)
                 {
-                    exists = true;
-                    MessageBox.Show(strStudentNum + " already exists. They can not register again");
+                    
+                    MessageBox.Show(strStudentNum + " already exists. They can not register again", "Registration", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     CommonMethods.clearForm(this);
                 }
                 else
                 {
-                    exists = false;
-                }
-
-                if (!exists)
-                {
-                    // load respective form if correct info is given
-
                     strTable = "Student([STU_NUM], [FNAME], [LNAME], [EMAIL], [PASSWORD], [DOB], [TELEPHONE], [STUDY_PROGRAM], [TITLE])";
                     strRows = "(@studentNum, @fName, @lName, @email, @passwd, @dob, @telephone, @studyProgram, @title)";
                     dictAttributes = new Dictionary<string, string>
@@ -101,7 +90,7 @@ namespace FEAManager
 
                     dbStudent.insertQuery(strTable, strRows, dictAttributes);
 
-                    MessageBox.Show(strStudentNum + " has been created");
+                    CommonMethods.myConfirmationMessageBox(strStudentNum + " has been created");
                     StudentMainMenuForm.loadForm(this, strStudentNum);
                 }
             }
@@ -109,12 +98,23 @@ namespace FEAManager
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            LoginForm.loadForm(this);
+            this.Close();
         }
 
         public static void loadForm(Form previousForm)
         {
             RegisterStudentForm frmLogin = new RegisterStudentForm();
+            CommonMethods.getStudyPrograms(frmLogin.cmbStudyProgram);
+            previousForm.Visible = false;
+            frmLogin.ShowDialog(previousForm);
+            previousForm.Visible = true;
+        }
+
+        public static void loadForm(LoginForm previousForm)
+        {
+            RegisterStudentForm frmLogin = new RegisterStudentForm();
+            CommonMethods.getStudyPrograms(frmLogin.cmbStudyProgram);
+            previousForm.preliminaryActions();
             previousForm.Visible = false;
             frmLogin.ShowDialog(previousForm);
             previousForm.Visible = true;
@@ -128,11 +128,6 @@ namespace FEAManager
         private void btnClear_Click(object sender, EventArgs e)
         {
             CommonMethods.clearForm(this);
-        }
-
-        private void cmbStudyProgram_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

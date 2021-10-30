@@ -59,6 +59,17 @@
       <DependentUpon>AdminMainMenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DB.cs" />
+    <Compile Include="FEAManager_DBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FEAManager_DBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FullScreenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FullScreenForm.Designer.cs">
+      <DependentUpon>FullScreenForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManageApplicationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +106,9 @@
     <EmbeddedResource Include="AdminMainMenuForm.resx">
       <DependentUpon>AdminMainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FullScreenForm.resx">
+      <DependentUpon>FullScreenForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +133,17 @@
     <EmbeddedResource Include="StudentMainMenuForm.resx">
       <DependentUpon>StudentMainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="FEAManager_DBDataSet.xsc">
+      <DependentUpon>FEAManager_DBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="FEAManager_DBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FEAManager_DBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FEAManager_DBDataSet.xss">
+      <DependentUpon>FEAManager_DBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -133,6 +158,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FEAManager_DB.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="star_things_3xK_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

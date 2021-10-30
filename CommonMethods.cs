@@ -13,6 +13,121 @@ namespace FEAManager
         private static char[] vowels = new char[] { 'a', 'e', 'i', 'o', 'u' };
 
         public static string blankPlaceholder = "\"\"";
+
+        public static char passwordChar = '*';
+
+        public static string applicantForm = "af";
+        public static string riskCategoryTable = "rct";
+        public static void addNewChanges(List<List<string>> changes, List<List<string>> newChanges)
+        {
+            /*MessageBox.Show("Add new Change call, original changes keys");
+            foreach (List<string> row in changes)
+            {
+                MessageBox.Show(row[0]);
+            }
+            MessageBox.Show("Done");
+
+            MessageBox.Show("New changes keys");
+            foreach (List<string> row in newChanges)
+            {
+                MessageBox.Show(row[0]);
+            }
+            MessageBox.Show("Done");*/
+
+            for (int i = 0; i < newChanges.Count; i++)
+            {
+                string key = newChanges[i][0];
+                string change = newChanges[i][1];
+
+                for (int j = 0; j < changes.Count; j++)
+                {
+                    string changeKey = changes[j][0];
+
+                    if (changeKey.Equals(key)) {
+                        changes[j].Add(change);
+                        //MessageBox.Show("Added new, now: " + changes[j].Count);
+                    }
+                }
+            }
+        }
+
+        public static bool manageChanges(List<List<string>> changes)
+        {
+            /*MessageBox.Show("Manage changes call, printing everything");
+            foreach (List<string> row in changes)
+            {
+                string line = "";
+                foreach (string col in row)
+                {
+                    line += col + ", ";
+                }
+                MessageBox.Show(line);
+            }
+            MessageBox.Show("Done");*/
+
+            List<string> lines = new List<string>();
+            foreach (List<string> row in changes)
+            {
+                string key = row[0];
+                if (!row[1].Equals(row[2]))
+                {
+                    if (key.Equals("password"))
+                    {
+                        lines.Add("Change your password");
+                    }
+                    else
+                    {
+                        lines.Add("Change your " + key + " from " + row[1] + " to " + row[2]);
+                    }
+                }
+                row.RemoveAt(2);
+            }
+
+            if (lines.Count == 0)
+            {
+                MessageBox.Show("No changes were made", "Confimation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            else
+            {
+                string prompt = "Are you sure you want to make the following changes?\n\n";
+                foreach (string line in lines)
+                {
+                    prompt += line + "\n";
+                }
+                
+                DialogResult result = MessageBox.Show(prompt, "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Update Aborted", "Aborted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
+                }
+            }
+        }
+
+        public static void getStudyPrograms(ComboBox comboBox)
+        {
+            comboBox.Items.Clear();
+            comboBox.Items.Add("Honours");
+            comboBox.Items.Add("Coursework Masters");
+            comboBox.Items.Add("Full Research Masters");
+            comboBox.Items.Add("PHD");
+        }
+
+        public static void myErrorMessageBox(string prompt)
+        {
+            MessageBox.Show(prompt, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public static void myConfirmationMessageBox(string prompt)
+        {
+            MessageBox.Show(prompt, "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         public static string getFullName(string ID, string table, string IDName, int colCount)
         {
             string conditional;
@@ -66,9 +181,9 @@ namespace FEAManager
             {
                 output = output.Substring(0, output.Length - 2);
             }
-            MessageBox.Show("Final: " + output);
             return output;
         }
+
         public static void setRadWithText(string name, GroupBox groupBox)
         {
             foreach (Control control in groupBox.Controls)
@@ -84,6 +199,7 @@ namespace FEAManager
                 }
             }
         }
+
         public static String generateDigits()
         {
             String digits = "";
@@ -94,6 +210,7 @@ namespace FEAManager
             }
             return digits;
         }
+
         public static String checkedString(GroupBox groupBox)
         {
             String text = "";
@@ -144,7 +261,7 @@ namespace FEAManager
         {
             if(textBox.TextLength == 0)
             {
-                MessageBox.Show("Please enter your " + prompt + ".");
+                myErrorMessageBox("Please enter your " + prompt + ".");
                 textBox.Text = "";
                 textBox.Focus();
                 return false;
@@ -156,7 +273,7 @@ namespace FEAManager
         {
             if (textBox.TextLength == 0)
             {
-                MessageBox.Show("Please enter your " + prompt + ".");
+                myErrorMessageBox("Please enter your " + prompt + ".");
                 textBox.Text = "";
                 textBox.Focus();
                 return false;
@@ -168,7 +285,7 @@ namespace FEAManager
         {
             if (textBox.TextLength == 0)
             {
-                MessageBox.Show("Please enter your " + prompt + ".");
+                myErrorMessageBox("Please enter your " + prompt + ".");
                 textBox.Text = "";
                 textBox.Focus();
                 return false;
@@ -184,7 +301,7 @@ namespace FEAManager
             }
         }
 
-        private static void clearControl(Control control, Control exclude)
+        public static void clearControl(Control control, Control exclude)
         {
             if (control != exclude)
             {
@@ -215,7 +332,13 @@ namespace FEAManager
                 {
                     MaskedTextBox maskedTextBox = (MaskedTextBox)control;
                     maskedTextBox.Text = "";
-                    maskedTextBox.PasswordChar = '*';
+                    maskedTextBox.PasswordChar = passwordChar;
+                }
+
+                if (control is RadioButton)
+                {
+                    RadioButton radioButton = (RadioButton)control;
+                    radioButton.Checked = false;
                 }
             }
         }
@@ -234,7 +357,7 @@ namespace FEAManager
         {
             if (textBox.Text.Equals(""))
             {
-                MessageBox.Show("Please enter your " + prompt + ".");
+                myErrorMessageBox("Please enter your " + prompt + ".");
                 textBox.Text = "";
                 textBox.Focus();
                 return false;
@@ -244,14 +367,13 @@ namespace FEAManager
 
         public static bool validateTextBox(TextBox textBox, String prompt, int length)
         {
-            MessageBox.Show("Got length " + length);
             if (length != -1)
             {
                 if (!textBox.Text.Equals(""))
                 {
                     if (textBox.TextLength != length)
                     {
-                        MessageBox.Show("PLease enter a valid " + prompt + ".");
+                        myErrorMessageBox("PLease enter a valid " + prompt + ".");
                         textBox.Text = "";
                         textBox.Focus();
                         return false;
@@ -265,7 +387,8 @@ namespace FEAManager
         {
             if (dateTimePicker.Value > DateTime.Now)
             {
-                MessageBox.Show("Please enter a date earler than or equal to " + DateTime.Now.ToString("dd MMMM yyyy"));
+                string prompt = "Please enter a date earler than or equal to " + DateTime.Now.ToString("dd MMMM yyyy");
+                myErrorMessageBox(prompt);
                 dateTimePicker.Value = DateTime.Now;
                 dateTimePicker.Focus();
                 return false;
@@ -291,7 +414,7 @@ namespace FEAManager
             if (!valid)
             {
                 String article = (vowels.Contains(prompt[0])) ? "an" : "a";
-                MessageBox.Show("Please select " + article + " " + prompt);
+                myErrorMessageBox("Please select " + article + " " + prompt);
                 groupBox.Focus();
             }
             return valid;

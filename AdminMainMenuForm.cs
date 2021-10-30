@@ -114,13 +114,6 @@ namespace FEAManager
 
                 Dictionary<string, string> resultRow = resultSet[i];
 
-                string output = "";
-                foreach (var kv in resultRow)
-                {
-                    output += kv.Key + " : " + kv.Value + "\n";
-                }
-                MessageBox.Show(output);
-
                 string strStatus = resultRow["STATUS"];
                 int iCount = Int32.Parse(resultRow["NUMBER"]);
 
@@ -145,7 +138,7 @@ namespace FEAManager
             resultSet = dbSupervisor.selectQuery(table, 1, conditional, dictAttributes);
             iWaiverNo = resultSet.Count;
 
-            lblMonthYear.Text = DateTime.Now.ToString("MMMM yyyy");
+            cbbMothYear.Text = DateTime.Now.ToString("MMMM yyyy");
             lblNoApplications.Text = iApplicationNo.ToString();
             lblNoStudents.Text = iStudentNo.ToString();
             lblNoEthics.Text = iEthicsNo.ToString();
@@ -156,7 +149,9 @@ namespace FEAManager
             lblNoSupervisors.Text = iSupervisor.ToString();
             lblNoWaiver.Text = iWaiverNo.ToString();
             lblReviewerWithLeastApplications.Text = strLeastReviewerApplications;
+            lblReviewerWithLeastApplications.Location = new Point((pnlReviewers.Size.Width - lblReviewerWithLeastApplications.Size.Width) / 2, lblReviewerWithLeastApplications.Location.Y);
             lblReviewerWithMostApplications.Text = strMostReviewerApplications;
+            lblReviewerWithMostApplications.Location = new Point((pnlReviewers.Size.Width - lblReviewerWithMostApplications.Size.Width) / 2, lblReviewerWithMostApplications.Location.Y);
 
         }
 

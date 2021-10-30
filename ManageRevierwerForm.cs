@@ -21,6 +21,7 @@ namespace FEAManager
         public static void loadForm(Form previousForm)
         {
             ManageRevierwerForm frmManageReviewer = new ManageRevierwerForm();
+            CommonMethods.getStudyPrograms(frmManageReviewer.cbbQulificationLevel);
             frmManageReviewer.loadDetails();
             try
             {
@@ -48,6 +49,10 @@ namespace FEAManager
 
         private void ManageRevierwerForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'fEAManager_DBDataSet.Reviewer' table. You can move, or remove it, as needed.
+            this.reviewerTableAdapter.Fill(this.fEAManager_DBDataSet.Reviewer);
+            // TODO: This line of code loads data into the 'fEAManager_DBDataSet.Admin' table. You can move, or remove it, as needed.
+            this.adminTableAdapter.Fill(this.fEAManager_DBDataSet.Admin);
             refreshDataGrid();
         }
 
@@ -161,9 +166,10 @@ namespace FEAManager
                 if (exists)
                 {
                     strTable = "Reviewer";
-                    strParams = "[REVIEWER_NUM] = @reviewerNum, [FNAME] = @fName, [LNAME] = @lName, [QUAL_LEVEL] = @qLevel, [DOB] = @dob, [TELEPHONE] = @telephone, [EMAIL] = @email";
-                    //strParams = "[REVIEWER_NUM] = @reviewerNum, [FNAME] = @fName, [LNAME] = @lName, [QUAL_LEVEL] = @qLevel, [TELEPHONE] = @telephone, [EMAIL] = @email";
-                    strConditional = "WHERE REVIEWER_NUM = @reviewerNum";
+                    //strParams = "[REVIEWER_NUM] = [REVIEWER_NUM], [FNAME] = @fName";
+                    strParams = "[FNAME] = @fName, [LNAME] = @lName, [QUAL_LEVEL] = @qLevel, [DOB] = @dob, [TELEPHONE] = @telephone, [EMAIL] = @email";
+                    //strParams = "[REVIEWER_NUM] = @reviewerNum, [FNAME] = @fName, [LNAME] = @lName, [QUAL_LEVEL] = @qLevel, [DOB] = @dob, [TELEPHONE] = @telephone, [EMAIL] = @email";
+                    strConditional = "WHERE [REVIEWER_NUM] = @reviewerNum";
                     dictAttributes = new Dictionary<string, string>
                     {
                         ["@reviewerNum"] = txtReviewerNumber.Text,
@@ -175,8 +181,10 @@ namespace FEAManager
                         ["@email"] = mtxtEmail.Text
                     };
 
-                    dbReviewer.updateQuery(strTable, strParams, strConditional, dictAttributes);
-                    
+                    int cols = dbReviewer.updateQuery(strTable, strParams, strConditional, dictAttributes);
+
+                    //MessageBox.Show(cols.ToString());
+
                     loadDetails();
                     refreshDataGrid();
                 }
@@ -186,22 +194,63 @@ namespace FEAManager
         private void refreshLables()
         {
             String strReviewerNum, strDOB, strFName, strLName, strTelephone, strEmail, strQualificationLevel;
-            strReviewerNum = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            strFName= dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            strLName = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            strQualificationLevel = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            strDOB = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-            strTelephone = dataGridView1.CurrentRow.Cells[5].Value.ToString();
-            strEmail = dataGridView1.CurrentRow.Cells[6].Value.ToString();
+            if (dataGridView1.CurrentRow != null)
+            {
+                if (dataGridView1.CurrentRow.Index >= 0 && dataGridView1.CurrentRow.Index < dataGridView1.Rows.Count)
+                {
+                    bool allNotNull = true;
+                    for (int i = 0; i < dataGridView1.CurrentRow.Cells.Count; i++)
+                    {
+                        if (dataGridView1.CurrentRow.Cells[i].Value == null)
+                        {
+                            allNotNull = false;
+                            break;
+                        }
+                    }
 
-            txtReviewerNumber.Text = strReviewerNum;
-            txtLName.Text = strLName;
-            txtFName.Text = strFName;
-            cbbQulificationLevel.Text = strQualificationLevel;
-            mtxtTelephone.Text = strTelephone;
-            mtxtEmail.Text = strEmail;
-            dtpDOB.Value = DateTime.Parse(strDOB);
+                    if (allNotNull)
+                    {
+                        List<String> allEntries = new List<string>();
+                        strReviewerNum = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                        strFName = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                        strLName = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                        strQualificationLevel = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                        strDOB = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                        strTelephone = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                        strEmail = dataGridView1.CurrentRow.Cells[6].Value.ToString();
 
+                        allEntries.Add(strReviewerNum);
+                        allEntries.Add(strFName);
+                        allEntries.Add(strLName);
+                        allEntries.Add(strQualificationLevel);
+                        allEntries.Add(strTelephone);
+                        allEntries.Add(strDOB);
+                        allEntries.Add(strEmail);
+
+                        bool notAllEmpty = true;
+
+                        foreach (string line in allEntries)
+                        {
+                            if (line.Length == 0)
+                            {
+                                notAllEmpty = false;
+                                break;
+                            }
+                        }
+
+                        if (notAllEmpty)
+                        {
+                            txtReviewerNumber.Text = strReviewerNum;
+                            txtLName.Text = strLName;
+                            txtFName.Text = strFName;
+                            cbbQulificationLevel.Text = strQualificationLevel;
+                            mtxtTelephone.Text = strTelephone;
+                            mtxtEmail.Text = strEmail;
+                            dtpDOB.Value = DateTime.Parse(strDOB);
+                        }
+                    }
+                }
+            }
         }
 
         private void refreshDataGrid()
@@ -225,7 +274,13 @@ namespace FEAManager
                 npiReviewers.BindingSource = bindingSource;
                 dataGridView1.Refresh();
 
-//                conn.Close();
+                //                conn.Close();
+            }
+
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+            {
+                /*dataGridView1.Columns[i].Width = dataGridView1.Width / dataGridView1.Columns.Count - 10;*/
+                dataGridView1.Columns[i].Width = 141;
             }
         }
 
@@ -252,7 +307,7 @@ namespace FEAManager
 
                 dbReviewer.deleteQuery(strTable, strConditional, dictAttributes);
 
-                refreshDataGrid();
+                //refreshDataGrid();
             }
             else
             {
@@ -262,22 +317,22 @@ namespace FEAManager
 
         private void bindingNavigatorMoveNextItem_Click(object sender, EventArgs e)
         {
-            refreshLables();
+            //refreshLables();
         }
 
         private void bindingNavigatorMoveLastItem_Click(object sender, EventArgs e)
         {
-            refreshLables();
+            //refreshLables();
         }
 
         private void bindingNavigatorMovePreviousItem_Click(object sender, EventArgs e)
         {
-            refreshLables();
+            //refreshLables();
         }
 
         private void bindingNavigatorMoveFirstItem_Click(object sender, EventArgs e)
         {
-            refreshLables();
+            //refreshLables();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -291,7 +346,19 @@ namespace FEAManager
                 npiReviewers.BindingSource.Position = 0;
             }
             refreshDataGrid();
+            //refreshLables();
+        }
+
+        private void number_TextChanged(object sender, EventArgs e)
+        {
+            //refreshLables();
+            //MessageBox.Show("Changed");
+        }
+
+        private void dataGridView1_CurrentCellChanged(object sender, EventArgs e)
+        {
             refreshLables();
+            //MessageBox.Show("Change");
         }
     }
 }
