@@ -127,7 +127,7 @@ namespace FEAManager
             this.mtxtPassword.PasswordChar = '*';
             this.mtxtPassword.Size = new System.Drawing.Size(210, 23);
             this.mtxtPassword.TabIndex = 3;
-            this.mtxtPassword.Text = "]wVF8gL&R:eRmZE,";
+            this.mtxtPassword.Text = "ICTPass1234";
             // 
             // label3
             // 
@@ -159,7 +159,7 @@ namespace FEAManager
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(210, 23);
             this.txtUsername.TabIndex = 2;
-            this.txtUsername.Text = "ADMIN6158455417";
+            this.txtUsername.Text = "STU2320690998";
             // 
             // panel3
             // 

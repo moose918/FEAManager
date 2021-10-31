@@ -29,7 +29,7 @@ namespace FEAManager
 
         public void preliminaryActions()
         {
-            reportController = new ReportController(lblNoSupervisors, lblNoReviewers, lblNoStudents, lblNoRejected, lblNoPending, lblReviewerWithMostApplications, lblReviewerWithLeastApplications, lblNoGranted, lblNoEthics, lblNoWaiver, lblNoApplications, pnlReviewers, cbbMothYear);
+            reportController = new ReportController(lblNoSupervisors, lblNoReviewers, lblNoStudents, lblReviewerWithMostApplications, lblReviewerWithLeastApplications, lblNoRejected, lblNoPending, lblNoGranted, lblNoEthics, lblNoWaiver, lblNoApplications, pnlReviewers, cbbMothYear);
             reportController.gererateDefultReport();
         }
 

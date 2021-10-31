@@ -58,6 +58,7 @@
     <Compile Include="AdminMainMenuForm.Designer.cs">
       <DependentUpon>AdminMainMenuForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ApplicationAssignment.cs" />
     <Compile Include="DB.cs" />
     <Compile Include="FEAManager_DBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>

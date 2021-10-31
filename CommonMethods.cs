@@ -274,12 +274,40 @@ namespace FEAManager
             MessageBox.Show(prompt, "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public static string getFullName(string ID, string table, string IDName, int colCount)
+        public static int getColumnCount(string userType)
+        {
+            if (userType.Equals(typeStudent))
+            {
+                return 9;
+            }
+            if (userType.Equals(typeReviewer))
+            {
+                return 7;
+            }
+            if (userType.Equals(typeAdmin))
+            {
+                return 5;
+            }
+            if (userType.Equals(typeSupervisor))
+            {
+                return 5;
+            }
+            if (userType.Equals(typeApplication))
+            {
+                return 10;
+            }
+            return 0;
+        }
+
+        public static string getFullName(string ID, string userType)
         {
             string conditional;
             Dictionary<string, string> dictAttributes, resultRow;
             List<Dictionary<string, string>> resultSet;
             DB dbLogin = new DB();
+
+            string IDName = getIDName(userType);
+            int colCount = getColumnCount(userType);
 
             conditional = "WHERE [" + IDName + "] = @identifier";
             dictAttributes = new Dictionary<string, string> 
@@ -287,7 +315,7 @@ namespace FEAManager
                 ["@identifier"] = ID
             };
 
-            resultSet = dbLogin.selectQuery(table, colCount, conditional, dictAttributes);
+            resultSet = dbLogin.selectQuery(userType, colCount, conditional, dictAttributes);
 
             if (resultSet.Count > 0)
             {

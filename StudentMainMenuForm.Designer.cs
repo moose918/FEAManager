@@ -562,6 +562,7 @@ namespace FEAManager
             // 
             // txtApplicationType
             // 
+            this.txtApplicationType.Enabled = false;
             this.txtApplicationType.Location = new System.Drawing.Point(15, 214);
             this.txtApplicationType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtApplicationType.Name = "txtApplicationType";
@@ -579,6 +580,7 @@ namespace FEAManager
             // 
             // txtApplicationNumber
             // 
+            this.txtApplicationNumber.Enabled = false;
             this.txtApplicationNumber.Location = new System.Drawing.Point(15, 151);
             this.txtApplicationNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtApplicationNumber.Name = "txtApplicationNumber";
