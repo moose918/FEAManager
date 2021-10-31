@@ -56,10 +56,10 @@ namespace FEAManager
             this.radAdmin.Location = new System.Drawing.Point(50, 55);
             this.radAdmin.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.radAdmin.Name = "radAdmin";
-            this.radAdmin.Size = new System.Drawing.Size(83, 24);
+            this.radAdmin.Size = new System.Drawing.Size(69, 20);
             this.radAdmin.TabIndex = 0;
             this.radAdmin.TabStop = true;
-            this.radAdmin.Text = "&Admin";
+            this.radAdmin.Text = "Admin";
             this.radAdmin.UseVisualStyleBackColor = true;
             // 
             // radStudent
@@ -69,10 +69,10 @@ namespace FEAManager
             this.radStudent.Location = new System.Drawing.Point(256, 55);
             this.radStudent.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.radStudent.Name = "radStudent";
-            this.radStudent.Size = new System.Drawing.Size(94, 24);
+            this.radStudent.Size = new System.Drawing.Size(78, 20);
             this.radStudent.TabIndex = 1;
             this.radStudent.TabStop = true;
-            this.radStudent.Text = "&Student";
+            this.radStudent.Text = "Student";
             this.radStudent.UseVisualStyleBackColor = true;
             // 
             // grpUserType
@@ -125,7 +125,7 @@ namespace FEAManager
             this.mtxtPassword.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.mtxtPassword.Name = "mtxtPassword";
             this.mtxtPassword.PasswordChar = '*';
-            this.mtxtPassword.Size = new System.Drawing.Size(210, 27);
+            this.mtxtPassword.Size = new System.Drawing.Size(210, 23);
             this.mtxtPassword.TabIndex = 3;
             this.mtxtPassword.Text = "]wVF8gL&R:eRmZE,";
             // 
@@ -136,7 +136,7 @@ namespace FEAManager
             this.label3.Location = new System.Drawing.Point(25, 107);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 20);
+            this.label3.Size = new System.Drawing.Size(79, 16);
             this.label3.TabIndex = 7;
             this.label3.Text = "Password:";
             // 
@@ -147,7 +147,7 @@ namespace FEAManager
             this.label1.Location = new System.Drawing.Point(25, 40);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 20);
+            this.label1.Size = new System.Drawing.Size(81, 16);
             this.label1.TabIndex = 6;
             this.label1.Text = "Username:";
             // 
@@ -157,7 +157,7 @@ namespace FEAManager
             this.txtUsername.Location = new System.Drawing.Point(139, 37);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(210, 27);
+            this.txtUsername.Size = new System.Drawing.Size(210, 23);
             this.txtUsername.TabIndex = 2;
             this.txtUsername.Text = "ADMIN6158455417";
             // 
@@ -224,7 +224,7 @@ namespace FEAManager
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;

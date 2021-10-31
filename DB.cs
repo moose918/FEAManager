@@ -36,7 +36,6 @@ namespace FEAManager
             // read result
             while (reader.Read())
             {
-
                 tempDictionary = new Dictionary<string, string>();
 
                 for (int columnDex = 0; columnDex < attributesLength; ++columnDex)
@@ -146,8 +145,8 @@ namespace FEAManager
             int affectedRows;
             string sqlUpdate;
 
-            //sqlUpdate = "UPDATE " + strTable + " SET " + strParams + " " + strConditional;
-            sqlUpdate = "update Reviewer set [FNAME] = 'Fish' where [REVIEWER_NUM] =  'REV8989865008'";
+            sqlUpdate = "UPDATE " + strTable + " SET " + strParams + " " + strConditional;
+            //sqlUpdate = "update Reviewer set [FNAME] = 'Fish' where [REVIEWER_NUM] =  'REV8989865008'";
 
             affectedRows = executeSQL(sqlUpdate, dictAttributes);
 

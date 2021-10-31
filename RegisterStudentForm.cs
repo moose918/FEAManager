@@ -17,82 +17,19 @@ namespace FEAManager
             InitializeComponent();
         }
 
-        private bool ValidateInformation()
-        {
-            bool valid = true;
-            valid = CommonMethods.validateTextBox(txtFName, "first name") && valid;
-            valid = CommonMethods.validateTextBox(txtLName, "last name") && valid;
-            valid = CommonMethods.validateDOB(dtpDOB) && valid;
-            valid = CommonMethods.validateTextBox(mtxtTelephone, "telephone number") && valid;
-            valid = CommonMethods.validateTextBox(txtUsername, "username") && valid;
-            valid = CommonMethods.validateTextBox(txtUsername, "username", 13) && valid;
-            valid = CommonMethods.validateTextBox(mtxtPassword, "password") && valid;
-            valid = CommonMethods.validateTextBox(mtxtEmail, "email address") && valid;
-            valid = CommonMethods.validateTextBox(cmbStudyProgram, "study program") && valid;
-            valid = CommonMethods.validateRadioButtonsInGroup(grpTitle, "title") && valid;
-
-            return valid;
-        }
-
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            bool validInformation = ValidateInformation();
-            if (validInformation)
+            RegistrationController registrationController = new RegistrationController();
+            bool validRegistration = registrationController.registerStudent(dtpDOB, mtxtTelephone, txtLName, txtFName, mtxtPassword, cmbStudyProgram, mtxtEmail, txtUsername, grpTitle);
+
+            if (validRegistration)
             {
-                string strTable, strRows, strConditional, strStudentNum, strFName, strLName, strEmail, strPasswd, strDOB, strTelephone, strStudyProgram, strTitle;
-                Dictionary<string, string> dictAttributes;
-                List<Dictionary<string, string>> resultSet;
-                DB dbStudent = new DB();
-
-                strStudentNum = txtUsername.Text;
-                strFName = txtFName.Text;
-                strLName = txtLName.Text;
-                strEmail = mtxtEmail.Text;
-                strPasswd = mtxtPassword.Text;
-                strTelephone = mtxtTelephone.Text;
-                strStudyProgram = cmbStudyProgram.Text;
-                strDOB = dtpDOB.Value.ToString("dd/MM/yyyy");
-                strTitle = CommonMethods.checkedString(grpTitle);
-
-                strTable = "Student";
-                strConditional = "WHERE [STU_NUM] = @stuNum";
-                dictAttributes = new Dictionary<string, string>
-                {
-                    ["@stuNum"] = strStudentNum
-                };
-
-                resultSet = dbStudent.selectQuery(strTable, 1, strConditional, dictAttributes);
-
-                bool exists = (resultSet.Count != 0);
-
-                if (exists)
-                {
-                    
-                    MessageBox.Show(strStudentNum + " already exists. They can not register again", "Registration", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    CommonMethods.clearForm(this);
-                }
-                else
-                {
-                    strTable = "Student([STU_NUM], [FNAME], [LNAME], [EMAIL], [PASSWORD], [DOB], [TELEPHONE], [STUDY_PROGRAM], [TITLE])";
-                    strRows = "(@studentNum, @fName, @lName, @email, @passwd, @dob, @telephone, @studyProgram, @title)";
-                    dictAttributes = new Dictionary<string, string>
-                    {
-                        ["@studentNum"] = strStudentNum,
-                        ["@fName"] = strFName,
-                        ["@lName"] = strLName,
-                        ["@email"] = strEmail,
-                        ["@passwd"] = strPasswd,
-                        ["@dob"] = strDOB,
-                        ["@telephone"] = strTelephone,
-                        ["@studyProgram"] = strStudyProgram,
-                        ["@title"] = strTitle
-                    };
-
-                    dbStudent.insertQuery(strTable, strRows, dictAttributes);
-
-                    CommonMethods.myConfirmationMessageBox(strStudentNum + " has been created");
-                    StudentMainMenuForm.loadForm(this, strStudentNum);
-                }
+                CommonMethods.myConfirmationMessageBox(registrationController.strStudentNum + " has been created");
+                StudentMainMenuForm.loadForm(this, registrationController.strStudentNum);
+            }
+            else
+            {
+                CommonMethods.myConfirmationMessageBox("Unsuccesful Registration");
             }
         }
 

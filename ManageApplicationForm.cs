@@ -25,6 +25,16 @@ namespace FEAManager
             previousForm.Visible = true;
         }
 
+        public static void loadForm(AdminMainMenuForm previousForm)
+        {
+            ManageApplicationForm frmManageApplication = new ManageApplicationForm();
+            frmManageApplication.loadDetails();
+            previousForm.Visible = false;
+            frmManageApplication.ShowDialog(previousForm);
+            previousForm.preliminaryActions();
+            previousForm.Visible = true;
+        }
+
         private void loadDetails()
         {
             lsbApplications.Items.Clear();
@@ -92,8 +102,9 @@ namespace FEAManager
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
-            Close();
+            this.Close();
+            /*this.DialogResult = DialogResult.OK;
+            Close();*/
         }
 
         private void btnViewReviwerProfile_Click(object sender, EventArgs e)
@@ -108,67 +119,62 @@ namespace FEAManager
             }
             else
             {
-                if (lblSelectedApplicationNumber.Text.Equals("\"\""))
+                string strReviewerNumber = lsbReviewers.SelectedItem.ToString();
+
+                string table, conditional;
+                Dictionary<string, string> dictAttributes;
+                List<Dictionary<string, string>> resultSet;
+                DB database = new DB();
+
+                table = "Reviewer";
+                conditional = "WHERE [REVIEWER_NUM] = @reviewerNumber";
+                dictAttributes = new Dictionary<string, string>
                 {
-                    MessageBox.Show("Select an application first.");
+                    ["@reviewerNumber"] = strReviewerNumber
+                };
+
+                resultSet = database.selectQuery(table, 7, conditional, dictAttributes);
+
+                if (resultSet.Count > 0)
+                {
+                    Dictionary<string, string> resultRow = resultSet[0];
+                    foreach (var kv in resultRow)
+                    {
+                        if (kv.Key.Equals("REVIEWER_NUM"))
+                        {
+                            lblReviewerNumber.Text = "Reviewer: " + kv.Value;
+                            CommonMethods.centraliseControlInContainer(lblReviewerNumber, pnlReviewerProfile);
+                            //lblReviewerNumber.Location = new Point((pnlReviewerProfile.Width - lblReviewerNumber.Width) / 2, lblReviewerNumber.Location.Y);
+                        }
+                        if (kv.Key.Equals("FNAME"))
+                        {
+                            lblFirstName.Text = kv.Value;
+                        }
+                        if (kv.Key.Equals("LNAME"))
+                        {
+                            lblLastName.Text = kv.Value;
+                        }
+                        if (kv.Key.Equals("QUAL_LEVEL"))
+                        {
+                            lblQualificationLevel.Text = kv.Value;
+                        }
+                        if (kv.Key.Equals("DOB"))
+                        {
+                            lblDateOfBirth.Text = DateTime.Parse(kv.Value).ToString("dddd dd MMMM yyyy");
+                        }
+                        if (kv.Key.Equals("TELEPHONE"))
+                        {
+                            lblTelephoneNumber.Text = kv.Value;
+                        }
+                        if (kv.Key.Equals("EMAIL"))
+                        {
+                            lblEmail.Text = kv.Value;
+                        }
+                    }
                 }
                 else
                 {
-                    string strReviewerNumber = lsbReviewers.SelectedItem.ToString();
-
-                    string table, conditional;
-                    Dictionary<string, string> dictAttributes;
-                    List<Dictionary<string, string>> resultSet;
-                    DB database = new DB();
-
-                    table = "Reviewer";
-                    conditional = "WHERE [REVIEWER_NUM] = @reviewerNumber";
-                    dictAttributes = new Dictionary<string, string>
-                    {
-                        ["@reviewerNumber"] = strReviewerNumber
-                    };
-
-                    resultSet = database.selectQuery(table, 7, conditional, dictAttributes);
-
-                    if (resultSet.Count > 0)
-                    {
-                        Dictionary<string, string> resultRow = resultSet[0];
-                        foreach (var kv in resultRow)
-                        {
-                            if (kv.Key.Equals("REVIEWER_NUM"))
-                            {
-                                lblReviewerNumber.Text = kv.Value;
-                            }
-                            if (kv.Key.Equals("FNAME"))
-                            {
-                                lblFirstName.Text = kv.Value;
-                            }
-                            if (kv.Key.Equals("LNAME"))
-                            {
-                                lblLastName.Text = kv.Value;
-                            }
-                            if (kv.Key.Equals("QUAL_LEVEL"))
-                            {
-                                lblQualificationLevel.Text = kv.Value;
-                            }
-                            if (kv.Key.Equals("DOB"))
-                            {
-                                lblDateOfBirth.Text = DateTime.Parse(kv.Value).ToString("dddd dd MMMM yyyy");
-                            }
-                            if (kv.Key.Equals("TELEPHONE"))
-                            {
-                                lblTelephoneNumber.Text = kv.Value;
-                            }
-                            if (kv.Key.Equals("EMAIL"))
-                            {
-                                lblEmail.Text = kv.Value;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("REVIEWER NOT FOUND");
-                    }
+                    MessageBox.Show("REVIEWER NOT FOUND");
                 }
             }
         }
@@ -290,7 +296,9 @@ namespace FEAManager
                     {
                         if (kv.Key.Equals("APP_NUM"))
                         {
-                            lblApplicationNumbers.Text = kv.Value;
+                            lblApplicationNumbers.Text = "Applicant: " + kv.Value;
+                            CommonMethods.centraliseControlInContainer(lblApplicationNumbers, pnlApplicationView);
+                            //lblApplicationNumbers.Location = new Point((pnlApplicationView.Width - lblApplicationNumbers.Width) / 2, lblApplicationNumbers.Location.Y);
                         }
                         if (kv.Key.Equals("ADMIN_NUM"))
                         {
@@ -319,6 +327,8 @@ namespace FEAManager
                         if (kv.Key.Equals("STU_NUM"))
                         {
                             lblStudentNumber.Text = kv.Value;
+                            string strStudentName = CommonMethods.getFullName(kv.Value, "Student", "STU_NUM", 9);
+                            lblStudentFullName.Text = strStudentName;
                         }
                         if (kv.Key.Equals("SUPERVISOR_NUM"))
                         {
@@ -476,11 +486,11 @@ namespace FEAManager
                     //Updating Application Table
                     strTable = "Application";
                     strConditional = "WHERE APP_NUM = @applicationNumber";
-                    strRows = "[APP_NUM] = @applicationNumber, [STATUS] = @status";
+                    strRows = "[STATUS] = @status";
                     dictAttributes = new Dictionary<string, string>
                     {
-                        ["@applicationNumber"] = strApplicationNumber,
-                        ["@status"] = strStatus
+                        ["@status"] = strStatus,
+                        ["@applicationNumber"] = strApplicationNumber
                     };
 
                     dbApplicationAssignemt.updateQuery(strTable, strRows, strConditional, dictAttributes);
@@ -513,7 +523,7 @@ namespace FEAManager
                     Label label = (Label)control;
                     
                     if (!label.Name.Contains("label")) {
-                        label.Text = "\"\"";
+                        label.Text = CommonMethods.blankPlaceholder;
                     }
                 }
             }
@@ -526,7 +536,7 @@ namespace FEAManager
 
                     if (!label.Name.Contains("label"))
                     {
-                        label.Text = "\"\"";
+                        label.Text = CommonMethods.blankPlaceholder;
                     }
                 }
             }
@@ -540,11 +550,13 @@ namespace FEAManager
                 }
             }
 
-            lblSelectedApplicationNumber.Text = "\"\"";
-            lblSelectedReviewerOne.Text = "\"\"";
-            lblSelectedReviewerTwo.Text = "\"\"";
-            lblApplicationNumbers.Text = "Application Number: ";
+            lblSelectedApplicationNumber.Text = CommonMethods.blankPlaceholder;
+            lblSelectedReviewerOne.Text = CommonMethods.blankPlaceholder;
+            lblSelectedReviewerTwo.Text = CommonMethods.blankPlaceholder;
+            lblApplicationNumbers.Text = "Application Number";
             lblReviewerNumber.Text = "Reviewer Number";
+            CommonMethods.centraliseControlInContainer(lblApplicationNumbers, pnlApplicationView);
+            CommonMethods.centraliseControlInContainer(lblReviewerNumber, pnlReviewerProfile);
 
             lsbApplications.SelectedIndex = -1;
             lsbReviewers.SelectedIndex = -1;

@@ -253,11 +253,10 @@ namespace FEAManager
                         DB dbReviewer = new DB();
 
                         strTable = "Student";
-                        strParams = "[STU_NUM] = @stuNumber, [FNAME] = @fName, [LNAME] = @lName, [EMAIL] = @email, [PASSWORD] = @password, [DOB] = @dob, [TELEPHONE] = @telephone, [STUDY_PROGRAM] = @studyProgram, [TITLE] = @title";
+                        strParams = "[FNAME] = @fName, [LNAME] = @lName, [EMAIL] = @email, [PASSWORD] = @password, [DOB] = @dob, [TELEPHONE] = @telephone, [STUDY_PROGRAM] = @studyProgram, [TITLE] = @title";
                         strConditional = "WHERE STU_NUM = @stuNumber";
                         dictAttributes = new Dictionary<string, string>
                         {
-                            ["@stuNumber"] = txtStudentNumber.Text,
                             ["@fName"] = txtFName.Text,
                             ["@lName"] = txtLName.Text,
                             ["@email"] = mtxtEmail.Text,
@@ -265,7 +264,8 @@ namespace FEAManager
                             ["@dob"] = dtpDetailsDateOfBirth.Value.ToString("dd/MM/yyyy"),
                             ["@telephone"] = mtxtTelephone.Text,
                             ["@studyProgram"] = cmbStudyProgram.Text,
-                            ["@title"] = CommonMethods.checkedString(grpTitle)
+                            ["@title"] = CommonMethods.checkedString(grpTitle),
+                            ["@stuNumber"] = txtStudentNumber.Text
                         };
 
                         dbReviewer.updateQuery(strTable, strParams, strConditional, dictAttributes);
@@ -278,8 +278,8 @@ namespace FEAManager
             }
             else
             {
-                string strApplicationNumber = genereateUniqueApplicationNumber();
-                string strAdnimNumber = getAdminNumber();
+                string strApplicationNumber = CommonMethods.generateUniqueID(CommonMethods.typeApplication);
+                string strAdnimNumber = CommonMethods.getAdminNumber();
                 string strApplicationType = CommonMethods.checkedString(gpbApplicationType);
                 string strStudyProgram = CommonMethods.checkedString(gpbStudyProgram);
                 string strResearchMethod = CommonMethods.checkedString(gpbCollectingData);
@@ -419,31 +419,6 @@ namespace FEAManager
             }
         }
 
-        private String genereateUniqueApplicationNumber()
-        {
-            string table, conditional;
-            Dictionary<string, string> dictAttributes, resultRow;
-            List<Dictionary<string, string>> resultSet;
-            DB dbLogin = new DB();
-            String applicationNumber = "APP" + CommonMethods.generateDigits();
-
-            table = "Application";
-            conditional = "WHERE [APP_NUM] = @applicationNumber";
-            dictAttributes = new Dictionary<string, string>
-            {
-                ["@applicationNumber"] = applicationNumber
-            };
-
-            resultSet = dbLogin.selectQuery(table, 8, conditional, dictAttributes);
-
-            while (resultSet.Count > 0)
-            {
-                applicationNumber = "APP" + CommonMethods.generateDigits();
-                resultSet = dbLogin.selectQuery(table, 8, conditional, dictAttributes);
-            }
-            return applicationNumber;
-        }
-
         public static void loadForm(Form previousForm, String strStudentNumber)
         { 
             StudentMainMenuForm frmStudentMainMenu = new StudentMainMenuForm();
@@ -496,38 +471,6 @@ namespace FEAManager
                 radEthics.Checked = true;
                 pnlEthics.Visible = true;
                 pnlWaiver.Visible = false;
-            }
-        }
-
-        private string getAdminNumber()
-        {
-            string table, conditional;
-            Dictionary<string, string> dictAttributes, resultRow;
-            List<Dictionary<string, string>> resultSet;
-            DB dbLogin = new DB();
-
-            table = "Admin";
-            conditional = "";
-            dictAttributes = new Dictionary<string, string> { };
-
-            resultSet = dbLogin.selectQuery(table, 5, conditional, dictAttributes);
-
-            if (resultSet.Count > 0)
-            {
-                resultRow = resultSet[0];
-                String adminNumber = "";
-                foreach (var kv in resultRow)
-                {
-                    if (kv.Key.Equals("ADMIN_NUM"))
-                    {
-                        adminNumber = kv.Value;
-                    }
-                }
-                return adminNumber;
-            }
-            else
-            {
-                return "";
             }
         }
 

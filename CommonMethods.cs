@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,152 @@ namespace FEAManager
         public static char passwordChar = '*';
 
         public static string applicantForm = "af";
+
         public static string riskCategoryTable = "rct";
+
+        public static string typeStudent = "Student";
+
+        public static string typeAdmin = "Admin";
+
+        public static string typeSupervisor = "Supervisor";
+
+        public static string typeReviewer = "Reviewer";
+
+        public static string typeApplication = "Application";
+
+        private static string getPrefix(string userType)
+        {
+            if (userType.Equals(typeStudent))
+            {
+                return "STU";
+            }
+            if (userType.Equals(typeReviewer))
+            {
+                return "REV";
+            }
+            if (userType.Equals(typeAdmin))
+            {
+                return "ADMIN";
+            }
+            if (userType.Equals(typeSupervisor))
+            {
+                return "SUP";
+            }
+            if (userType.Equals(typeApplication))
+            {
+                return "APP";
+            }
+            return "";
+        }
+
+        private static string getIDName(string userType)
+        {
+            if (userType.Equals(typeStudent))
+            {
+                return "STU_NUM";
+            }
+            if (userType.Equals(typeReviewer))
+            {
+                return "REVIEWER_NUM";
+            }
+            if (userType.Equals(typeAdmin))
+            {
+                return "ADMIN_NUM";
+            }
+            if (userType.Equals(typeSupervisor))
+            {
+                return "SUPERVISOR_NUM";
+            }
+            if (userType.Equals(typeApplication))
+            {
+                return "APP_NUM";
+            }
+            return "";
+        }
+
+        public static string generateUniqueID(string userType)
+        {
+            string table, conditional;
+            Dictionary<string, string> dictAttributes;
+            List<Dictionary<string, string>> resultSet;
+            DB database = new DB();
+
+            string prefix = getPrefix(userType);
+            
+            string identification = prefix + CommonMethods.generateDigits();
+
+            table = userType;
+            conditional = "WHERE [" + getIDName(userType) + "] = @identified";
+            dictAttributes = new Dictionary<string, string>
+            {
+                ["@identified"] = identification
+            };
+
+            resultSet = database.selectQuery(table, 1, conditional, dictAttributes);
+
+            while (resultSet.Count != 0)
+            {
+                identification = prefix + CommonMethods.generateDigits();
+                resultSet = database.selectQuery(table, 1, conditional, dictAttributes);
+            }
+            return identification;
+        }
+
+        public static DateTime timeToNearestXMinute(int degree)
+        {
+            DateTime someTime = DateTime.Now;
+            int currMinute = DateTime.Now.Minute;
+            //MessageBox.Show("CurrMinute / degree: " + currMinute + " / " + degree + " = " + (currMinute / degree));
+            //MessageBox.Show("Decimal that = " + (decimal)(currMinute / degree));
+            currMinute = (int) (Math.Ceiling((decimal)(((decimal)currMinute / (decimal)degree))) * (decimal)degree);
+            TimeSpan ts = new TimeSpan(someTime.Hour, currMinute, someTime.Second);
+            someTime = someTime.Date + ts;
+
+            //MessageBox.Show("CurrTime: " + DateTime.Now.ToString("HH:mm:ss"));
+            //MessageBox.Show("SomeTime: " + someTime.ToString("HH:mm:ss"));
+            //MessageBox.Show("currentMinute: " + currMinute);
+            return someTime;
+        }
+
+        public static void centraliseControlInContainer(Control control, Control container)
+        {
+            control.Location = new Point((container.Width - control.Width) / 2, control.Location.Y);
+        }
+
+        public static string getAdminNumber()
+        {
+            string table, conditional;
+            Dictionary<string, string> dictAttributes, resultRow;
+            List<Dictionary<string, string>> resultSet;
+            DB dbLogin = new DB();
+
+            table = "Admin";
+            conditional = "";
+            dictAttributes = new Dictionary<string, string> { };
+
+            resultSet = dbLogin.selectQuery(table, 5, conditional, dictAttributes);
+
+            if (resultSet.Count > 0)
+            {
+                resultRow = resultSet[0];
+                String adminNumber = "";
+                foreach (var kv in resultRow)
+                {
+                    if (kv.Key.Equals("ADMIN_NUM"))
+                    {
+                        adminNumber = kv.Value;
+                    }
+                }
+                MessageBox.Show("admine no: " + adminNumber);
+                return adminNumber;
+            }
+            else
+            {
+                MessageBox.Show("admine no: ");
+                return "";
+            }
+        }
+
         public static void addNewChanges(List<List<string>> changes, List<List<string>> newChanges)
         {
             /*MessageBox.Show("Add new Change call, original changes keys");

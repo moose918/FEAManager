@@ -13,6 +13,7 @@ namespace FEAManager
 {
     public partial class ManageRevierwerForm : Form
     {
+        private Reviewer reviewer;
         public ManageRevierwerForm()
         {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace FEAManager
         {
             ManageRevierwerForm frmManageReviewer = new ManageRevierwerForm();
             CommonMethods.getStudyPrograms(frmManageReviewer.cbbQulificationLevel);
-            frmManageReviewer.loadDetails();
+            frmManageReviewer.refreshDataGrid();
             try
             {
                 frmManageReviewer.npiReviewers.BindingSource.Position = 1;
@@ -37,14 +38,29 @@ namespace FEAManager
             previousForm.Visible = true;
         }
 
-        private void loadDetails()
+        public static void loadForm(AdminMainMenuForm previousForm)
         {
-            refreshDataGrid();
+            ManageRevierwerForm frmManageReviewer = new ManageRevierwerForm();
+            CommonMethods.getStudyPrograms(frmManageReviewer.cbbQulificationLevel);
+            frmManageReviewer.refreshDataGrid();
+            try
+            {
+                frmManageReviewer.npiReviewers.BindingSource.Position = 1;
+            }
+            catch
+            {
+                frmManageReviewer.npiReviewers.BindingSource.Position = 0;
+            }
+            frmManageReviewer.refreshLables();
+            previousForm.Visible = false;
+            frmManageReviewer.ShowDialog(previousForm);
+            previousForm.preliminaryActions();
+            previousForm.Visible = true;
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            LoginForm.loadForm(this);
+            this.Close();
         }
 
         private void ManageRevierwerForm_Load(object sender, EventArgs e)
@@ -58,59 +74,12 @@ namespace FEAManager
 
         private void btnCreate_click(object sender, EventArgs e)
         {
-            //Validating input
-            bool validInformation = ValidateInformation();
-
-            if (validInformation)
+            bool createdReviewer = reviewer.createReviewer();
+            if (createdReviewer)
             {
-                //Making sure that reviewer does not exist
-                bool exists = false;
-
-                string strTable, strParams, strConditional, strRows;
-                Dictionary<string, string> dictAttributes;
-                List<Dictionary<string, string>> resultSet;
-                DB dbReviewer = new DB();
-
-                strTable = "Reviewer";
-                strConditional = "WHERE [REVIEWER_NUM] = @reviewerNum";
-                dictAttributes = new Dictionary<string, string>
-                {
-                    ["@reviewerNum"] = txtReviewerNumber.Text
-                };
-
-                resultSet = dbReviewer.selectQuery(strTable, 7, strConditional, dictAttributes);
-
-                if (resultSet.Count > 0)
-                {
-                    exists = true;
-                    MessageBox.Show(txtReviewerNumber.Text + " already exists, you can not create them again");
-                    btnClear.PerformClick();
-                }
-                else
-                {
-                    exists = false;
-                }
-
-                if (!exists)
-                {
-                    strTable = "Reviewer([REVIEWER_NUM], [FNAME], [LNAME], [QUAL_LEVEL], [DOB], [TELEPHONE], [EMAIL])";
-                    strRows = "(@reviewerNum, @fName, @lName, @qLevel, @dob, @telephone, @email)";
-                    dictAttributes = new Dictionary<string, string>
-                    {
-                        ["@reviewerNum"] = txtReviewerNumber.Text,
-                        ["@fName"] = txtFName.Text,
-                        ["@lName"] = txtLName.Text,
-                        ["@qLevel"] = cbbQulificationLevel.Text,
-                        ["@dob"] = dtpDOB.Value.ToString("dd/MM/yyyy"),
-                        ["@telephone"] = mtxtTelephone.Text,
-                        ["@email"] = mtxtEmail.Text
-                    };
-
-                    dbReviewer.insertQuery(strTable, strRows, dictAttributes);
-
-                    loadDetails();
-                    refreshDataGrid();
-                }
+                CommonMethods.myConfirmationMessageBox(reviewer.strReviwerNumber + " has been succesfully created");
+                refreshDataGrid();
+                refreshLables();
             }
         }
 
@@ -130,64 +99,12 @@ namespace FEAManager
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            //Validating input
-            bool validInformation = ValidateInformation();
-
-            if (validInformation)
+            bool updatedReviewer = reviewer.updateReviewer();
+            if (updatedReviewer)
             {
-                //Making sure that reviewr 
-                bool exists = false;
-
-                string strTable, strParams, strConditional;
-                Dictionary<string, string> dictAttributes;
-                List<Dictionary<string, string>> resultSet;
-                DB dbReviewer = new DB();
-
-                strTable = "Reviewer";
-                strConditional = "WHERE [REVIEWER_NUM] = @reviewerNum";
-                dictAttributes = new Dictionary<string, string>
-                {
-                    ["@reviewerNum"] = txtReviewerNumber.Text
-                };
-
-                resultSet = dbReviewer.selectQuery(strTable, 7, strConditional, dictAttributes);
-
-                if (resultSet.Count > 0)
-                {
-                    exists = true;
-                }
-                else
-                {
-                    exists = false;
-                    MessageBox.Show(txtReviewerNumber.Text + " Does not exists. You can rather create said reviewer");
-                    btnClear.PerformClick();
-                }
-
-                if (exists)
-                {
-                    strTable = "Reviewer";
-                    //strParams = "[REVIEWER_NUM] = [REVIEWER_NUM], [FNAME] = @fName";
-                    strParams = "[FNAME] = @fName, [LNAME] = @lName, [QUAL_LEVEL] = @qLevel, [DOB] = @dob, [TELEPHONE] = @telephone, [EMAIL] = @email";
-                    //strParams = "[REVIEWER_NUM] = @reviewerNum, [FNAME] = @fName, [LNAME] = @lName, [QUAL_LEVEL] = @qLevel, [DOB] = @dob, [TELEPHONE] = @telephone, [EMAIL] = @email";
-                    strConditional = "WHERE [REVIEWER_NUM] = @reviewerNum";
-                    dictAttributes = new Dictionary<string, string>
-                    {
-                        ["@reviewerNum"] = txtReviewerNumber.Text,
-                        ["@fName"] = txtFName.Text,
-                        ["@lName"] = txtLName.Text,
-                        ["@qLevel"] = cbbQulificationLevel.Text,
-                        ["@dob"] = dtpDOB.Value.ToString("dd/MM/yyyy"),
-                        ["@telephone"] = mtxtTelephone.Text,
-                        ["@email"] = mtxtEmail.Text
-                    };
-
-                    int cols = dbReviewer.updateQuery(strTable, strParams, strConditional, dictAttributes);
-
-                    //MessageBox.Show(cols.ToString());
-
-                    loadDetails();
-                    refreshDataGrid();
-                }
+                CommonMethods.myConfirmationMessageBox(reviewer.strReviwerNumber + " has been succesfully updated");
+                refreshDataGrid();
+                refreshLables();
             }
         }
 
@@ -255,6 +172,8 @@ namespace FEAManager
 
         private void refreshDataGrid()
         {
+            reviewer = new Reviewer(txtFName, txtLName, txtReviewerNumber, mtxtEmail, mtxtTelephone, dtpDOB, cbbQulificationLevel);
+
             // TODO: This line of code loads data into the 'tblReviewer.Reviewer' table. You can move, or remove it, as needed.
             string connString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = FEAManager_DB.accdb";
             BindingSource bindingSource;
@@ -274,7 +193,7 @@ namespace FEAManager
                 npiReviewers.BindingSource = bindingSource;
                 dataGridView1.Refresh();
 
-                //                conn.Close();
+                conn.Close();
             }
 
             for (int i = 0; i < dataGridView1.Columns.Count; i++)
@@ -287,31 +206,16 @@ namespace FEAManager
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            String strReviewerNum = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-
-            // confirm with user...
-            DialogResult result = MessageBox.Show("Are you sure you want to delete reviewer: " + strReviewerNum + "?", "Confirmation", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
+            bool deteledReviewr = reviewer.deteleReviewer();
+            if (deteledReviewr)
             {
-                string strTable, strConditional;
-                Dictionary<string, string> dictAttributes;
-                DB dbReviewer = new DB();
-
-                MessageBox.Show(strReviewerNum);
-                strTable = "Reviewer";
-                strConditional = "WHERE REVIEWER_NUM = @reviewerNum";
-                dictAttributes = new Dictionary<string, string>
-                {
-                    ["@reviewerNum"] = strReviewerNum
-                };
-
-                dbReviewer.deleteQuery(strTable, strConditional, dictAttributes);
-
-                //refreshDataGrid();
+                CommonMethods.myConfirmationMessageBox(reviewer.strReviwerNumber + " has been succesfulyl deleted");
+                refreshLables();
+                refreshDataGrid();
             }
             else
             {
-                MessageBox.Show("Delete Aborted");
+                CommonMethods.myConfirmationMessageBox("Delete aborted");
             }
         }
 

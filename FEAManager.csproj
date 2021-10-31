@@ -70,6 +70,7 @@
     <Compile Include="FullScreenForm.Designer.cs">
       <DependentUpon>FullScreenForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginController.cs" />
     <Compile Include="ManageApplicationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +84,9 @@
       <DependentUpon>ManageRevierwerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CommonMethods.cs" />
+    <Compile Include="RegistrationController.cs" />
+    <Compile Include="ReportController.cs" />
+    <Compile Include="Reviewer.cs" />
     <Compile Include="StudentMainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,9 +162,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FEAManager_DB.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="star_things_3xK_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -69,16 +69,17 @@ namespace FEAManager
             this.lblHeading.AutoSize = true;
             this.lblHeading.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             this.lblHeading.Font = new System.Drawing.Font("Arial Rounded MT Bold", 30F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeading.Location = new System.Drawing.Point(85, 20);
+            this.lblHeading.Location = new System.Drawing.Point(178, 20);
             this.lblHeading.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(930, 58);
+            this.lblHeading.Size = new System.Drawing.Size(744, 46);
             this.lblHeading.TabIndex = 19;
             this.lblHeading.Text = "Please enter your registration details";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.dtpDOB);
             this.panel1.Controls.Add(this.mtxtTelephone);
             this.panel1.Controls.Add(this.txtLName);
@@ -87,20 +88,20 @@ namespace FEAManager
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(51, 94);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(475, 284);
-            this.panel1.TabIndex = 24;
+            this.panel1.TabIndex = 0;
             // 
             // dtpDOB
             // 
             this.dtpDOB.Location = new System.Drawing.Point(205, 159);
             this.dtpDOB.Margin = new System.Windows.Forms.Padding(4);
             this.dtpDOB.Name = "dtpDOB";
-            this.dtpDOB.Size = new System.Drawing.Size(249, 27);
-            this.dtpDOB.TabIndex = 2;
+            this.dtpDOB.Size = new System.Drawing.Size(249, 26);
+            this.dtpDOB.TabIndex = 3;
             // 
             // mtxtTelephone
             // 
@@ -108,8 +109,8 @@ namespace FEAManager
             this.mtxtTelephone.Margin = new System.Windows.Forms.Padding(4);
             this.mtxtTelephone.Mask = "(999) 000-0000";
             this.mtxtTelephone.Name = "mtxtTelephone";
-            this.mtxtTelephone.Size = new System.Drawing.Size(249, 27);
-            this.mtxtTelephone.TabIndex = 3;
+            this.mtxtTelephone.Size = new System.Drawing.Size(249, 26);
+            this.mtxtTelephone.TabIndex = 4;
             this.mtxtTelephone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // txtLName
@@ -117,16 +118,16 @@ namespace FEAManager
             this.txtLName.Location = new System.Drawing.Point(205, 92);
             this.txtLName.Margin = new System.Windows.Forms.Padding(4);
             this.txtLName.Name = "txtLName";
-            this.txtLName.Size = new System.Drawing.Size(249, 27);
-            this.txtLName.TabIndex = 1;
+            this.txtLName.Size = new System.Drawing.Size(249, 26);
+            this.txtLName.TabIndex = 2;
             // 
             // txtFName
             // 
             this.txtFName.Location = new System.Drawing.Point(205, 27);
             this.txtFName.Margin = new System.Windows.Forms.Padding(4);
             this.txtFName.Name = "txtFName";
-            this.txtFName.Size = new System.Drawing.Size(249, 27);
-            this.txtFName.TabIndex = 0;
+            this.txtFName.Size = new System.Drawing.Size(249, 26);
+            this.txtFName.TabIndex = 1;
             // 
             // label5
             // 
@@ -134,7 +135,7 @@ namespace FEAManager
             this.label5.Location = new System.Drawing.Point(20, 226);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(171, 20);
+            this.label5.Size = new System.Drawing.Size(164, 18);
             this.label5.TabIndex = 25;
             this.label5.Text = "Telephone Number:";
             // 
@@ -144,7 +145,7 @@ namespace FEAManager
             this.label4.Location = new System.Drawing.Point(20, 162);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(117, 20);
+            this.label4.Size = new System.Drawing.Size(113, 18);
             this.label4.TabIndex = 24;
             this.label4.Text = "Date of Birth:";
             // 
@@ -154,7 +155,7 @@ namespace FEAManager
             this.label3.Location = new System.Drawing.Point(20, 95);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 20);
+            this.label3.Size = new System.Drawing.Size(98, 18);
             this.label3.TabIndex = 23;
             this.label3.Text = "Last Name:";
             // 
@@ -164,13 +165,14 @@ namespace FEAManager
             this.label2.Location = new System.Drawing.Point(20, 30);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 20);
+            this.label2.Size = new System.Drawing.Size(99, 18);
             this.label2.TabIndex = 22;
             this.label2.Text = "First Name:";
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.btnViewPassword);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.mtxtPassword);
@@ -180,22 +182,22 @@ namespace FEAManager
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(575, 94);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(475, 284);
-            this.panel2.TabIndex = 25;
+            this.panel2.TabIndex = 5;
             // 
             // btnViewPassword
             // 
             this.btnViewPassword.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnViewPassword.BackgroundImage")));
             this.btnViewPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnViewPassword.Location = new System.Drawing.Point(422, 89);
+            this.btnViewPassword.Location = new System.Drawing.Point(428, 92);
             this.btnViewPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnViewPassword.Name = "btnViewPassword";
-            this.btnViewPassword.Size = new System.Drawing.Size(32, 32);
-            this.btnViewPassword.TabIndex = 6;
+            this.btnViewPassword.Size = new System.Drawing.Size(26, 26);
+            this.btnViewPassword.TabIndex = 8;
             this.btnViewPassword.UseVisualStyleBackColor = true;
             this.btnViewPassword.Click += new System.EventHandler(this.btnViewPassword_Click);
             // 
@@ -205,7 +207,7 @@ namespace FEAManager
             this.label8.Location = new System.Drawing.Point(20, 95);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(95, 20);
+            this.label8.Size = new System.Drawing.Size(92, 18);
             this.label8.TabIndex = 26;
             this.label8.Text = "Password:";
             // 
@@ -215,8 +217,8 @@ namespace FEAManager
             this.mtxtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.mtxtPassword.Name = "mtxtPassword";
             this.mtxtPassword.PasswordChar = '*';
-            this.mtxtPassword.Size = new System.Drawing.Size(210, 27);
-            this.mtxtPassword.TabIndex = 5;
+            this.mtxtPassword.Size = new System.Drawing.Size(216, 26);
+            this.mtxtPassword.TabIndex = 7;
             // 
             // cmbStudyProgram
             // 
@@ -229,24 +231,24 @@ namespace FEAManager
             this.cmbStudyProgram.Location = new System.Drawing.Point(205, 222);
             this.cmbStudyProgram.Margin = new System.Windows.Forms.Padding(4);
             this.cmbStudyProgram.Name = "cmbStudyProgram";
-            this.cmbStudyProgram.Size = new System.Drawing.Size(249, 28);
-            this.cmbStudyProgram.TabIndex = 8;
+            this.cmbStudyProgram.Size = new System.Drawing.Size(249, 26);
+            this.cmbStudyProgram.TabIndex = 10;
             // 
             // mtxtEmail
             // 
             this.mtxtEmail.Location = new System.Drawing.Point(205, 159);
             this.mtxtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.mtxtEmail.Name = "mtxtEmail";
-            this.mtxtEmail.Size = new System.Drawing.Size(249, 27);
-            this.mtxtEmail.TabIndex = 7;
+            this.mtxtEmail.Size = new System.Drawing.Size(249, 26);
+            this.mtxtEmail.TabIndex = 9;
             // 
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(205, 27);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(249, 27);
-            this.txtUsername.TabIndex = 4;
+            this.txtUsername.Size = new System.Drawing.Size(249, 26);
+            this.txtUsername.TabIndex = 6;
             // 
             // label7
             // 
@@ -254,7 +256,7 @@ namespace FEAManager
             this.label7.Location = new System.Drawing.Point(20, 226);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(136, 20);
+            this.label7.Size = new System.Drawing.Size(132, 18);
             this.label7.TabIndex = 21;
             this.label7.Text = "Study Program:";
             // 
@@ -264,7 +266,7 @@ namespace FEAManager
             this.label6.Location = new System.Drawing.Point(20, 162);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(137, 20);
+            this.label6.Size = new System.Drawing.Size(130, 18);
             this.label6.TabIndex = 20;
             this.label6.Text = "E-mail address:";
             // 
@@ -274,13 +276,14 @@ namespace FEAManager
             this.label1.Location = new System.Drawing.Point(20, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 20);
+            this.label1.Size = new System.Drawing.Size(95, 18);
             this.label1.TabIndex = 19;
             this.label1.Text = "Useranme:";
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.btnClear);
             this.panel3.Controls.Add(this.btnCreate);
             this.panel3.Controls.Add(this.btnReturn);
@@ -288,21 +291,21 @@ namespace FEAManager
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(900, 95);
-            this.panel3.TabIndex = 28;
+            this.panel3.TabIndex = 15;
             // 
             // btnClear
             // 
             this.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnClear.FlatAppearance.BorderSize = 3;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
             this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClear.Location = new System.Drawing.Point(705, 22);
             this.btnClear.Margin = new System.Windows.Forms.Padding(4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(149, 50);
-            this.btnClear.TabIndex = 11;
+            this.btnClear.TabIndex = 18;
             this.btnClear.Text = "&Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -312,14 +315,14 @@ namespace FEAManager
             this.btnCreate.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnCreate.FlatAppearance.BorderSize = 3;
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreate.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreate.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreate.Image = ((System.Drawing.Image)(resources.GetObject("btnCreate.Image")));
             this.btnCreate.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCreate.Location = new System.Drawing.Point(375, 22);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(149, 50);
-            this.btnCreate.TabIndex = 10;
+            this.btnCreate.TabIndex = 17;
             this.btnCreate.Text = "&Create";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
@@ -329,14 +332,14 @@ namespace FEAManager
             this.btnReturn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnReturn.FlatAppearance.BorderSize = 3;
             this.btnReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReturn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReturn.Image = ((System.Drawing.Image)(resources.GetObject("btnReturn.Image")));
             this.btnReturn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnReturn.Location = new System.Drawing.Point(45, 22);
             this.btnReturn.Margin = new System.Windows.Forms.Padding(4);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(149, 50);
-            this.btnReturn.TabIndex = 9;
+            this.btnReturn.TabIndex = 16;
             this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
@@ -347,11 +350,11 @@ namespace FEAManager
             this.grpTitle.Controls.Add(this.radOther);
             this.grpTitle.Controls.Add(this.radMs);
             this.grpTitle.Controls.Add(this.radMr);
-            this.grpTitle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpTitle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpTitle.Location = new System.Drawing.Point(400, 385);
             this.grpTitle.Name = "grpTitle";
             this.grpTitle.Size = new System.Drawing.Size(300, 58);
-            this.grpTitle.TabIndex = 29;
+            this.grpTitle.TabIndex = 11;
             this.grpTitle.TabStop = false;
             this.grpTitle.Text = "Title";
             // 
@@ -360,8 +363,8 @@ namespace FEAManager
             this.radOther.AutoSize = true;
             this.radOther.Location = new System.Drawing.Point(202, 25);
             this.radOther.Name = "radOther";
-            this.radOther.Size = new System.Drawing.Size(76, 24);
-            this.radOther.TabIndex = 11;
+            this.radOther.Size = new System.Drawing.Size(72, 22);
+            this.radOther.TabIndex = 14;
             this.radOther.TabStop = true;
             this.radOther.Text = "Other";
             this.radOther.UseVisualStyleBackColor = true;
@@ -371,8 +374,8 @@ namespace FEAManager
             this.radMs.AutoSize = true;
             this.radMs.Location = new System.Drawing.Point(111, 25);
             this.radMs.Name = "radMs";
-            this.radMs.Size = new System.Drawing.Size(53, 24);
-            this.radMs.TabIndex = 10;
+            this.radMs.Size = new System.Drawing.Size(48, 22);
+            this.radMs.TabIndex = 13;
             this.radMs.TabStop = true;
             this.radMs.Text = "Ms";
             this.radMs.UseVisualStyleBackColor = true;
@@ -382,8 +385,8 @@ namespace FEAManager
             this.radMr.AutoSize = true;
             this.radMr.Location = new System.Drawing.Point(22, 25);
             this.radMr.Name = "radMr";
-            this.radMr.Size = new System.Drawing.Size(51, 24);
-            this.radMr.TabIndex = 9;
+            this.radMr.Size = new System.Drawing.Size(46, 22);
+            this.radMr.TabIndex = 12;
             this.radMr.TabStop = true;
             this.radMr.Text = "Mr";
             this.radMr.UseVisualStyleBackColor = true;
@@ -393,7 +396,7 @@ namespace FEAManager
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1082, 553);
+            this.ClientSize = new System.Drawing.Size(1084, 553);
             this.Controls.Add(this.grpTitle);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -404,7 +407,7 @@ namespace FEAManager
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RegisterStudentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Registration";
+            this.Text = " ";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

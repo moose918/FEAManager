@@ -17,77 +17,29 @@ namespace FEAManager
             InitializeComponent();
         }
 
-        private bool ValidateInformation()
-        {
-            bool valid = true;
-            valid = CommonMethods.validateTextBox(txtUsername, "username") && valid;
-            valid = CommonMethods.validateTextBox(mtxtPassword, "password") && valid;
-            valid = CommonMethods.validateRadioButtonsInGroup(grpUserType, "user type") && valid;
-            return valid;
-        }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            bool validInformation = ValidateInformation();
-            if (validInformation)
+            LoginController loginController = new LoginController();
+            bool validLogin = loginController.validLogin(txtUsername, mtxtPassword, grpUserType);
+
+            if (validLogin)
             {
-                string table, conditional;
-                Dictionary<string, string> dictAttributes, resultRow;
-                List<Dictionary<string, string>> resultSet;
-                DB dbLogin = new DB();
-
-                string username = txtUsername.Text;
-                string passwd = mtxtPassword.Text;
-
-
                 if (radAdmin.Checked)
                 {
-                    table = "Admin";
-                    conditional = "WHERE [ADMIN_NUM] = @adminNum AND [PASSWORD] = @passwd";
-                    dictAttributes = new Dictionary<string, string>
-                    {
-                        ["@adminNum"] = username,
-                        ["@passwd"] = passwd
-                    };
-                    resultSet = dbLogin.selectQuery(table, 1, conditional, dictAttributes);
-
-                    if (resultSet.Count != 0)
-                    {
-                        CommonMethods.myConfirmationMessageBox("Admin Login Successful");
-                        AdminMainMenuForm.loadForm(this);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Either the password or username was incorrect.", "Login Faliure", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    CommonMethods.myConfirmationMessageBox("Admin Login Successful");
+                    AdminMainMenuForm.loadForm(this);
                 }
                 else if (radStudent.Checked)
                 {
-                    table = "Student";
-                    conditional = "WHERE [STU_NUM] = @studentNum AND [PASSWORD] = @passwd";
-                    dictAttributes = new Dictionary<string, string>
-                    {
-                        ["@studentNum"] = username,
-                        ["@passwd"] = passwd
-                    };
-
-                    resultSet = dbLogin.selectQuery(table, 1, conditional, dictAttributes);
-
-                    if (resultSet.Count != 0)
-                    {
-                        CommonMethods.myConfirmationMessageBox("Student  Login Successful");
-                        StudentMainMenuForm.loadForm(this, username);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Either the password or username was incorrect.", "Login Faliure", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    CommonMethods.myConfirmationMessageBox("Student Login Successful");
+                    StudentMainMenuForm.loadForm(this, loginController.strUsername);
                 }
             }
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
+            CommonMethods.timeToNearestXMinute(5);
             RegisterStudentForm.loadForm(this);
         }
 
