@@ -59,6 +59,7 @@
       <DependentUpon>AdminMainMenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ApplicationAssignment.cs" />
+    <Compile Include="CheckBoxList.cs" />
     <Compile Include="DB.cs" />
     <Compile Include="FEAManager_DBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -88,6 +89,7 @@
     <Compile Include="RegistrationController.cs" />
     <Compile Include="ReportController.cs" />
     <Compile Include="Reviewer.cs" />
+    <Compile Include="Student.cs" />
     <Compile Include="StudentMainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>

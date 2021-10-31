@@ -133,8 +133,6 @@ namespace FEAManager
             this.cmbSupervisorEmail = new System.Windows.Forms.ComboBox();
             this.cmbSupervisorLastName = new System.Windows.Forms.ComboBox();
             this.cmbSupervisorFirstName = new System.Windows.Forms.ComboBox();
-            this.cmbSupervisorNumber = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -1507,8 +1505,6 @@ namespace FEAManager
             this.gpbSupervisor.Controls.Add(this.cmbSupervisorEmail);
             this.gpbSupervisor.Controls.Add(this.cmbSupervisorLastName);
             this.gpbSupervisor.Controls.Add(this.cmbSupervisorFirstName);
-            this.gpbSupervisor.Controls.Add(this.cmbSupervisorNumber);
-            this.gpbSupervisor.Controls.Add(this.label12);
             this.gpbSupervisor.Controls.Add(this.label28);
             this.gpbSupervisor.Controls.Add(this.label3);
             this.gpbSupervisor.Controls.Add(this.label18);
@@ -1525,7 +1521,7 @@ namespace FEAManager
             // cmbSupervisorCellphone
             // 
             this.cmbSupervisorCellphone.FormattingEnabled = true;
-            this.cmbSupervisorCellphone.Location = new System.Drawing.Point(115, 162);
+            this.cmbSupervisorCellphone.Location = new System.Drawing.Point(115, 163);
             this.cmbSupervisorCellphone.Name = "cmbSupervisorCellphone";
             this.cmbSupervisorCellphone.Size = new System.Drawing.Size(235, 23);
             this.cmbSupervisorCellphone.TabIndex = 39;
@@ -1533,7 +1529,7 @@ namespace FEAManager
             // cmbSupervisorEmail
             // 
             this.cmbSupervisorEmail.FormattingEnabled = true;
-            this.cmbSupervisorEmail.Location = new System.Drawing.Point(115, 129);
+            this.cmbSupervisorEmail.Location = new System.Drawing.Point(115, 117);
             this.cmbSupervisorEmail.Name = "cmbSupervisorEmail";
             this.cmbSupervisorEmail.Size = new System.Drawing.Size(235, 23);
             this.cmbSupervisorEmail.TabIndex = 38;
@@ -1541,7 +1537,7 @@ namespace FEAManager
             // cmbSupervisorLastName
             // 
             this.cmbSupervisorLastName.FormattingEnabled = true;
-            this.cmbSupervisorLastName.Location = new System.Drawing.Point(115, 93);
+            this.cmbSupervisorLastName.Location = new System.Drawing.Point(115, 77);
             this.cmbSupervisorLastName.Name = "cmbSupervisorLastName";
             this.cmbSupervisorLastName.Size = new System.Drawing.Size(235, 23);
             this.cmbSupervisorLastName.TabIndex = 37;
@@ -1549,32 +1545,15 @@ namespace FEAManager
             // cmbSupervisorFirstName
             // 
             this.cmbSupervisorFirstName.FormattingEnabled = true;
-            this.cmbSupervisorFirstName.Location = new System.Drawing.Point(115, 58);
+            this.cmbSupervisorFirstName.Location = new System.Drawing.Point(115, 37);
             this.cmbSupervisorFirstName.Name = "cmbSupervisorFirstName";
             this.cmbSupervisorFirstName.Size = new System.Drawing.Size(235, 23);
             this.cmbSupervisorFirstName.TabIndex = 36;
             // 
-            // cmbSupervisorNumber
-            // 
-            this.cmbSupervisorNumber.FormattingEnabled = true;
-            this.cmbSupervisorNumber.Location = new System.Drawing.Point(115, 25);
-            this.cmbSupervisorNumber.Name = "cmbSupervisorNumber";
-            this.cmbSupervisorNumber.Size = new System.Drawing.Size(235, 23);
-            this.cmbSupervisorNumber.TabIndex = 35;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 28);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(73, 16);
-            this.label12.TabIndex = 33;
-            this.label12.Text = "Identifier:";
-            // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(15, 133);
+            this.label28.Location = new System.Drawing.Point(15, 120);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(49, 16);
             this.label28.TabIndex = 31;
@@ -1592,7 +1571,7 @@ namespace FEAManager
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(15, 97);
+            this.label18.Location = new System.Drawing.Point(15, 80);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(84, 16);
             this.label18.TabIndex = 1;
@@ -1601,7 +1580,7 @@ namespace FEAManager
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(15, 62);
+            this.label17.Location = new System.Drawing.Point(15, 40);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(86, 16);
             this.label17.TabIndex = 0;
@@ -3314,9 +3293,7 @@ namespace FEAManager
         private System.Windows.Forms.TextBox txtDetailsAdminNumber;
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.Button btnCancelApplication;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cmbSupervisorFirstName;
-        private System.Windows.Forms.ComboBox cmbSupervisorNumber;
         private System.Windows.Forms.ComboBox cmbSupervisorCellphone;
         private System.Windows.Forms.ComboBox cmbSupervisorEmail;
         private System.Windows.Forms.ComboBox cmbSupervisorLastName;
