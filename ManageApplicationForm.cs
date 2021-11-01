@@ -51,63 +51,124 @@ namespace FEAManager
 
         private void btnViewReviwerProfile_Click(object sender, EventArgs e)
         {
-            applicationAssignment.viewReviewer(pnlApplicationView, pnlReviewerProfile, lsbReviewers.SelectedIndex, lblReviewerNumber,
+            if (applicationAssignment != null)
+            {
+                applicationAssignment.viewReviewer(pnlApplicationView, pnlReviewerProfile, lsbReviewers.SelectedIndex, lblReviewerNumber,
                                                 lblFirstName, lblLastName, lblQualificationLevel, lblDateOfBirth, lblTelephoneNumber,
                                                 lblEmail);
+                CommonMethods.myErrorMessageBox("Reviewer " + lsbReviewers.SelectedItem.ToString() + " has been selected to view");
+            }
+            else
+            {
+                CommonMethods.myErrorMessageBox("Plaese select an application");
+            }
         }
 
         private void btnAddApplication_Click(object sender, EventArgs e)
         {
-            applicationAssignment = new ApplicationAssignment(grpStatus, btnViewReviwerProfile, lblSelectedApplicationNumber, btnModify, lblSelectedReviewerOne, lblSelectedReviewerTwo, lsbApplications.SelectedIndex);
-            btnViewApplication.PerformClick();
+            bool[] worked = { false };
+            applicationAssignment = new ApplicationAssignment(grpStatus, btnViewReviwerProfile, lblSelectedApplicationNumber, btnModify, lblSelectedReviewerOne, lblSelectedReviewerTwo, lsbApplications.SelectedIndex, worked);
+            if (!worked[0])
+            {
+                applicationAssignment = null;
+            }
+            else
+            {
+                btnViewApplication.PerformClick();
+            }
         }
 
         private void btnViewApplication_Click(object sender, EventArgs e)
         {
-            applicationAssignment.viewApplication(pnlReviewerProfile, pnlApplicationView, lsbApplications.SelectedIndex, lblApplicationNumbers, lblAdminFullName,
+            if (applicationAssignment != null)
+            {
+                applicationAssignment.viewApplication(pnlReviewerProfile, pnlApplicationView, lsbApplications.SelectedIndex, lblApplicationNumbers, lblAdminFullName,
                                                         lblApplicationType, lblStudyProgram, lblCollectingData, lblRiskCategory, lblStatus,
                                                         lblStudentNumber, lblStudentFullName, lblSupervisor, lblDateCompleted);
+                CommonMethods.myConfirmationMessageBox("Application for " + lsbApplications.SelectedItem.ToString() + " has been selected to view");
+            }
+            else
+            {
+                CommonMethods.myErrorMessageBox("Plaese select an application");
+            }
+
         }
 
         private void btnSelectReviewer_Click(object sender, EventArgs e)
         {
-            applicationAssignment.addReviewerToApplication(lsbReviewers.SelectedIndex);
+            if (applicationAssignment != null)
+            {
+                applicationAssignment.addReviewerToApplication(lsbReviewers.SelectedIndex);
+            }
+            else
+            {
+                CommonMethods.myErrorMessageBox("Plaese select an application");
+            }
         }
 
         private void btnRemoveReviewerOne_Click(object sender, EventArgs e)
         {
-            applicationAssignment.removeReviewerOne(lblSelectedReviewerOne);
+            if (applicationAssignment != null)
+            {
+                applicationAssignment.removeReviewerOne(lblSelectedReviewerOne);
+            }
+            else
+            {
+                CommonMethods.myErrorMessageBox("Plaese select an application");
+            }
         }
 
         private void btnRemoveReviewerTwo_Click(object sender, EventArgs e)
         {
-            applicationAssignment.removeReviewerOne(lblSelectedReviewerTwo);
+            if (applicationAssignment != null)
+            {
+                applicationAssignment.removeReviewerOne(lblSelectedReviewerTwo);
+            }
+            else
+            {
+                CommonMethods.myErrorMessageBox("Plaese select an application");
+            }
         }
 
         private void btnModify_Click(object sender, EventArgs e)
         {
-            bool create = btnModify.Text.Equals("&Modify");
-            string action = (create) ? "updated" : "created";
-
-            if (!create)
+            if (applicationAssignment != null)
             {
-                bool blnCreatedApplication = applicationAssignment.createApplicationAssignment();
+                bool create = btnModify.Text.Equals("&Modify");
+                string action = (create) ? "updated" : "created";
 
-                if (blnCreatedApplication)
+                if (!create)
                 {
-                    CommonMethods.myConfirmationMessageBox("Application: " + applicationAssignment.strApplicationNumber + " has sucessfully been " + action);
-                    btnReset.PerformClick();
+                    bool blnCreatedApplication = applicationAssignment.createApplicationAssignment();
+
+                    if (blnCreatedApplication)
+                    {
+                        CommonMethods.myConfirmationMessageBox("Application: " + applicationAssignment.strApplicationNumber + " has sucessfully been " + action);
+                        btnReset.PerformClick();
+                    }
+                    else
+                    {
+                        CommonMethods.myConfirmationMessageBox("Unsuccesful Application Assignment Creation");
+                    }
+                }
+                else
+                {
+                    bool blnUpdatedApplication = applicationAssignment.updateApplicationAssignment();
+
+                    if (blnUpdatedApplication)
+                    {
+                        CommonMethods.myConfirmationMessageBox("Application: " + applicationAssignment.strApplicationNumber + " has sucessfully been " + action);
+                        btnReset.PerformClick();
+                    }
+                    else
+                    {
+                        CommonMethods.myConfirmationMessageBox("Unsuccesful Application Assignment Update");
+                    }
                 }
             }
             else
             {
-                bool blnUpdatedApplication = applicationAssignment.updateApplicationAssignment();
-
-                if (blnUpdatedApplication)
-                {
-                    CommonMethods.myConfirmationMessageBox("Application: " + applicationAssignment.strApplicationNumber + " has sucessfully been " + action);
-                    btnReset.PerformClick();
-                }
+                CommonMethods.myErrorMessageBox("Plaese select an application");
             }
         }
 
@@ -118,7 +179,11 @@ namespace FEAManager
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            applicationAssignment.reset();
+            if (applicationAssignment != null)
+            {
+                applicationAssignment.reset();
+                applicationAssignment = null;
+            }
 
             pnlReviewerProfile.Visible = false;
             pnlApplicationView.Visible = true;

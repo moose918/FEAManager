@@ -317,6 +317,7 @@ namespace FEAManager
             // 
             // cbbQulificationLevel
             // 
+            this.cbbQulificationLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbQulificationLevel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.cbbQulificationLevel.FormattingEnabled = true;
             this.cbbQulificationLevel.Items.AddRange(new object[] {
@@ -343,9 +344,11 @@ namespace FEAManager
             this.mtxtTelephone.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.mtxtTelephone.Location = new System.Drawing.Point(17, 38);
             this.mtxtTelephone.Margin = new System.Windows.Forms.Padding(4);
+            this.mtxtTelephone.Mask = "(999) 000-0000";
             this.mtxtTelephone.Name = "mtxtTelephone";
             this.mtxtTelephone.Size = new System.Drawing.Size(132, 23);
             this.mtxtTelephone.TabIndex = 8;
+            this.mtxtTelephone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // label5
             // 

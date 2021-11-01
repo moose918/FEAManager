@@ -14,6 +14,7 @@ namespace FEAManager
     public partial class ManageRevierwerForm : Form
     {
         private Reviewer reviewer;
+        private string strCurrentReviewerNumber;
         public ManageRevierwerForm()
         {
             InitializeComponent();
@@ -74,12 +75,16 @@ namespace FEAManager
 
         private void btnCreate_click(object sender, EventArgs e)
         {
-            bool createdReviewer = reviewer.createReviewer();
+            bool createdReviewer = reviewer.createReviewer(strCurrentReviewerNumber);
             if (createdReviewer)
             {
                 CommonMethods.myConfirmationMessageBox(reviewer.strReviwerNumber + " has been succesfully created");
                 refreshDataGrid();
                 refreshLables();
+            }
+            else
+            {
+                CommonMethods.myConfirmationMessageBox("Unsuccesful Reviewer Creation");
             }
         }
 
@@ -89,7 +94,7 @@ namespace FEAManager
             valid = CommonMethods.validateTextBox(txtFName, "first name") && valid;
             valid = CommonMethods.validateTextBox(txtLName, "last name") && valid;
             valid = CommonMethods.validateTextBox(txtReviewerNumber, "reviewer number") && valid;
-            valid = CommonMethods.validateTextBox(txtReviewerNumber, "reviewer number", 13) && valid;
+            valid = CommonMethods.validateTextBox(txtReviewerNumber, "reviewer number", CommonMethods.typeReviewer) && valid;
             valid = CommonMethods.validateTextBox(mtxtEmail, "email") && valid;
             valid = CommonMethods.validateTextBox(mtxtTelephone, "telephone") && valid;
             valid = CommonMethods.validateDOB(dtpDOB) && valid;
@@ -99,12 +104,16 @@ namespace FEAManager
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            bool updatedReviewer = reviewer.updateReviewer();
+            bool updatedReviewer = reviewer.updateReviewer(strCurrentReviewerNumber);
             if (updatedReviewer)
             {
                 CommonMethods.myConfirmationMessageBox(reviewer.strReviwerNumber + " has been succesfully updated");
                 refreshDataGrid();
                 refreshLables();
+            }
+            else
+            {
+                CommonMethods.myConfirmationMessageBox("Unsuccesful Reviewr Update");
             }
         }
 
@@ -164,6 +173,7 @@ namespace FEAManager
                             mtxtTelephone.Text = strTelephone;
                             mtxtEmail.Text = strEmail;
                             dtpDOB.Value = DateTime.Parse(strDOB);
+                            strCurrentReviewerNumber = txtReviewerNumber.Text;
                         }
                     }
                 }

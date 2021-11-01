@@ -2253,6 +2253,9 @@
         8QYrf6aqqltAERGZxR/8wf8DD8z1xF/PgfsAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>I confirm that I understand that if my research changes to include human participants, or secondary analysis of data collected from human participants, or a different risk category other than ‘no risk’, it is my responsibility to immediately apply for full ethics clearance from the relevant committee</value>
+  </data>
   <data name="btnCancelApplication.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -2895,9 +2898,6 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAARzVxlj9LLOq9aQAAAABJRU5ErkJggg==
 </value>
-  </data>
-  <data name="label31.Text" xml:space="preserve">
-    <value>I confirm that I understand that if my research changes to include human participants, or secondary analysis of data collected from human participants, or a different risk category other than ‘no risk’, it is my responsibility to immediately apply for full ethics clearance from the relevant committee</value>
   </data>
   <data name="btnViewRisKCategoryTable.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -26,8 +26,11 @@ namespace FEAManager
         /**Controls For Student Details**/
 
         /**Controls for Student Application**/
-        ComboBox cmbSupervisorCellphone, cmbSupervisorEmail, cmbSupervisorFirstName, cmbSupervisorLastName;
-        
+        ComboBox cmbSupervisorEmail, cmbSupervisorFirstName, cmbSupervisorLastName;
+
+        MaskedTextBox cmbSupervisorCellphone;
+
+
         DateTimePicker dtpDateCompleted;
 
         RadioButton radWaiverDegreePurposeOther, radNo, radDataReuseEthicsYes, radPermissionReuseEthicsYes, radEthicsDegreePruposeOther;
@@ -47,7 +50,6 @@ namespace FEAManager
         GroupBox gpbAdditionalResearchersEthics, gpbConfirmation, gpbDegreeWaiver, rpbCollaborationWaiver;
         GroupBox gpbPermissionsWaiverIfYes, gpbPermissionsWaiver, gpbAnonymityResulting, gpbAnonymityProcess, gpbConfidentialityProcess;
         GroupBox gpbInformedConcentGatheringMethod, gpbIncentivesEthics;
-
         /**Controls for Student Application**/
 
 
@@ -55,7 +57,7 @@ namespace FEAManager
                        TextBox txtApplicationType, TextBox txtDetailsAdminNumber, TextBox txtApplicationNumber, RadioButton radDetailsCollectingDataNo, RadioButton radDetailsCollectingDataYes, GroupBox gpbStatus, GroupBox gpbRiskCategory, DateTimePicker dtpDateCompleted,
                        Button btnCancelApplication, TextBox txtDetailsSupervisor, Panel pnlCurrentApplication,
                        
-                       ComboBox cmbSupervisorCellphone, ComboBox cmbSupervisorEmail, ComboBox cmbSupervisorFirstName, ComboBox cmbSupervisorLastName,
+                       MaskedTextBox cmbSupervisorCellphone, ComboBox cmbSupervisorEmail, ComboBox cmbSupervisorFirstName, ComboBox cmbSupervisorLastName,
                        RadioButton radWaiverDegreePurposeOther, RadioButton radNo, RadioButton radDataReuseEthicsYes, RadioButton radPermissionReuseEthicsYes, RadioButton radEthicsDegreePruposeOther,
                        RadioButton radRiskExposureYes, RadioButton radVulnerableYes, RadioButton radEthics, RadioButton radReadRiskTableYes, RadioButton radInvolveHumansYes, RadioButton radrelationshipsYes, RadioButton radWaiver,
                        CheckedListBox clbdataDisposal, CheckedListBox  cblHowDataWillBeCollected,
@@ -485,7 +487,7 @@ namespace FEAManager
                 valid = CommonMethods.validateTextBox(mtxtPassword, "password") && valid;
                 valid = CommonMethods.validateTextBox(mtxtEmail, "email") && valid;
                 valid = CommonMethods.validateTextBox(txtStudentNumber, "student number") && valid;
-                valid = CommonMethods.validateTextBox(txtStudentNumber, "student number", 13) && valid;
+                valid = CommonMethods.validateTextBox(txtStudentNumber, "student number", CommonMethods.typeStudent) && valid;
                 valid = CommonMethods.validateRadioButtonsInGroup(grpTitle, "title") && valid;
                 valid = CommonMethods.validateDOB(dtpDetailsDateOfBirth) && valid;
             }
@@ -553,6 +555,13 @@ namespace FEAManager
                     valid = CommonMethods.validateRadioButtonsInGroup(gpbPermissionsEthics, "indication of whether the study will reuse data that has already been collected by other researchers.") && valid;
                     valid = CommonMethods.validateRadioButtonsInGroup(gpbPermissionsEthicsIfYes, "indication of whether you have permission to use the data collected by other researchers.") && valid;
 
+                    if (CommonMethods.checkedString(gpbPermissionsEthics).Equals("Yes") && CommonMethods.checkedString(gpbPermissionsEthicsIfYes).Equals("No"))
+                    {
+                        CommonMethods.myErrorMessageBox("You indicated that you will reuse collected by pther reviewers. You need permission so complete this application");
+                        valid = false;
+                        gpbPermissionsEthicsIfYes.Focus();
+                    }
+
                     if (radDataReuseEthicsYes.Checked && !radPermissionReuseEthicsYes.Checked)
                     {
                         MessageBox.Show("You have indicated that you are going to reuse data that already been collected by other researchers. You may not make an application without gaining permissions ot use said data first.");
@@ -601,6 +610,14 @@ namespace FEAManager
                 else
                 {
                     valid = CommonMethods.validateRadioButtonsInGroup(gpbConfirmation, "a confirmation for this waiver application.") && valid;
+
+                    if (CommonMethods.checkedString(gpbConfirmation).Equals("No"))
+                    {
+                        CommonMethods.myErrorMessageBox("You need to understand the implications of involving human participants if you want to comeplete your application.");
+                        valid = false;
+                        gpbConfirmation.Focus();
+                    }
+
                     valid = CommonMethods.validateTextBox(txtWaiverProjectTitle, "title for this waiver application.") && valid;
                     valid = CommonMethods.validateRadioButtonsInGroup(gpbDegreeWaiver, "indication of the degree this application will be used for.") && valid;
 
@@ -616,6 +633,14 @@ namespace FEAManager
 
                     valid = CommonMethods.validateRadioButtonsInGroup(gpbPermissionsWaiver, "indication of whether the study will reuse data that has already been collected by other researchers.") && valid;
                     valid = CommonMethods.validateRadioButtonsInGroup(gpbPermissionsWaiverIfYes, "indication of whether you have permission to use the data collected by other researchers.") && valid;
+                    
+                    if (CommonMethods.checkedString(gpbPermissionsWaiver).Equals("Yes") && CommonMethods.checkedString(gpbPermissionsWaiverIfYes).Equals("No"))
+                    {
+                        CommonMethods.myErrorMessageBox("You indicated that you will reuse collected by pther reviewers. You need permission so complete this application");
+                        valid = false;
+                        gpbPermissionsWaiverIfYes.Focus();
+                    }
+
                     valid = CommonMethods.validateRadioButtonsInGroup(rpbCollaborationWaiver, "indication of whether this application is a multi-student application or not.") && valid;
                 }
             }

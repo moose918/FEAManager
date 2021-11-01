@@ -32,8 +32,8 @@ namespace FEAManager
             valid = CommonMethods.validateDOB(dtpDOB) && valid;
             valid = CommonMethods.validateTextBox(mtxtTelephone, "telephone number") && valid;
             bool validUsername = CommonMethods.validateTextBox(txtUsername, "username");
-            valid = CommonMethods.validateTextBox(txtUsername, "username") && valid;
-            valid = CommonMethods.validateTextBox(txtUsername, "username", 13) && valid;
+            valid = validUsername && valid;
+            valid = CommonMethods.validateTextBox(txtUsername, "username", CommonMethods.typeStudent) && valid;
             valid = CommonMethods.validateTextBox(mtxtPassword, "password") && valid;
             valid = CommonMethods.validateTextBox(mtxtEmail, "email address") && valid;
             valid = CommonMethods.validateTextBox(cmbStudyProgram, "study program") && valid;

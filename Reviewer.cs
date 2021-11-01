@@ -33,12 +33,12 @@ namespace FEAManager
             this.cbbQulificationLevel = cbbQulificationLevel;
         }
 
-        public bool createReviewer()
+        public bool createReviewer(string strCurrentReviewer)
         {
             strReviwerNumber = txtReviewerNumber.Text;
 
             //Validating input
-            bool validInformation = ValidateInformation(true);
+            bool validInformation = ValidateInformation(true, strCurrentReviewer);
 
             if (validInformation)
             {
@@ -96,12 +96,12 @@ namespace FEAManager
             }
         }
 
-        public bool updateReviewer()
+        public bool updateReviewer(string strCurrentReviewer)
         {
             strReviwerNumber = txtReviewerNumber.Text;
 
             //Validating input
-            bool validInformation = ValidateInformation(false);
+            bool validInformation = ValidateInformation(false, strCurrentReviewer);
 
             if (validInformation)
             {
@@ -130,14 +130,24 @@ namespace FEAManager
             return false;
         }
 
-        private bool ValidateInformation(bool checkExistance)
+        private bool ValidateInformation(bool checkExistance, string strCurrentReviewer)
         {
             bool valid = true;
             valid = CommonMethods.validateTextBox(txtFName, "first name") && valid;
             valid = CommonMethods.validateTextBox(txtLName, "last name") && valid;
             bool validReviewerNumber = CommonMethods.validateTextBox(txtReviewerNumber, "reviewer number");
+            if (validReviewerNumber && !checkExistance)
+            {
+                if (!txtReviewerNumber.Text.Equals(strCurrentReviewer))
+                {
+                    CommonMethods.myErrorMessageBox("You can not update a reviewers reviewer number");
+                    txtReviewerNumber.Text = strCurrentReviewer;
+                    txtReviewerNumber.Focus();
+                    valid = false;
+                }
+            }
             valid = validReviewerNumber && valid;
-            valid = CommonMethods.validateTextBox(txtReviewerNumber, "reviewer number", 13) && valid;
+            valid = CommonMethods.validateTextBox(txtReviewerNumber, "reviewer number") && valid;
             valid = CommonMethods.validateTextBox(mtxtEmail, "email") && valid;
             valid = CommonMethods.validateTextBox(mtxtTelephone, "telephone") && valid;
             valid = CommonMethods.validateDOB(dtpDOB) && valid;

@@ -123,11 +123,12 @@ namespace FEAManager
         }
 
         public ApplicationAssignment(GroupBox grpStatus, Button btnViewReviwerProfile, Label lblSelectedApplicationNumber, Button btnModify,
-                                    Label lblSelectedReviewerOne, Label lblSelectedReviewerTwo, int selectedIndex)
+                                    Label lblSelectedReviewerOne, Label lblSelectedReviewerTwo, int selectedIndex, bool[] worked)
         {
             if (selectedIndex == -1)
             {
                 CommonMethods.myErrorMessageBox("Please select an application");
+                worked[0] = false;
                 return;
             }
 
@@ -212,6 +213,8 @@ namespace FEAManager
             strStatus = CommonMethods.checkedString(grpStatus);
             strReviewerOne = lblSelectedReviewerOne.Text;
             strReviewerTwo = lblSelectedReviewerTwo.Text;
+
+            worked[0] = true;
 
         }
 

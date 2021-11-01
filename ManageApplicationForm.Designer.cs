@@ -557,6 +557,7 @@ namespace FEAManager
             this.btnViewReviwerProfile.Name = "btnViewReviwerProfile";
             this.btnViewReviwerProfile.Size = new System.Drawing.Size(30, 32);
             this.btnViewReviwerProfile.TabIndex = 39;
+            this.btnViewReviwerProfile.Text = "Z";
             this.btnViewReviwerProfile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnViewReviwerProfile.UseVisualStyleBackColor = false;
             this.btnViewReviwerProfile.Click += new System.EventHandler(this.btnViewReviwerProfile_Click);

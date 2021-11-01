@@ -31,6 +31,14 @@ namespace FEAManager
 
         public static string typeApplication = "Application";
 
+        public static string typeApplicationAssignment = "ApplicationAssignment";
+
+        public static string typeEthics = "Ethics";
+
+        public static string typeReport = "Report";
+
+        public static string typeWaiver = "Waiver";
+
         private static string getPrefix(string userType)
         {
             if (userType.Equals(typeStudent))
@@ -154,12 +162,12 @@ namespace FEAManager
                         adminNumber = kv.Value;
                     }
                 }
-                MessageBox.Show("admine no: " + adminNumber);
+                //MessageBox.Show("admine no: " + adminNumber);
                 return adminNumber;
             }
             else
             {
-                MessageBox.Show("admine no: ");
+                //MessageBox.Show("admine no: ");
                 return "";
             }
         }
@@ -464,6 +472,18 @@ namespace FEAManager
                 textBox.Focus();
                 return false;
             }
+            string itsName = textBox.Name;
+            itsName = itsName.ToUpper();
+            if (itsName.Contains("TELE") || itsName.Contains("CELL") || itsName.Contains("PHONE"))
+            {
+                if (textBox.Text.Length != 10)
+                {
+                    myErrorMessageBox("Please enter a valid telephone number");
+                    textBox.Text = "";
+                    textBox.Focus();
+                    return false;
+                }
+            }
             return true;
         }
 
@@ -499,6 +519,7 @@ namespace FEAManager
                 if (control is ComboBox)
                 {
                     ComboBox comboBox = (ComboBox)control;
+                    comboBox.SelectedIndex = -1;
                     comboBox.Text = "";
                 }
 
@@ -539,20 +560,40 @@ namespace FEAManager
             return true;
         }
 
-        public static bool validateTextBox(TextBox textBox, String prompt, int length)
+        public static bool validateTextBox(TextBox textBox, String prompt, string userType)
         {
-            if (length != -1)
+            string prefix = getPrefix(userType);
+            int length = prefix.Length + 10;
+            int prefixLength = prefix.Length;
+            string text = textBox.Text;
+
+            bool validUsername = true;
+            if (text.Length == 0)
             {
-                if (!textBox.Text.Equals(""))
+                return true;
+            }
+            else
+            {
+                if (text.Length != length)
                 {
-                    if (textBox.TextLength != length)
+                    validUsername = false;
+                }
+                else
+                {
+                    if (!text.Substring(0, prefixLength).Equals(prefix))
                     {
-                        myErrorMessageBox("PLease enter a valid " + prompt + ".");
-                        textBox.Text = "";
-                        textBox.Focus();
-                        return false;
+                        validUsername = false;
                     }
                 }
+            }
+
+            if (!validUsername)
+            {
+                String article = (vowels.Contains(userType[0])) ? "an" : "a";
+                myErrorMessageBox("Please enter a valid " + prompt + " for " + article + " " + userType);
+                textBox.Text = "";
+                textBox.Focus();
+                return false;
             }
             return true;
         }

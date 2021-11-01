@@ -58,6 +58,7 @@ namespace FEAManager
             this.radOther = new System.Windows.Forms.RadioButton();
             this.radMs = new System.Windows.Forms.RadioButton();
             this.radMr = new System.Windows.Forms.RadioButton();
+            this.btnGenerateUserName = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -173,6 +174,7 @@ namespace FEAManager
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.btnGenerateUserName);
             this.panel2.Controls.Add(this.btnViewPassword);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.mtxtPassword);
@@ -193,11 +195,12 @@ namespace FEAManager
             // 
             this.btnViewPassword.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnViewPassword.BackgroundImage")));
             this.btnViewPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnViewPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewPassword.Location = new System.Drawing.Point(428, 92);
             this.btnViewPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnViewPassword.Name = "btnViewPassword";
             this.btnViewPassword.Size = new System.Drawing.Size(26, 26);
-            this.btnViewPassword.TabIndex = 8;
+            this.btnViewPassword.TabIndex = 9;
             this.btnViewPassword.UseVisualStyleBackColor = true;
             this.btnViewPassword.Click += new System.EventHandler(this.btnViewPassword_Click);
             // 
@@ -218,10 +221,11 @@ namespace FEAManager
             this.mtxtPassword.Name = "mtxtPassword";
             this.mtxtPassword.PasswordChar = '*';
             this.mtxtPassword.Size = new System.Drawing.Size(216, 26);
-            this.mtxtPassword.TabIndex = 7;
+            this.mtxtPassword.TabIndex = 8;
             // 
             // cmbStudyProgram
             // 
+            this.cmbStudyProgram.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStudyProgram.FormattingEnabled = true;
             this.cmbStudyProgram.Items.AddRange(new object[] {
             "Honours",
@@ -232,7 +236,7 @@ namespace FEAManager
             this.cmbStudyProgram.Margin = new System.Windows.Forms.Padding(4);
             this.cmbStudyProgram.Name = "cmbStudyProgram";
             this.cmbStudyProgram.Size = new System.Drawing.Size(249, 26);
-            this.cmbStudyProgram.TabIndex = 10;
+            this.cmbStudyProgram.TabIndex = 11;
             // 
             // mtxtEmail
             // 
@@ -240,14 +244,14 @@ namespace FEAManager
             this.mtxtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.mtxtEmail.Name = "mtxtEmail";
             this.mtxtEmail.Size = new System.Drawing.Size(249, 26);
-            this.mtxtEmail.TabIndex = 9;
+            this.mtxtEmail.TabIndex = 10;
             // 
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(205, 27);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(249, 26);
+            this.txtUsername.Size = new System.Drawing.Size(216, 26);
             this.txtUsername.TabIndex = 6;
             // 
             // label7
@@ -291,7 +295,7 @@ namespace FEAManager
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(900, 95);
-            this.panel3.TabIndex = 15;
+            this.panel3.TabIndex = 16;
             // 
             // btnClear
             // 
@@ -305,7 +309,7 @@ namespace FEAManager
             this.btnClear.Margin = new System.Windows.Forms.Padding(4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(149, 50);
-            this.btnClear.TabIndex = 18;
+            this.btnClear.TabIndex = 19;
             this.btnClear.Text = "&Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -322,7 +326,7 @@ namespace FEAManager
             this.btnCreate.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(149, 50);
-            this.btnCreate.TabIndex = 17;
+            this.btnCreate.TabIndex = 18;
             this.btnCreate.Text = "&Create";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
@@ -339,7 +343,7 @@ namespace FEAManager
             this.btnReturn.Margin = new System.Windows.Forms.Padding(4);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(149, 50);
-            this.btnReturn.TabIndex = 16;
+            this.btnReturn.TabIndex = 17;
             this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
@@ -354,7 +358,7 @@ namespace FEAManager
             this.grpTitle.Location = new System.Drawing.Point(400, 385);
             this.grpTitle.Name = "grpTitle";
             this.grpTitle.Size = new System.Drawing.Size(300, 58);
-            this.grpTitle.TabIndex = 11;
+            this.grpTitle.TabIndex = 12;
             this.grpTitle.TabStop = false;
             this.grpTitle.Text = "Title";
             // 
@@ -364,7 +368,7 @@ namespace FEAManager
             this.radOther.Location = new System.Drawing.Point(202, 25);
             this.radOther.Name = "radOther";
             this.radOther.Size = new System.Drawing.Size(72, 22);
-            this.radOther.TabIndex = 14;
+            this.radOther.TabIndex = 15;
             this.radOther.TabStop = true;
             this.radOther.Text = "Other";
             this.radOther.UseVisualStyleBackColor = true;
@@ -375,7 +379,7 @@ namespace FEAManager
             this.radMs.Location = new System.Drawing.Point(111, 25);
             this.radMs.Name = "radMs";
             this.radMs.Size = new System.Drawing.Size(48, 22);
-            this.radMs.TabIndex = 13;
+            this.radMs.TabIndex = 14;
             this.radMs.TabStop = true;
             this.radMs.Text = "Ms";
             this.radMs.UseVisualStyleBackColor = true;
@@ -386,10 +390,22 @@ namespace FEAManager
             this.radMr.Location = new System.Drawing.Point(22, 25);
             this.radMr.Name = "radMr";
             this.radMr.Size = new System.Drawing.Size(46, 22);
-            this.radMr.TabIndex = 12;
+            this.radMr.TabIndex = 13;
             this.radMr.TabStop = true;
             this.radMr.Text = "Mr";
             this.radMr.UseVisualStyleBackColor = true;
+            // 
+            // btnGenerateUserName
+            // 
+            this.btnGenerateUserName.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGenerateUserName.BackgroundImage")));
+            this.btnGenerateUserName.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGenerateUserName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerateUserName.Location = new System.Drawing.Point(428, 27);
+            this.btnGenerateUserName.Name = "btnGenerateUserName";
+            this.btnGenerateUserName.Size = new System.Drawing.Size(26, 26);
+            this.btnGenerateUserName.TabIndex = 7;
+            this.btnGenerateUserName.UseVisualStyleBackColor = true;
+            this.btnGenerateUserName.Click += new System.EventHandler(this.button1_Click);
             // 
             // RegisterStudentForm
             // 
@@ -449,5 +465,6 @@ namespace FEAManager
         private System.Windows.Forms.RadioButton radOther;
         private System.Windows.Forms.RadioButton radMs;
         private System.Windows.Forms.RadioButton radMr;
+        private System.Windows.Forms.Button btnGenerateUserName;
     }
 }

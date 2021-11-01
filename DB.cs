@@ -180,7 +180,7 @@ namespace FEAManager
             con.Open();
 
             //
-            MessageBox.Show(cmd.CommandText);
+            //MessageBox.Show(cmd.CommandText);
 
             affectedRows = cmd.ExecuteNonQuery();
 

@@ -30,6 +30,10 @@ namespace FEAManager
                 {
                     loadDetails(strPassedStudentNumber);
                 }
+                else
+                {
+                    CommonMethods.myConfirmationMessageBox("Unsuccesful Application Updating");
+                }
             }
             else
             {
@@ -37,6 +41,12 @@ namespace FEAManager
                 if (createdApplication)
                 {
                     MessageBox.Show("Application " + student.strApplicationNumber + " has been created");
+                    loadDetails(strPassedStudentNumber);
+                    tbcStudentMenu.SelectedIndex = 0;
+                }
+                else
+                {
+                    CommonMethods.myConfirmationMessageBox("Unsuccesful Application Creation");
                 }
             }
         }
@@ -102,7 +112,7 @@ namespace FEAManager
                        txtApplicationType, txtDetailsAdminNumber, txtApplicationNumber, radDetailsCollectingDataNo, radDetailsCollectingDataYes, gpbStatus, gpbRiskCategory, dtpDateCompleted,
                        btnCancelApplication, txtDetailsSupervisor, pnlCurrentApplication,
 
-                       cmbSupervisorCellphone, cmbSupervisorEmail, cmbSupervisorFirstName, cmbSupervisorLastName,
+                       mtxtSupervisorCellphones, cmbSupervisorEmail, cmbSupervisorFirstName, cmbSupervisorLastName,
                        radWaiverDegreePurposeOther, radNo, radDataReuseEthicsYes, radPermissionReuseEthicsYes, radEthicsDegreePruposeOther,
                        radRiskExposureYes, radVulnerableYes, radEthics, radReadRiskTableYes, radInvolveHumansYes, radrelationshipsYes, radWaiver,
                        clbdataDisposal, cblHowDataWillBeCollected,

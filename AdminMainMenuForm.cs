@@ -27,6 +27,16 @@ namespace FEAManager
             previousForm.Visible = true;
         }
 
+        public static void loadForm(LoginForm previousForm)
+        {
+            AdminMainMenuForm frmAdminMenu = new AdminMainMenuForm();
+            frmAdminMenu.preliminaryActions();
+            previousForm.Visible = false;
+            frmAdminMenu.ShowDialog(previousForm);
+            previousForm.preliminaryActions();
+            previousForm.Visible = true;
+        }
+
         public void preliminaryActions()
         {
             reportController = new ReportController(lblNoSupervisors, lblNoReviewers, lblNoStudents, lblReviewerWithMostApplications, lblReviewerWithLeastApplications, lblNoRejected, lblNoPending, lblNoGranted, lblNoEthics, lblNoWaiver, lblNoApplications, pnlReviewers, cbbMothYear);

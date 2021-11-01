@@ -19,6 +19,13 @@ namespace FEAManager
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            /**
+             * Login button
+             * User interface creates LoginController
+             * Login Controller handles input validation and login validation
+             * If the login is valid, then the respective user main page will be loaded
+             * **/
+
             LoginController loginController = new LoginController();
             bool validLogin = loginController.validLogin(txtUsername, mtxtPassword, grpUserType);
 
@@ -35,34 +42,38 @@ namespace FEAManager
                     StudentMainMenuForm.loadForm(this, loginController.strUsername);
                 }
             }
+            else
+            {
+                CommonMethods.myConfirmationMessageBox("Unsuccesful Login");
+            }
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            CommonMethods.timeToNearestXMinute(5);
+            //Opens registration form.
             RegisterStudentForm.loadForm(this);
-        }
-
-        public static void loadForm (Form previousForm)
-        {
-            LoginForm frmLogin = new LoginForm();
-            previousForm.Visible = false;
-            frmLogin.ShowDialog(previousForm);
-            previousForm.Visible = true;
         }
 
         public void preliminaryActions()
         {
+            /**
+             * Preliminary actions
+             * The tasks that need to be done before this form can be visible again.
+             * Called by other forms that use this form as the previous form
+             * So the AdminMainMenu and StudentMainMenu
+             * **/
             clearForm();
         }
 
         private void clearForm()
         {
+            //Removing edits on all groupBoxes, textboxes etc.
             CommonMethods.clearForm(this);
         }
 
         private void btnShowPassword_Click(object sender, EventArgs e)
         {
+            //Button to remove that mask on the password
             CommonMethods.passwordControl(mtxtPassword);
         }
     }

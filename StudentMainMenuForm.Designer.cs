@@ -90,7 +90,6 @@ namespace FEAManager
             this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.gpbPermissionsWaiverIfYes = new System.Windows.Forms.GroupBox();
-            this.label35 = new System.Windows.Forms.Label();
             this.radPermissionNo = new System.Windows.Forms.RadioButton();
             this.radPermissionYes = new System.Windows.Forms.RadioButton();
             this.gpbPermissionsWaiver = new System.Windows.Forms.GroupBox();
@@ -129,7 +128,6 @@ namespace FEAManager
             this.radInvolveHumansNo = new System.Windows.Forms.RadioButton();
             this.radInvolveHumansYes = new System.Windows.Forms.RadioButton();
             this.gpbSupervisor = new System.Windows.Forms.GroupBox();
-            this.cmbSupervisorCellphone = new System.Windows.Forms.ComboBox();
             this.cmbSupervisorEmail = new System.Windows.Forms.ComboBox();
             this.cmbSupervisorLastName = new System.Windows.Forms.ComboBox();
             this.cmbSupervisorFirstName = new System.Windows.Forms.ComboBox();
@@ -246,6 +244,7 @@ namespace FEAManager
             this.btnReset = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.mtxtSupervisorCellphones = new System.Windows.Forms.MaskedTextBox();
             this.tbcStudentMenu.SuspendLayout();
             this.tbpStudentDetails.SuspendLayout();
             this.pnlCurrentApplication.SuspendLayout();
@@ -1021,7 +1020,6 @@ namespace FEAManager
             // gpbPermissionsWaiverIfYes
             // 
             this.gpbPermissionsWaiverIfYes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.gpbPermissionsWaiverIfYes.Controls.Add(this.label35);
             this.gpbPermissionsWaiverIfYes.Controls.Add(this.radPermissionNo);
             this.gpbPermissionsWaiverIfYes.Controls.Add(this.radPermissionYes);
             this.gpbPermissionsWaiverIfYes.Location = new System.Drawing.Point(21, 141);
@@ -1032,16 +1030,6 @@ namespace FEAManager
             this.gpbPermissionsWaiverIfYes.TabIndex = 2;
             this.gpbPermissionsWaiverIfYes.TabStop = false;
             this.gpbPermissionsWaiverIfYes.Text = "If YES, do you have written permission to reuse the data?";
-            // 
-            // label35
-            // 
-            this.label35.Location = new System.Drawing.Point(309, 17);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(43, 17);
-            this.label35.TabIndex = 2;
-            this.label35.Text = "INFO If you don’t, you must obtain this permission from the principal investigato" +
-    "r";
-            this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // radPermissionNo
             // 
@@ -1501,7 +1489,7 @@ namespace FEAManager
             // gpbSupervisor
             // 
             this.gpbSupervisor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.gpbSupervisor.Controls.Add(this.cmbSupervisorCellphone);
+            this.gpbSupervisor.Controls.Add(this.mtxtSupervisorCellphones);
             this.gpbSupervisor.Controls.Add(this.cmbSupervisorEmail);
             this.gpbSupervisor.Controls.Add(this.cmbSupervisorLastName);
             this.gpbSupervisor.Controls.Add(this.cmbSupervisorFirstName);
@@ -1517,14 +1505,6 @@ namespace FEAManager
             this.gpbSupervisor.TabIndex = 10;
             this.gpbSupervisor.TabStop = false;
             this.gpbSupervisor.Text = "Supervisor";
-            // 
-            // cmbSupervisorCellphone
-            // 
-            this.cmbSupervisorCellphone.FormattingEnabled = true;
-            this.cmbSupervisorCellphone.Location = new System.Drawing.Point(115, 163);
-            this.cmbSupervisorCellphone.Name = "cmbSupervisorCellphone";
-            this.cmbSupervisorCellphone.Size = new System.Drawing.Size(235, 23);
-            this.cmbSupervisorCellphone.TabIndex = 39;
             // 
             // cmbSupervisorEmail
             // 
@@ -2965,6 +2945,15 @@ namespace FEAManager
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // mtxtSupervisorCellphones
+            // 
+            this.mtxtSupervisorCellphones.Location = new System.Drawing.Point(115, 163);
+            this.mtxtSupervisorCellphones.Mask = "(999) 000-0000";
+            this.mtxtSupervisorCellphones.Name = "mtxtSupervisorCellphones";
+            this.mtxtSupervisorCellphones.Size = new System.Drawing.Size(235, 23);
+            this.mtxtSupervisorCellphones.TabIndex = 40;
+            this.mtxtSupervisorCellphones.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
             // StudentMainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 11F);
@@ -3171,7 +3160,6 @@ namespace FEAManager
         private System.Windows.Forms.RadioButton radioButton8;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.GroupBox gpbPermissionsWaiverIfYes;
-        private System.Windows.Forms.Label label35;
         private System.Windows.Forms.RadioButton radPermissionNo;
         private System.Windows.Forms.RadioButton radPermissionYes;
         private System.Windows.Forms.GroupBox gpbPermissionsWaiver;
@@ -3294,8 +3282,8 @@ namespace FEAManager
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.Button btnCancelApplication;
         private System.Windows.Forms.ComboBox cmbSupervisorFirstName;
-        private System.Windows.Forms.ComboBox cmbSupervisorCellphone;
         private System.Windows.Forms.ComboBox cmbSupervisorEmail;
         private System.Windows.Forms.ComboBox cmbSupervisorLastName;
+        private System.Windows.Forms.MaskedTextBox mtxtSupervisorCellphones;
     }
 }
