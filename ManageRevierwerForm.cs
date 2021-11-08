@@ -274,5 +274,19 @@ namespace FEAManager
             refreshLables();
             //MessageBox.Show("Change");
         }
+
+        private void btnGenerateUserName_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want a reviewer number to be automatically generated for you?", "Generate Reviewer Number", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                txtReviewerNumber.Text = CommonMethods.generateUniqueID(CommonMethods.typeReviewer);
+                CommonMethods.myConfirmationMessageBox("You can use reviewer number: " + txtReviewerNumber.Text);
+            }
+            else
+            {
+                CommonMethods.myConfirmationMessageBox("Reviewer number generation aborted.");
+            }
+        }
     }
 }

@@ -458,7 +458,7 @@ namespace FEAManager
                 }
                 else
                 {
-                    if (strReviewerOne.Length == 0 || strReviewerOne.Equals(CommonMethods.blankPlaceholder))
+                    if (strReviewerOne.Length == 0 || strReviewerOne.Equals(CommonMethods.blankPlaceholder) || strReviewerOne.Equals(""))
                     {
                         btnViewReviwerProfile.PerformClick();
                         string strReviewerNumber = arrReviewers[selectedIndex][0];
@@ -474,7 +474,7 @@ namespace FEAManager
                             CommonMethods.myConfirmationMessageBox(strReviewerName + " succesfully accepted.");
                         }
                     }
-                    else if (strReviewerTwo.Length == 0 || strReviewerTwo.Equals(CommonMethods.blankPlaceholder))
+                    else if (strReviewerTwo.Length == 0 || strReviewerTwo.Equals(CommonMethods.blankPlaceholder) || strReviewerTwo.Equals(""))
                     {
                         btnViewReviwerProfile.PerformClick();
                         string strReviewerNumber = arrReviewers[selectedIndex][0];

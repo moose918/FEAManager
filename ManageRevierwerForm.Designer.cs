@@ -70,6 +70,7 @@ namespace FEAManager
             this.adminTableAdapter = new FEAManager.FEAManager_DBDataSetTableAdapters.AdminTableAdapter();
             this.reviewerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reviewerTableAdapter = new FEAManager.FEAManager_DBDataSetTableAdapters.ReviewerTableAdapter();
+            this.btnGenerateUserName = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -279,7 +280,7 @@ namespace FEAManager
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 18);
+            this.label4.Location = new System.Drawing.Point(25, 18);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(150, 18);
             this.label4.TabIndex = 40;
@@ -289,13 +290,14 @@ namespace FEAManager
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnGenerateUserName);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.txtReviewerNumber);
             this.panel4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.panel4.Location = new System.Drawing.Point(459, 265);
+            this.panel4.Location = new System.Drawing.Point(440, 265);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(165, 80);
+            this.panel4.Size = new System.Drawing.Size(200, 80);
             this.panel4.TabIndex = 1;
             // 
             // panel2
@@ -500,6 +502,18 @@ namespace FEAManager
             // 
             this.reviewerTableAdapter.ClearBeforeFill = true;
             // 
+            // btnGenerateUserName
+            // 
+            this.btnGenerateUserName.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGenerateUserName.BackgroundImage")));
+            this.btnGenerateUserName.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGenerateUserName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerateUserName.Location = new System.Drawing.Point(158, 39);
+            this.btnGenerateUserName.Name = "btnGenerateUserName";
+            this.btnGenerateUserName.Size = new System.Drawing.Size(23, 23);
+            this.btnGenerateUserName.TabIndex = 41;
+            this.btnGenerateUserName.UseVisualStyleBackColor = true;
+            this.btnGenerateUserName.Click += new System.EventHandler(this.btnGenerateUserName_Click);
+            // 
             // ManageRevierwerForm
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
@@ -578,5 +592,6 @@ namespace FEAManager
         private FEAManager_DBDataSetTableAdapters.AdminTableAdapter adminTableAdapter;
         private System.Windows.Forms.BindingSource reviewerBindingSource;
         private FEAManager_DBDataSetTableAdapters.ReviewerTableAdapter reviewerTableAdapter;
+        private System.Windows.Forms.Button btnGenerateUserName;
     }
 }

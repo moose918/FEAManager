@@ -56,7 +56,7 @@ namespace FEAManager
                 applicationAssignment.viewReviewer(pnlApplicationView, pnlReviewerProfile, lsbReviewers.SelectedIndex, lblReviewerNumber,
                                                 lblFirstName, lblLastName, lblQualificationLevel, lblDateOfBirth, lblTelephoneNumber,
                                                 lblEmail);
-                CommonMethods.myErrorMessageBox("Reviewer " + lsbReviewers.SelectedItem.ToString() + " has been selected to view");
+                CommonMethods.myConfirmationMessageBox("Reviewer " + lsbReviewers.SelectedItem.ToString() + " has been selected to view");
             }
             else
             {
